@@ -1,0 +1,1 @@
+const BASE_URL = 'https://elearningnew.cybersoft.edu.vn/api';
