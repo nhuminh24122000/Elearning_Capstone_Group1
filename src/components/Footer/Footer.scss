@@ -1,0 +1,90 @@
+
+footer {
+    background-color: #0d1018;
+    font-weight: 300;
+    padding: 5rem 0 3rem;
+    color: #fff;
+    position: relative;
+    ul {
+        li {
+            margin-bottom: 1rem;
+            a {
+                color: #fff;
+                transition: 0.2s linear;
+                &:hover {
+                    color: #f2994a;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    h2 {
+        margin-bottom: 2rem;
+    }
+    .footer-left {
+        img {
+            width: 18rem;
+            margin-bottom: 2rem;
+        }
+        i {
+            margin-right: 1rem;
+        }
+    }
+    .rectangle {
+        position: relative;
+        z-index: 5;
+        color: #fff;
+    }
+    .footer-newsletter {
+        .footer-input input {
+            padding: 13px 20px;
+            outline: none;
+            border: none;
+            background-color: #eee;
+            border-top-left-radius: 35px;
+            border-bottom-left-radius: 35px;
+            width: 260px;
+        }
+        
+        .footer-input input:placeholder-shown {
+            font-family: var(--secondary-font);
+        }   
+        
+        .footer-input i {
+            color: #fff;
+            background-color: #f2994a;
+            padding: 18px 30px;
+            border-top-right-radius: 35px;
+            border-bottom-right-radius: 35px;
+            margin: -5px;
+            transition: all 0.3s;
+        }
+        
+        .footer-input i:hover {
+            background-color: #f2994a;
+            opacity: 0.8;
+            cursor: pointer;
+        }
+        li {
+            margin-right: 8px;
+        }
+        
+        li a {
+            width: 40px;
+            height: 40px;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background: rgb(10 191 83 / 8%);
+            color: #fff;
+            transition: all 0.4s;
+        }
+        
+        li a:hover {
+            background: #f2994a;
+            text-decoration: none;
+            box-shadow: 0px 4px 7px 0px rgb(10 10 10 / 24%);
+        }
+    }
+}

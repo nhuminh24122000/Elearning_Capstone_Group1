@@ -1,0 +1,52 @@
+header {
+    a {
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    .navbar {
+        padding: 1rem 0;
+        border-bottom: 1px solid #ccc;
+    }
+    .container {
+        .LogoHome {
+            width: 15rem;
+        }
+        .search {
+            border-radius: 25px;
+            border: 1px solid #ccc;
+            padding: 1rem 2rem;
+            button {
+                border: none;
+                background-color: transparent;
+                i {
+                    color: #ccc;
+                }
+            }
+            input {
+                border: none;
+                outline: none;
+                margin-left: 1rem;
+                font-size: 1.5rem;
+                width: 33rem;
+            }
+        }
+        .navbar-listCourse {
+            i {
+                margin-left: 5px;
+            }
+        }
+        .header-link {
+            background-color: #f2994a;
+            margin-left: 1rem;
+            padding: 7px 20px;
+            border: 1px solid #ccc;
+            outline: none;
+            border-radius: 2rem;
+            color: #000;
+            cursor: pointer;
+            transition: 0.2s linear;
+        }
+    }
+
+}
