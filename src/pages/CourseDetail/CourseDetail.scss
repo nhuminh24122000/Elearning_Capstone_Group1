@@ -1,0 +1,78 @@
+.detail-carousel {
+    position: relative;
+    background: url('https://img5.thuthuatphanmem.vn/uploads/2021/09/27/100-background-hoc-tap-dep_045831974.jpg');
+    height: 500px;
+    background-size: cover;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.545);
+        z-index: 1;
+    }
+
+    .col-7 {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding-left: 21rem;
+        height: 100%;
+
+        h1 {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            font-size: 5.5rem;
+
+        }
+
+        p {
+            z-index: 2;
+            color: #fff;
+            margin: 2rem 0;
+            
+
+            i {
+                margin-left: 0.5rem;
+                color: rgb(42, 210, 42);
+            }
+        }
+
+        button {
+            bottom: 25px;
+            right: 25px;
+            background-color: #f2994a;
+            color: #fff;
+            font-weight: 600;
+            padding: 7px 20px;
+            border: 1px solid #f2994a;
+            border-radius: 1.5rem;
+            outline: none;
+            z-index: 2;
+            width: 11rem;
+            transition: all 0.5s;
+
+            &:hover {
+                background-color: #d86b0c;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .col-5 {
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        padding-right: 145px;
+
+        img {
+            width: 100%;
+            height: 300px;
+        }
+    }
+
+}

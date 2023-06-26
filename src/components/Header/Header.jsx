@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import LogoHome from '../../assets/img/cyberlogo-black.png'
 import './Header.scss'
+import CourseCategori from "../CourseCategori/CourseCategori";
 
 function Header() {
   return (
@@ -22,10 +23,41 @@ function Header() {
           <NavLink className="navbar-brand" to="/">
             <img className="LogoHome" src={LogoHome} alt="" />
           </NavLink>
-          <NavLink className="navbar-listCourse" to={'/coursecategories'}>
+          {/* <NavLink className="navbar-listCourse" to={'/coursecategories'}>
             Khóa Học
             <i class="fa-solid fa-chevron-down"></i>
-          </NavLink>
+          </NavLink> */}
+          <div>
+            <CourseCategori />
+            {/* <Space wrap>
+              <Select
+                defaultValue="Danh Mục Khóa Học"
+                style={{
+                  width: 200,
+                }}
+                onChange={handleChange}
+                options={[
+                  {
+                    value: 'jack',
+                    label: 'Jack',
+                  },
+                  {
+                    value: 'lucy',
+                    label: 'Lucy',
+                  },
+                  {
+                    value: 'Yiminghe',
+                    label: 'yiminghe',
+                  },
+                  {
+                    value: 'disabled',
+                    label: 'Disabled',
+                    disabled: true,
+                  },
+                ]}
+              />
+            </Space> */}
+          </div>
           <div className="d-flex">
             <div className="d-sm-inline d-none">
               <div className="d-flex my-2 my-lg-0">
@@ -42,12 +74,12 @@ function Header() {
               </div>
             </div>
             <div className="d-flex align-items-center">
-							<NavLink className={'header-link'} to={'/signup'}>
-								Sign Up
-							</NavLink>
+              <NavLink className={'header-link'} to={'/signup'}>
+                Sign Up
+              </NavLink>
               <NavLink className={'header-link'} to={'/signin'}>
-								Sign In
-							</NavLink>
+                Sign In
+              </NavLink>
             </div>
           </div>
         </div>
