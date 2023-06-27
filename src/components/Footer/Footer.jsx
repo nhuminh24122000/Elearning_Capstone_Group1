@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import LogoFooter from '../../assets/img/cyberlogo-white.png'
+import LogoFooter from "../../assets/img/cyberlogo-white.png";
 
 // SCSS
 import "./Footer.scss";
@@ -8,11 +8,11 @@ import "./Footer.scss";
 export default function Footer() {
   return (
     <footer>
-      <div className="wrapper pt-5 pb-4">
+      <div className="wrapper">
         <div className="container">
           <div className="row g-4">
             <div className="footer-left col col-lg-4 col-md-4 col-sm-6 col-12">
-              <div className="px-5">
+              <div className="">
                 <img src={LogoFooter} alt="" />
                 <ul>
                   <li>
@@ -24,8 +24,8 @@ export default function Footer() {
                     <span>cyberSoft@gmail.com</span>
                   </li>
                   <li>
-                  <i class="fa-solid fa-location-dot"></i>
-                  <span>103 Nguyễn Hữu Dật, Hải Châu, ĐN</span>
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>103 Nguyễn Hữu Dật, Hải Châu, ĐN</span>
                   </li>
                 </ul>
               </div>
@@ -35,16 +35,16 @@ export default function Footer() {
                 <h2>VỀ CYBERSOFT</h2>
                 <ul>
                   <li>
-                    <NavLink to="/">Courses</NavLink>
+                    <NavLink to="/coursecategories">Khóa học</NavLink>
                   </li>
                   <li>
-                    <NavLink to="/">About</NavLink>
+                    <NavLink to="/">Giới thiệu</NavLink>
                   </li>
                   <li>
-                    <NavLink to="/">Contact</NavLink>
+                    <NavLink to="/">Liên hệ</NavLink>
                   </li>
                   <li>
-                    <NavLink to="/">Help Desk</NavLink>
+                    <NavLink to="/">Điều khoản dịch vụ</NavLink>
                   </li>
                 </ul>
               </div>
@@ -52,9 +52,10 @@ export default function Footer() {
             <div className="footer-newsletter col col-lg-4 col-md-4 col-sm-12 col-12">
               <h2>NEWSLETTER</h2>
               <p>
-                Subscribe to our mailing list and get updates to your email inbox.
+                Theo dõi danh sách gửi thư của chúng tôi và nhận thông tin cập
+                nhật vào hộp thư đến email của bạn.
               </p>
-              <div class="footer-input">
+              <div class="footer-input my-4">
                 <input
                   type="email"
                   name="email"
@@ -64,19 +65,36 @@ export default function Footer() {
                 <i class="fa-solid fa-paper-plane"></i>
               </div>
               <ul class="d-flex align-items-center mt-4">
-                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fab fa-google"></i></a></li>
+                <li>
+                  <a href="#">
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fab fa-linkedin-in"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fab fa-google"></i>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
         </div>
       </div>
-      <div className="rectangle">
-        <div className="text-center pt-3 pb-2">
+      <div className="rectangle container">
+        <div className="pt-3 pb-2">
           <p>
-            © 2022 Cybersoft All Rights Reserved
+            © 2018 - 2023 CyberSoft. Trung tâm dạy học lập trình hàng đầu Việt
+            Nam
           </p>
         </div>
       </div>

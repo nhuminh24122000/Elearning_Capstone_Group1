@@ -43,10 +43,10 @@ function Header() {
             </div>
             <div className="d-flex align-items-center">
 							<NavLink className={'header-link'} to={'/signup'}>
-								Sign Up
+								Đăng Ký
 							</NavLink>
               <NavLink className={'header-link'} to={'/signin'}>
-								Sign In
+								Đăng Nhập
 							</NavLink>
             </div>
           </div>

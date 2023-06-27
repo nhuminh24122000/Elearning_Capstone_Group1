@@ -1,0 +1,98 @@
+.signup-wrapper {
+  background-color: #e3dcdc;
+  padding: 5rem;
+  height: 65rem;
+  font-size: 1.4rem;
+  position: relative;
+  .col-7 {
+    position: static;
+  }
+  .signup-container {
+    background-color: #fff;
+    margin: 0 auto;
+    height: 100%;
+    border-radius: 5px;
+    display: flex;
+    overflow: hidden;
+    width: 80%;
+    box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.2);
+    .signup-right {
+      padding: 3rem;
+      text-align: center;
+      background-color: #f2994a;
+      img {
+        width: 100%;
+      }
+      a {
+        text-decoration: underline;
+      }
+    }
+    .signup-left {
+      h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+      }
+      flex: 1;
+      padding: 4rem;
+      .signup-form {
+        display: flex;
+        align-items: center;
+        gap: 0 5rem;
+        .form-left, .form-right {
+          width: 50%;
+          .form-group {
+            margin: 1rem 0 0 0;
+            label {
+              margin-right: 1rem;
+              font-weight: 500;
+            }
+            input {
+              padding: 8px 10px;
+              border-radius: 4px;
+              border: 1px solid #b1aeae;
+              margin: 0.5rem 0;
+              outline: none;
+              width: 100%;
+            }
+            .error-message {
+              color: red;
+              font-size: 1.2rem;
+            }
+          }
+        }
+      }
+      .group-button {
+        width: 100%;
+        display: flex;
+        gap: 0 3rem;
+        align-items: center;
+        .signup-account,
+        .signup-google {
+          i,
+          img {
+            margin-right: 1rem;
+          }
+          padding: 8px 10px;
+          width: 50%;
+          border-radius: 4px;
+          font-size: 1.5rem;
+          background-color: #f2994a;
+          margin-top: 3rem;
+          text-align: center;
+        }
+        .signup-google {
+          background-color: #0d1018;
+          color: #fff;
+          img {
+            width: 2rem;
+          }
+        }
+      }
+      .signup-agree {
+        a {
+          color: blue;
+        }
+      }
+    }
+  }
+}
