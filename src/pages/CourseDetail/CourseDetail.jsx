@@ -7,7 +7,7 @@ import { setListDetailCourse } from '../../redux/reducers/courseReducer';
 import './CourseDetail.scss'
 import { getLocal } from '../../utils';
 import Swal from 'sweetalert2'
-import {BASE_URL} from '../../services/product.services'
+import {BASE_URL} from '../../services/config.services'
 import { Rating } from 'react-simple-star-rating';
 
 function CourseDetail() {

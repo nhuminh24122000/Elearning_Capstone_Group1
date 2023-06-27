@@ -6,7 +6,7 @@ import axios from 'axios';
 import { setListCourseCategory } from '../../redux/reducers/courseReducer';
 import { CYBERSOFT_TOKEN, GROUP_ID } from '../../constant';
 import Carts from '../../components/Carts/Carts';
-import { BASE_URL } from '../../services/product.services';
+import {BASE_URL} from '../../services/config.services'
 
 function CourseCategories() {
     const params = useParams();
