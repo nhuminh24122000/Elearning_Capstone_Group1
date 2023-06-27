@@ -28,7 +28,9 @@ function App() {
       <Routes>
         <Route path='' element={<HomeTemplate alert={alert}/>}>
           <Route index element={<Home />} />
-          <Route path="/coursecategories" element={<CourseCategories />} />
+          <Route path="/coursecategories"  >
+            <Route path=':categoriesId' element={<CourseCategories />} />
+          </Route>
           <Route path="/coursedetail">
             <Route path=':courseId' element={<CourseDetail />} />
           </Route>

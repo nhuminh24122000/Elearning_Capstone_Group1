@@ -5,7 +5,8 @@ import "./SignUp.scss";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { axiosWithAuth } from "../../services/product.services";
+import { axiosWithAuth } from "../../services/config.services";
+import { GROUP_ID } from "../../constant";
 
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
@@ -46,7 +47,7 @@ function SignUp(props) {
       xacNhanMatKhau: "",
       hoTen: "",
       soDT: "",
-      maNhom: "GP01",
+      maNhom: GROUP_ID,
       email: "",
     },
 
