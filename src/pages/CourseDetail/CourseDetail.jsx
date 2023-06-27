@@ -1,22 +1,29 @@
 import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { CYBERSOFT_TOKEN } from '../../constant';
+import { useNavigate, useParams } from 'react-router-dom'
+import { ACCESS_TOKEN, CYBERSOFT_TOKEN } from '../../constant';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { setListDetailCourse } from '../../redux/reducers/courseReducer';
 import './CourseDetail.scss'
+import { getLocal } from '../../utils';
+import Swal from 'sweetalert2'
+import {BASE_URL} from '../../services/product.services'
+import { Rating } from 'react-simple-star-rating';
 
 function CourseDetail() {
+
     const params = useParams();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { detailCourse } = useSelector(state => state.CourseReducer);
-    console.log('detailCourse',detailCourse)
+
+    const defaultImage = "https://elearningnew.cybersoft.edu.vn/hinhanh/cong-nghe-phan-mem_gp01.jpg";
 
     const handleCourseDetail = async () => {
         try {
             const resp = await axios({
                 method: 'get',
-                url: `https://elearningnew.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=${params.courseId}`,
+                url: `${BASE_URL}/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=${params.courseId}`,
                 headers: {
                     TokenCybersoft: `${CYBERSOFT_TOKEN}`
                 }
@@ -29,24 +36,66 @@ function CourseDetail() {
 
     useEffect(() => {
         handleCourseDetail();
-    }, [params.courseId])
+    }, [params.courseId]);
+
+    const handleCourseRegister = async () => {
+        try {
+            await axios({
+                method: 'post',
+                url: `${BASE_URL}/QuanLyKhoaHoc/DangKyKhoaHoc`,
+                data: {
+                    maKhoaHoc: params.courseId,
+                    taiKhoan: 'huycan4mat'
+                },
+                headers: {
+                    Authorization: `Bearer ${getLocal(ACCESS_TOKEN)}`,
+                    TokenCybersoft: `${CYBERSOFT_TOKEN}`,
+                }
+            })
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Đăng ký khóa học thành công.',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        } catch (err) {
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Khóa học đã được đăng ký.',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            console.log(err)
+        }
+    }
+
+    const isSignin = () => {
+        if (getLocal(ACCESS_TOKEN)) {
+            handleCourseRegister()
+        } else {
+            navigate('/signin')
+        }
+    }
 
     return (
         <>
             <div className="detail-carousel row">
                 <div className="col-7">
                     <h1>{detailCourse?.danhMucKhoaHoc?.tenDanhMucKhoaHoc}</h1>
-                    <p>Đánh giá khóa học: 
+                    <p>Đánh giá khóa học:
+                        <Rating initialValue={4} className='mx-3'/>
+                        {/* <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i> */}
                     </p>
-                    <button>Đăng ký</button>
+                    <button onClick={isSignin}>Đăng ký</button>
                 </div>
                 <div className="col-5">
-                    <img src={detailCourse.hinhAnh} alt="" style={{width: '100%'}}/>
+                    <img src={detailCourse.hinhAnh} onError={(e) => e.target.src = defaultImage} style={{ width: '100%' }} />
                 </div>
             </div>
             <div className="detail-content">

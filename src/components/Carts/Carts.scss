@@ -1,5 +1,5 @@
 .card {
-    height: 35rem;
+    height: 37rem;
     margin-bottom: 5rem;
 
     .card-img-top {
@@ -11,7 +11,10 @@
         .card-title {
             font-size: 2rem;
             font-weight: 500;
-            margin: 1.2rem 0;
+            margin-bottom: 1.2rem;
+            height: 42px;
+            margin-top: 0;
+            font-size: 1.8rem;
         }
 
         .card-text {

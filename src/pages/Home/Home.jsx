@@ -5,6 +5,7 @@ import CoursesRender from "../../components/CoursesRender/CoursesRender";
 import { getCourses } from "../../redux/reducers/courseReducer";
 import { courseSelector } from "../../redux/selectors/selectors";
 import { getCoursesApi } from "../../services/course";
+import Carts from "../../components/Carts/Carts";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ export default function Home() {
     <>
       <Carousel />
       <section className="content mt-4">
-        <h3 className="container text-left">Các khoá học mới nhất</h3>
+        <h3 className="container text-left my-5">Các khoá học mới nhất</h3>
         {renderCourses(8)}
       </section>
     </>
