@@ -4,8 +4,9 @@ import { useParams } from 'react-router-dom';
 import './CourseCategories.scss'
 import axios from 'axios';
 import { setListCourseCategory } from '../../redux/reducers/courseReducer';
-import { CYBERSOFT_TOKEN } from '../../constant';
+import { CYBERSOFT_TOKEN, GROUP_ID } from '../../constant';
 import Carts from '../../components/Carts/Carts';
+import { BASE_URL } from '../../services/product.services';
 
 function CourseCategories() {
     const params = useParams();
@@ -17,7 +18,7 @@ function CourseCategories() {
         try {
             const resp = await axios({
                 method: 'get',
-                url: `https://elearningnew.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayKhoaHocTheoDanhMuc?maDanhMuc=${params.categoriesId}&MaNhom=GP01`,
+                url: `${BASE_URL}/QuanLyKhoaHoc/LayKhoaHocTheoDanhMuc?maDanhMuc=${params.categoriesId}&MaNhom=${GROUP_ID}`,
                 headers: {
                     TokenCybersoft: `${CYBERSOFT_TOKEN}`
                 }

@@ -1,5 +1,6 @@
 import React from "react";
 import CourseItems from "../CourseItems/CourseItems";
+import Carts from "../Carts/Carts";
 
 export default function CoursesRender(props) {
   const courseList = props.courseList;
@@ -10,10 +11,12 @@ export default function CoursesRender(props) {
         {courseList.map((course) => {
           return (
             <div
-              className="col-lg-3 col-md-6 col-sm-12 p-2"
+              // className="col-lg-3 col-md-6 col-sm-12 p-2"
+              className="col-3"
               key={course.maKhoaHoc}
             >
-              <CourseItems course={course} />
+              {/* <CourseItems course={course} /> */}
+              <Carts item={course}/>
             </div>
           );
         })}
