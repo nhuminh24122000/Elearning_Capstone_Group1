@@ -18,4 +18,31 @@
     }
 }
 
+// ==========RESPONSIVE==========
+
+@media screen and (max-width: 1024px) {
+    .course-content,
+    .course-name {
+        padding: 0 100px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .course-content,
+    .course-name {
+        padding: 0 30px;
+    }
+}
+
+@media screen and (max-width: 415px) {
+    // .course-content,
+    .course-name {
+        font-size: 3rem;
+    }
+}
+
+
+
+
+
 
