@@ -4,12 +4,10 @@ import { defaultImage } from "../../constant";
 import './CoursesList.scss'
 import { Rating } from "react-simple-star-rating";
 
-
 export default function CoursesList(props) {
   const { coursesList } = props;
   console.log('coursesList', coursesList)
   const defaultRating = 4;
-
 
   return (
     <div className="row">

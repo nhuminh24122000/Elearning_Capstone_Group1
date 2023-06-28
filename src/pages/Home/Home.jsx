@@ -5,7 +5,6 @@ import CoursesRender from "../../components/CoursesRender/CoursesRender";
 import { getCourses } from "../../redux/reducers/courseReducer";
 import { courseSelector } from "../../redux/selectors/selectors";
 import { getCoursesApi } from "../../services/course";
-import Carts from "../../components/Carts/Carts";
 
 export default function Home() {
   const dispatch = useDispatch();
