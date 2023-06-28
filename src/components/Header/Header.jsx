@@ -69,20 +69,6 @@ function Header() {
 
           <div className="d-flex">
             <div className="d-sm-inline d-none">
-
-              {/* <div className="d-flex my-2 my-lg-0">
-                <div className="search d-flex">
-                  <button>
-                    <i className="fa fa-search" />
-                  </button>
-                  <input
-                    type="text"
-                    placeholder="Tìm kiếm khóa học, bài viết, ..."
-                  />
-                </div>
-                <NavLink className="btn text-light" to="/search"> Search </NavLink>
-              </div> */}
-
               <Formik
                 initialValues={{ searchText: keyword }}
                 onSubmit={({ searchText }) => {
@@ -91,30 +77,35 @@ function Header() {
               >
                 {(props) => (
                   <Form className="d-flex my-2 my-lg-0">
-                    <Field
-                      className="search d-flex"
-                      type="search"
-                      placeholder="Tìm kiếm khóa học"
-                      name="searchText"
-                      value={props.values.searchText}
-                      onChange={(e) => {
-                        props.handleChange(e);
-                      }}
-                    />
+                    <div className="search d-flex">
+                      <button>
+                        <i className="fa fa-search" />
+                      </button>
+                      <Field
+                        type="search"
+                        placeholder="Tìm kiếm khóa học"
+                        name="searchText"
+                        value={props.values.searchText}
+                        onChange={(e) => {
+                          props.handleChange(e);
+                        }}
+                      />
+                    </div>
                   </Form>
                 )}
               </Formik>
             </div>
-
-            <div className="d-flex align-items-center">
-							<NavLink className={'header-link'} to={'/signup'}>
-								Đăng Ký
-							</NavLink>
-              <NavLink className={'header-link'} to={'/signin'}>
-								Đăng Nhập
-							</NavLink>
-            </div>
           </div>
+
+          <div className="d-flex align-items-center">
+            <NavLink className={'header-link'} to={'/signup'}>
+              Đăng Ký
+            </NavLink>
+            <NavLink className={'header-link'} to={'/signin'}>
+              Đăng Nhập
+            </NavLink>
+          </div>
+
         </div>
       </nav>
     </header>

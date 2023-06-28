@@ -72,3 +72,18 @@ li {
   list-style: none;
 }
 
+#btn-back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+  background-color: #f2994a;
+  border: none;
+  z-index: 999999;
+  padding: 15px 22px;
+}
+
+#btn-back-to-top:hover {
+  background-color: #d86b0c;
+  color: #fff;
+}
