@@ -47,7 +47,7 @@ function CourseCategories() {
                 <p>Các khóa học phổ biến</p>
                 <div class="row">
                     {listCourseCategory.map((item) => {
-                        return <div className='col-3' key={item.maKhoaHoc}>
+                        return <div className='col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3' key={item.maKhoaHoc}>
                             <Carts item={item}/>
                         </div>
                     })}

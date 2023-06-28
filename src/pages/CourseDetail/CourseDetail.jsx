@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { ACCESS_TOKEN, CYBERSOFT_TOKEN } from '../../constant';
+import { ACCESS_TOKEN, CYBERSOFT_TOKEN, defaultImage } from '../../constant';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { setListDetailCourse } from '../../redux/reducers/courseReducer';
 import './CourseDetail.scss'
 import { getLocal } from '../../utils';
 import Swal from 'sweetalert2'
-import {BASE_URL} from '../../services/config.services'
+import { BASE_URL } from '../../services/config.services'
 import { Rating } from 'react-simple-star-rating';
 
 function CourseDetail() {
@@ -17,7 +17,6 @@ function CourseDetail() {
     const navigate = useNavigate();
     const { detailCourse } = useSelector(state => state.CourseReducer);
 
-    const defaultImage = "https://elearningnew.cybersoft.edu.vn/hinhanh/cong-nghe-phan-mem_gp01.jpg";
 
     const handleCourseDetail = async () => {
         try {
@@ -82,15 +81,12 @@ function CourseDetail() {
     return (
         <>
             <div className="detail-carousel row">
-                <div className="col-7">
+                <div className="col-12 col-7 col-sm-7">
                     <h1>{detailCourse?.danhMucKhoaHoc?.tenDanhMucKhoaHoc}</h1>
-                    <p>Đánh giá khóa học:
-                        <Rating initialValue={4} className='mx-3'/>
-                        {/* <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i> */}
+                    <p className='d-flex align-items-center'>Đánh giá khóa học:
+                        {/* <span className='rating'> */}
+                            <Rating initialValue={4} className='mx-3' />
+                        {/* </span> */}
                     </p>
                     <button onClick={isSignin}>Đăng ký</button>
                 </div>
@@ -101,7 +97,6 @@ function CourseDetail() {
             <div className="detail-content">
                 <h1>Giới thiệu khóa học (Phần mô tả của khóa học)</h1>
                 <p>{detailCourse.moTa}</p>
-                {/* <p></p> */}
 
             </div>
         </>

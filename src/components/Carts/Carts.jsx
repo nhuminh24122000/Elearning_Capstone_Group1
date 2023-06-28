@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Carts.scss';
 import { Rating } from "react-simple-star-rating";
+import { defaultImage } from '../../constant';
 
 function Carts(props) {
     const { hinhAnh, tenKhoaHoc, luotXem, maKhoaHoc } = props.item
     const defaultRating = 4;
-    const defaultImg = 'https://elearningnew.cybersoft.edu.vn/hinhanh/thu-them-mot-lan-nua_gp01.jpg'
 
     
 
@@ -14,7 +14,7 @@ function Carts(props) {
     return (
         <div className="card">
             <img className="card-img-top" src={hinhAnh} onError={(e) => {
-                e.target.src = defaultImg;
+                e.target.src = defaultImage;
             }} />
 
             <div className="card-body">
@@ -22,7 +22,6 @@ function Carts(props) {
                 <p style={{ fontSize: '1rem' }}>
                     <Rating  initialValue={defaultRating}  /> ({luotXem})
                 </p>
-                {/* <p className="card-text">{moTa.length > 50 ? <span>{moTa.slice(0, 50)} ... </span> : <span>{moTa}</span>}</p> */}
                 <NavLink to={`/coursedetail/${maKhoaHoc}`} className='card-botton'>Đăng Ký</NavLink>
             </div>
         </div>
