@@ -7,10 +7,6 @@ import { setListCategori } from '../../redux/reducers/courseReducer';
 import { NavLink } from 'react-router-dom';
 import './CourseCategori.scss'
 
-
-
-
-
 function CourseCategori() {
     const dispatch = useDispatch();
     const { listCategori } = useSelector(state => state.CourseReducer);
@@ -27,8 +23,6 @@ function CourseCategori() {
         console.log(`selected ${value}`);
     };
     
-
-
     const handleCourseCategori = async () => {
         try {
             const resp = await axios({
@@ -43,7 +37,6 @@ function CourseCategori() {
             console.log(err)
         }
     }
-
 
     return (
         <div onClick={handleCourseCategori}>

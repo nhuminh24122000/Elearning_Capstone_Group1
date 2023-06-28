@@ -35,7 +35,7 @@ export default function Footer() {
                 <h2>VỀ CYBERSOFT</h2>
                 <ul>
                   <li>
-                    <NavLink to="/coursecategories">Khóa học</NavLink>
+                    <NavLink to="/coursecategories/BackEnd">Khóa học</NavLink>
                   </li>
                   <li>
                     <NavLink to="/">Giới thiệu</NavLink>

@@ -8,9 +8,6 @@ function Carts(props) {
     const { hinhAnh, tenKhoaHoc, luotXem, maKhoaHoc } = props.item
     const defaultRating = 4;
 
-    
-
-
     return (
         <div className="card">
             <img className="card-img-top" src={hinhAnh} onError={(e) => {
