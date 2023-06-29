@@ -44,7 +44,7 @@ function SignIn(props) {
         }
 
         setTimeout(() => {
-          navigate('/')
+          navigate('/userinfo')
         }, 1500);
 
         saveLocal(ACCESS_TOKEN, resp.data.accessToken)
