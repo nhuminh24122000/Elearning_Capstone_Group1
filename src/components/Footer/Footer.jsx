@@ -1,8 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import LogoFooter from "../../assets/img/cyberlogo-white.png";
-
-// SCSS
 import "./Footer.scss";
 
 export default function Footer() {
@@ -30,8 +28,8 @@ export default function Footer() {
                 </ul>
               </div>
             </div>
-            <div className="col col-lg-4 col-md-4 col-sm-6 col-12">
-              <div className="border-end border-start border-sencondary px-5">
+            <div className="col col-lg-4 col-md-4 col-sm-6 col-12 my-5 my-sm-0">
+              <div className="border-end border-start border-secondary px-md-5">
                 <h2>VỀ CYBERSOFT</h2>
                 <ul>
                   <li>
@@ -50,12 +48,12 @@ export default function Footer() {
               </div>
             </div>
             <div className="footer-newsletter col col-lg-4 col-md-4 col-sm-12 col-12">
-              <h2>NEWSLETTER</h2>
+              <h2>Thư Tin</h2>
               <p>
                 Theo dõi danh sách gửi thư của chúng tôi và nhận thông tin cập
                 nhật vào hộp thư đến email của bạn.
               </p>
-              <div class="footer-input my-4">
+              <div class="footer-input d-flex align-items-center my-4">
                 <input
                   type="email"
                   name="email"
@@ -90,7 +88,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="rectangle container">
+      <div className="footer-bottom container">
         <div className="pt-3 pb-2">
           <p>
             © 2018 - 2023 CyberSoft. Trung tâm dạy học lập trình hàng đầu Việt

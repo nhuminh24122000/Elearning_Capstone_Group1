@@ -68,10 +68,12 @@
         align-items: center;
         .signup-account,
         .signup-google {
-          i,
-          img {
+          i, img {
             margin-right: 1rem;
           }
+          display: flex;
+          justify-content: center;
+          align-items: center;
           padding: 8px 10px;
           width: 50%;
           border-radius: 4px;
@@ -91,6 +93,71 @@
       .signup-agree {
         a {
           color: blue;
+        }
+      }
+    }
+  }
+}
+
+// Responsive
+@media (min-width: 1024px) and (max-width: 1199.98px) {
+  .signup-wrapper {
+    label, p, span {
+      font-size: 1.2rem;
+    }
+    .signup-container {
+      .signup-left {
+        .signup-form {
+          .form-left, .form-right {
+            .form-group {
+              input {
+                padding: 4px 8px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .signup-wrapper {
+    label, p, span {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  
+}
+
+@media only screen and (max-width: 768px) {
+  
+}
+
+@media only screen and (max-width: 576px) {
+  .signup-wrapper {
+    height: 95rem;
+    .signup-container {
+      .signup-left {
+        h1 {
+          font-size: 2rem;
+        }
+        .signup-form {
+          flex-direction: column;
+          .form-left, .form-right {
+            width: 100%;
+          }
+        }
+        .group-button {
+          .signup-account,
+          .signup-google {
+            span {
+              font-size: 1rem;
+            }
+          }
         }
       }
     }

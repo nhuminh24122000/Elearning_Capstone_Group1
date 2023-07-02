@@ -12,9 +12,6 @@ import SignIn from '../SignIn/SignIn';
 import './UserInfo.scss';
 
 
-
-
-
 function UserInfo() {
     const dispatch = useDispatch();
 
