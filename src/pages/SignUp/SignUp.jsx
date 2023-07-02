@@ -13,29 +13,29 @@ const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2
 // Validate Yup
 const schemaSignUp = Yup.object({
   taiKhoan: Yup.string()
-  .required('Tài khoản phải được điền vào ô').trim()
+  .required('Tài khoản phải điền vào ô').trim()
   .min(2, 'Phải ít nhất 2 ký tự')
   .max(10, 'Không quá 10 ký tự'),
   matKhau: Yup.string()
-  .required('Mật khẩu phải được điền vào ô').trim()
+  .required('Mật khẩu phải điền vào ô').trim()
   .min(2, 'Phải ít nhất 2 ký tự')
   .max(10, 'Không quá 10 ký tự'),
   xacNhanMatKhau: Yup.string()
-  .required('Xác nhận mật khẩu phải được điền vào ô').trim()
+  .required('XN MK phải điền vào ô').trim()
   .oneOf([Yup.ref('matKhau')], 'Xác nhận mật khẩu phải trùng khớp')
   .min(2, 'Phải ít nhất 2 ký tự')
   .max(10, 'Không quá 10 ký tự'),
   hoTen: Yup.string()
-  .required('Họ tên phải được điền vào ô').trim()
+  .required('Họ tên phải điền vào ô').trim()
   .min(5, 'Phải ít nhất 2 ký tự')
   .max(20, 'Không quá 10 ký tự'),
   soDT: Yup.string()
   .matches(phoneRegExp, 'Số ĐT không hợp lệ')
-  .required('Số ĐT phải được điền vào ô').trim()
+  .required('Số ĐT phải điền vào ô').trim()
   .max(10, 'Không quá 10 ký tự'),
   email: Yup.string()
   .email()
-  .required('Email phải được điền vào ô').trim(),
+  .required('Email phải điền vào ô').trim(),
 })
 
 function SignUp(props) {
@@ -84,7 +84,7 @@ function SignUp(props) {
   return (
     <form className="signup-wrapper" onSubmit={formik.handleSubmit}>
       <div className="signup-container row">
-        <div className="signup-left col-7">
+        <div className="signup-left col-7 col-12">
           <h1 className="text-center">Tạo tài khoản</h1>
           <div className="signup-form">
             <div className="form-left">
@@ -146,7 +146,7 @@ function SignUp(props) {
               </div>
             </div>
           </div>
-          <div className="signup-agree mt-4">
+          <div className="signup-agree mt-lg-1">
             <input className="mt-3" type="checkbox" name="" id="" />
             <span className="ml-2">Tôi đồng ý với tất cả các tuyên bố trong <NavLink href="#">Điều khoản dịch vụ</NavLink></span>
           </div>
@@ -161,7 +161,7 @@ function SignUp(props) {
             </NavLink>
           </div>
         </div>
-        <div className="signup-right col-5">
+        <div className="signup-right col-5 col-md-0 d-none d-lg-block">
           <img src={SignUpImage} alt="" />
           Đã có tài khoản? <NavLink to={'/signin'}>Đăng nhập</NavLink>
         </div>

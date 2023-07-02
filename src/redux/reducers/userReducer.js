@@ -4,7 +4,7 @@ const profile = localStorage.getItem('userProfile') ? JSON.parse(localStorage.ge
 
 
 const initialState = {
-    userProfile: profile,
+    userProfile: {},
 }
 
 const userReducer = createSlice({
@@ -14,10 +14,12 @@ const userReducer = createSlice({
         setUserProfile: (state, action) => {
             state.userProfile = action.payload
         },
-        
+        resetUserProfile: (state, action) => {
+            state.userProfile = {}
+        }
     }
 });
 
-export const { setUserProfile } = userReducer.actions
+export const { setUserProfile, resetUserProfile } = userReducer.actions
 
 export default userReducer.reducer

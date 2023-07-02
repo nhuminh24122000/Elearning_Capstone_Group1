@@ -95,7 +95,7 @@ function MyInfo() {
                             />
                         </div>
                         <div className="form-group">
-                            <label className='label_form' htmlFor="hoTen">Name :</label>
+                            <label className='label_form' htmlFor="hoTen">Họ tên :</label>
                             <input type="text" className='form-control input_form' placeholder='Name' id='hoTen' name='hoTen'
                                 {...formik.getFieldProps('hoTen')}
                                 value={formik.values.hoTen === '' && !formik.touched.hoTen ? hoTen : formik.values.hoTen}
@@ -103,7 +103,7 @@ function MyInfo() {
                             {formik.errors.hoTen && formik.touched.hoTen && <p className='text-error'>{formik.errors.hoTen}</p>}
                         </div>
                         <div className="form-group">
-                            <label className='label_form' htmlFor="soDT">Phone :</label>
+                            <label className='label_form' htmlFor="soDT">Số ĐT :</label>
                             <input type="text" className='form-control input_form' placeholder='Phone' id='soDT' name='soDT'
                                 {...formik.getFieldProps('soDT')}
                                 value={formik.values.soDT === '' && !formik.touched.soDT ? soDT : formik.values.soDT}
