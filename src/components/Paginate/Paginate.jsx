@@ -10,9 +10,9 @@ function Paginate({ handlePageClick, pageCount, forcePage }) {
             pageCount={pageCount}
             forcePage={forcePage}
             breakLabel="..."
-            nextLabel="Sau >"
+            nextLabel=" >"
             pageRangeDisplayed={10}
-            previousLabel="< Trước"
+            previousLabel="< "
             renderOnZeroPageCount={null}
             initialPage={0}
 

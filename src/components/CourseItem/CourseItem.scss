@@ -49,3 +49,55 @@
         height: 32px;
     }
 }
+
+@media screen and (max-width: 600px) {
+    .course-content {
+        flex-direction: column;
+    }
+    .text-right {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 1rem;
+
+        p {
+            margin: 0.5rem 0;
+        }
+    }
+
+    .course-item {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    .course-item img {
+        width: 22.5rem;
+    }
+    .idCourse {
+        font-size: 2rem;
+    }
+
+    .star-svg {
+        width: 40px;
+        height: 40px;
+    }
+
+    .course-name {
+        text-align: center;
+    }
+    .list-des {
+        text-align: center;
+    }
+
+}
+
+@media screen and (max-width: 415px) {
+    .my-course-title {
+        padding: 0 1.8rem;
+    }
+    .search {
+        width: 80%;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+}

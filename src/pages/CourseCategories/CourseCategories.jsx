@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useLayoutEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import './CourseCategories.scss'
@@ -15,7 +15,30 @@ function CourseCategories() {
     const { listCategori } = useSelector(state => state.CourseReducer);
     const { listCourseCategory } = useSelector(state => state.CourseReducer);
 
-    const PAGE_SIZE = (window.innerWidth < 1025 && window.innerWidth > 768) ? 9 : 8;
+    const PAGE_SIZE = 8;
+    // const PAGE_SIZE = (window.innerWidth < 1025 && window.innerWidth > 768) ? 9 : 8;
+    // const [PAGE_SIZE, setPageSize] = useState(8);
+    // const [PAGE_SIZE, setPageSize] = useState((window.innerWidth < 1025 && window.innerWidth > 768) ? 9 : 8);
+
+//   useEffect(() => {
+//     const handleResize = () => {
+//         if(window.innerWidth < 1025 && window.innerWidth > 768) {
+//             setPageSize(9)
+//         } else {
+//             setPageSize(8)
+//         }
+//     };
+//     handleResize();
+
+
+//     window.addEventListener('resize', handleResize);
+
+//     return () => window.removeEventListener('resize', handleResize);
+
+//   }, []);
+
+
+
     const [page, setPage] = useState(1)
     const [data, setData] = useState([]);
 

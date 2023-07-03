@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './CourseItem.scss';
 import { ACCESS_TOKEN, CYBERSOFT_TOKEN, defaultImage } from '../../constant';
 import { NavLink } from 'react-router-dom';
@@ -12,6 +12,23 @@ import Swal from 'sweetalert2';
 function CourseItem({ item, handleProfile, listSearch, setListSearch }) {
     const { userProfile } = useSelector(state => state.UserReducer);
     const { hinhAnh, tenKhoaHoc, moTa, luotXem, maKhoaHoc, showCancelButton } = item;
+    const [maxChars, setMaxChars] = useState(200);
+    useEffect(() => {
+        const handleResize = () => {
+            // Khi kích thước màn hình thay đổi, cập nhật số ký tự tối đa dựa trên độ rộng
+            if (window.innerWidth <= 768) {
+                setMaxChars(100);
+            } else {
+                setMaxChars(200);
+            }
+        };
+
+        // Lắng nghe sự kiện thay đổi kích thước màn hình
+        window.addEventListener('resize', handleResize);
+
+        // Hủy lắng nghe khi component bị huỷ
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const xoaKhoaHoc = async (id) => {
         const result = await Swal.fire({
@@ -61,55 +78,22 @@ function CourseItem({ item, handleProfile, listSearch, setListSearch }) {
 
 
     return (
-        // <>
-        //     <div className="col-lg-3" >
-        //         <img style={{ height: 150 }} src={hinhAnh} className="img-fluid" onError={(e) => e.target.src = defaultImage} />
-        //     </div>
-        //     <div className="col-lg-9 pr-0">
-        //         <h1>
-        //             <NavLink className={'idCourse'}
-        //                 style={{
-        //                     textDecoration: "none",
-        //                     color: "black",
-        //                     cursor: "pointer",
-        //                 }}
-        //             >
-        //                 {tenKhoaHoc}
-        //             </NavLink>
-        //         </h1>
-        //         <div className="d-flex">
-        //             <NavLink
-        //                 className="col-9 p-0 my-4 list-des" >{moTa.length > 220 ? <p>{moTa.slice(0, 220)} ...</p> : <p>{moTa}</p>}
-        //             </NavLink>
-        //             <div className="text-right col-3">
-        //                 <p>
-        //                     <Rating initialValue={4} />
-        //                     <span>
-        //                         ({luotXem} lượt xem)
-        //                     </span>
-        //                 </p>
-        //                 <button onClick={() => { xoaKhoaHoc(maKhoaHoc) }} className='btn-danger'>Xóa</button>
-        //             </div>
-        //         </div>
-        //     </div>
-
-        // </>
 
         <>
-            <div className="course-item  col-md-3">
+            <div className="course-item col-md-3">
                 <img
                     style={{ height: 150 }}
                     src={hinhAnh}
                     onError={(e) => {
                         e.target.src = defaultImage;
-                        e.target.style.width = '100%';
+                        // e.target.style.width = '100%';
                     }}
                     alt=""
                     className="img-fluid"
                 />
             </div>
             <div className="col-md-9 pr-0">
-                <h1>
+                <h1 className='course-name'>
                     <NavLink
                         className={'idCourse'}
                         style={{
@@ -123,14 +107,20 @@ function CourseItem({ item, handleProfile, listSearch, setListSearch }) {
                         {tenKhoaHoc}
                     </NavLink>
                 </h1>
-                <div className="d-flex">
+                <div className="d-flex course-content">
                     <NavLink
                         to={`/coursedetail/${maKhoaHoc}`}
-                        className="col-9 col-sm-8 p-0 my-4 list-des" >{moTa.length > 200 ?   <p>{moTa.slice(0, 200)} ...</p> : <p>{moTa}</p>}
+                        // className="col-9 col-sm-8 p-0 my-4 list-des" >{moTa.length > 200 ?   <p>{moTa.slice(0, 200)} ...</p> : <p>{moTa}</p>}
+                        className="col-12  col-md-8 p-0 my-4 list-des">
+                        {moTa.length > maxChars ? (
+                            <p>{moTa.slice(0, maxChars)} ...</p>
+                        ) : (
+                            <p>{moTa}</p>
+                        )}
                         {/* // className="col-9 col-sm-8 p-0 my-4 list-des" >{moTa.length > 220 ? <p>{window.innerWidth < 769 ? moTa.slice(0, 100) : moTa.slice(0, 220)} ...</p> : <p>{moTa}</p>} */}
 
                     </NavLink>
-                    <div className="text-right col-3 col-sm-4">
+                    <div className="text-right col-12  col-md-4">
                         {/* <p> */}
                         <Rating initialValue={4} />
                         <p>
