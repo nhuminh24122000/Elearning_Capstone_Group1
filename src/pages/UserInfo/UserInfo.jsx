@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import MyCourse from '../../components/MyCourse/MyCourse';
@@ -40,11 +40,11 @@ function UserInfo() {
         <>
             {getLocal(ACCESS_TOKEN) ? (
                 <>
-                    <div className="profile_title">
-                        <p>Trang Cá Nhân</p>
+                    <div className="profile_title ">
+                        <h1>Trang Cá Nhân</h1>
                     </div>
 
-                    <Tabs>
+                    <Tabs className='container'>
                         <TabList >
                             <Tab>THÔNG TIN CÁ NHÂN</Tab>
                             <Tab>KHÓA HỌC CỦA TÔI</Tab>

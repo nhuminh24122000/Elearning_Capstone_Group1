@@ -3,15 +3,18 @@ import { NavLink } from "react-router-dom";
 import { defaultImage } from "../../constant";
 import './CoursesList.scss'
 import { Rating } from "react-simple-star-rating";
+import CourseItem from "../CourseItem/CourseItem";
 
 export default function CoursesList(props) {
   const { coursesList } = props;
   console.log('coursesList', coursesList)
   const defaultRating = 4;
 
+
   return (
     <div className="row">
       {coursesList.map((course, index) => {
+      {/* {coursesList.map((item, index) => { */}
         return (
           <div
             className="col-12 py-2"
@@ -23,6 +26,7 @@ export default function CoursesList(props) {
             }}
           >
             <div className="row">
+              {/* <CourseItem item={item}/> */}
               <div className="col-lg-3">
                 <img
                   style={{ height: 150 }}

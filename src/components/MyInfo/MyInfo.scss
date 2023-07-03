@@ -1,0 +1,104 @@
+.react-tabs__tab-panel--selected {
+    margin: 5rem 0;
+}
+
+.information_area {
+    margin: 2.6rem 5.4rem 0;
+    padding-bottom: 1.3rem;
+
+    form {
+        .right_detail {
+            width: 100%;
+
+            .col-right {
+                padding: 0;
+            }
+
+            .input_form {
+                width: 44.3rem;
+                height: 5.4rem;
+                font-weight: 400;
+                font-size: 1.6rem;
+                line-height: 2.4rem;
+                background-color: #e9ecef;
+            }
+
+            #email,#taiKhoan {
+                cursor: not-allowed;
+            }
+
+            .text-error {
+                color: red;
+                font-weight: 600;
+            }
+
+            .card-botton {
+                position: absolute;
+                bottom: 25px;
+                right: 25px;
+                background-color: #f2994a;
+                color: #000;
+                font-weight: 500;
+                padding: 7px 20px;
+                border: 1px solid #f2994a;
+                border-radius: 1.5rem;
+                outline: none;
+                transition: all 0.3s;
+
+                &:hover {
+                    background-color: #d86b0c;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+}
+
+//-----------------------------RESPONSIVE-----------------------------------
+
+@media screen and (max-width: 1024px) {
+    .information_area form .right_detail .input_form {
+        width: 400px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .information_area {
+        margin: 0;
+        margin-left: 5.6rem;
+
+    }
+
+    .information_area form .right_detail .input_form {
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .information_area form .right_detail .input_form {
+        width: 430px;
+    }
+
+    .information_area form .right_detail .card-botton {
+        position: static;
+        margin-top: 3rem;
+    }
+}
+
+@media screen and (max-width: 415px) {
+    .information_area {
+        margin: 0 3rem;
+    }
+
+    .information_area form .right_detail .input_form {
+        width: 340px;
+    }
+}
+
+@media screen and (max-width: 376px) {
+
+    .information_area form .right_detail .input_form {
+        width: 300px;
+    }
+}

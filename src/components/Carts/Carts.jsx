@@ -17,7 +17,7 @@ function Carts(props) {
             <div className="card-body">
                 <p className="card-title">{tenKhoaHoc}</p>
                 <p style={{ fontSize: '1rem' }}>
-                    <Rating  initialValue={defaultRating}  /> ({luotXem})
+                    <Rating initialValue={defaultRating} /> ({luotXem})
                 </p>
                 <NavLink to={`/coursedetail/${maKhoaHoc}`} className='card-botton'>Đăng Ký</NavLink>
             </div>

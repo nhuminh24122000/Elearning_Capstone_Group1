@@ -1,0 +1,23 @@
+.pagination {
+    justify-content: center;
+    margin-bottom: 5rem;
+
+    .page-item.active .page-link {
+        background-color: #f2994a;
+        border-color: #f2994a;
+        outline: none;
+    }
+
+    .page-item.disabled .page-link {
+        color: #6c757d;
+    }
+
+    .page-item {
+
+        .page-link {
+            color: #000;
+            font-size: 2rem;
+            font-weight: 500;
+        }
+    }
+}
