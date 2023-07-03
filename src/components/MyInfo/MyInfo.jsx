@@ -84,7 +84,7 @@ function MyInfo() {
 
     return (
         <div className="information_area">
-            <form className='container' onSubmit={formik.handleSubmit}>
+            <form  onSubmit={formik.handleSubmit}>
                 <div className="right_detail row">
                     <div className="col-12 col-sm-12 col-md-6 col-lg-6 col-right">
                         <div className="form-group">
@@ -95,16 +95,16 @@ function MyInfo() {
                             />
                         </div>
                         <div className="form-group">
-                            <label className='label_form' htmlFor="hoTen">Name :</label>
-                            <input type="text" className='form-control input_form' placeholder='Name' id='hoTen' name='hoTen'
+                            <label className='label_form' htmlFor="hoTen">Họ Tên :</label>
+                            <input type="text" className='form-control input_form' placeholder='Họ Tên' id='hoTen' name='hoTen'
                                 {...formik.getFieldProps('hoTen')}
                                 value={formik.values.hoTen === '' && !formik.touched.hoTen ? hoTen : formik.values.hoTen}
                             />
                             {formik.errors.hoTen && formik.touched.hoTen && <p className='text-error'>{formik.errors.hoTen}</p>}
                         </div>
                         <div className="form-group">
-                            <label className='label_form' htmlFor="soDT">Phone :</label>
-                            <input type="text" className='form-control input_form' placeholder='Phone' id='soDT' name='soDT'
+                            <label className='label_form' htmlFor="soDT">Điện thoại :</label>
+                            <input type="text" className='form-control input_form' placeholder='Điện thoại' id='soDT' name='soDT'
                                 {...formik.getFieldProps('soDT')}
                                 value={formik.values.soDT === '' && !formik.touched.soDT ? soDT : formik.values.soDT}
                             />

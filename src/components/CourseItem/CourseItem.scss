@@ -1,0 +1,51 @@
+.star-svg {
+    width: 38px;
+    height: 38px;
+}
+
+.list-des:hover {
+    color: #000
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    border: 1px solid #dc3545;
+    color: #fff;
+    font-size: 1.8rem;
+    padding: 0.5rem 1.5rem;
+    transition: all 0.3s;
+
+    &:hover {
+        background-color: #e3152a;
+    }
+}
+
+.course-item {
+    padding: 0;
+
+    img {
+    height: 150px;
+    width: 100%;
+}
+
+}
+
+
+//-----------------------------RESPONSIVE-----------------------------------
+@media screen and (max-width: 1024px) {
+    .star-svg {
+        width: 35px;
+        height: 35px;
+    }
+
+    .text-right {
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .star-svg {
+        width: 32px;
+        height: 32px;
+    }
+}

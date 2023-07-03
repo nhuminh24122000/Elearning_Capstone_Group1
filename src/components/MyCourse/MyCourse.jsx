@@ -1,83 +1,79 @@
+import { Empty } from 'antd';
 import axios from 'axios';
-import React, { Fragment, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { Fragment, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Rating } from "react-simple-star-rating";
 import Swal from 'sweetalert2';
 import { ACCESS_TOKEN, CYBERSOFT_TOKEN, defaultImage } from '../../constant';
 import { getLocal } from '../../utils';
-import { Empty } from 'antd';
+import './MyCourse.scss';
+import CourseItem from '../CourseItem/CourseItem';
+import Paginate from '../Paginate/Paginate';
+import Carts from '../Carts/Carts';
+
+
 
 
 function MyCourse({ handleProfile }) {
     const { userProfile } = useSelector(state => state.UserReducer);
     const [key, setKey] = useState();
     const [listSearch, setListSearch] = useState(null);
+    const showCancelButton = true;
+
+    const PAGE_SIZE = 4;
+    const [page, setPage] = useState(1);
+    const [data, setData] = useState([]);
 
 
     const handleChangeKey = (e) => {
-        setKey(e.target.value.trim().replace(/\s/g, ''))
+        setKey(e.target.value.trim())
     }
 
     const handleSearch = (e) => {
         e.preventDefault();
 
-
-        const huy = userProfile.chiTietKhoaHocGhiDanh.map((item) => {
+        const list = userProfile.chiTietKhoaHocGhiDanh.map((item) => {
             return item
         })
 
         if (key !== undefined) {
-            const ketQua = huy.filter((item) => {
+            const result = list.filter((item) => {
                 return item.tenKhoaHoc.toLowerCase().includes(key.toLowerCase())
             })
 
-            if (ketQua.length > 0) {
-                setListSearch(ketQua);
+            if (result.length > 0) {
+                setListSearch(result);
+                // handleProfile()
             } else {
+                // handleProfile()
+
                 setListSearch([])
             }
 
         } else {
-            alert('nhập vô')
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Nhập vào khóa học cần tìm',
+                timer: 1500
+            })
         }
     }
 
-    const handleKHThamGia = () => {
-        const renderList = listSearch || userProfile?.chiTietKhoaHocGhiDanh; 
+
+    const renderList = listSearch || userProfile?.chiTietKhoaHocGhiDanh;
+    const handleCourseJoin = () => {
 
         if (renderList && renderList.length > 0) {
-            return (listSearch || userProfile?.chiTietKhoaHocGhiDanh).map((item) => {
+
+            return data.map((item) => {
                 return (
                     <Fragment key={item.maKhoaHoc}>
-                        <div className="col-lg-3" >
-                            <img style={{ height: 150 }} src={item.hinhAnh} className="img-fluid" onError={(e) => e.target.src = defaultImage} />
-                        </div>
-                        <div className="col-lg-9 pr-0">
-                            <h1>
-                                <NavLink className={'idCourse'}
-                                    style={{
-                                        textDecoration: "none",
-                                        color: "black",
-                                        cursor: "pointer",
-                                    }}
-                                >
-                                    {item.tenKhoaHoc}
-                                </NavLink>
-                            </h1>
-                            <div className="d-flex">
-                                <NavLink
-                                    className="col-9 p-0 my-4 list-des" >{item.moTa.length > 220 ? <p>{item.moTa.slice(0, 220)} ...</p> : <p>{item.moTa}</p>}
-                                </NavLink>
-                                <div className="text-right col-3">
-                                    <p>
-                                        <Rating initialValue={4} />
-                                        <span>
-                                            ({item.luotXem} lượt xem)
-                                        </span>
-                                    </p>
-                                    <button onClick={() => { xoaKhoaHoc(item.maKhoaHoc) }} className='btn-danger'>Xóa</button>
-                                </div>
+                        <div className="col-12 py-2" >
+                            <div className="row justify-content-center" >
+                                <CourseItem item={{ ...item, showCancelButton }} handleProfile={handleProfile} listSearch={listSearch} setListSearch={setListSearch} />
+
                             </div>
                         </div>
                     </Fragment>
@@ -86,65 +82,41 @@ function MyCourse({ handleProfile }) {
         } else {
             return <Empty />
         }
-        
-
     }
 
-    const xoaKhoaHoc = async (id) => {
-        const result = await Swal.fire({
-            title: 'Bạn muốn xóa khoác học này?',
-            // text: "",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'OK'
-        });
 
-
-        if (result.isConfirmed) {
-            try {
-                await axios({
-                    method: 'post',
-                    url: 'https://elearningnew.cybersoft.edu.vn/api/QuanLyKhoaHoc/HuyGhiDanh',
-                    data: {
-                        maKhoaHoc: id,
-                        taiKhoan: userProfile.taiKhoan
-                    },
-                    headers: {
-                        Authorization: `Bearer ${getLocal(ACCESS_TOKEN)}`,
-                        TokenCybersoft: `${CYBERSOFT_TOKEN}`,
-                    }
-                })
-                handleProfile()
-
-                Swal.fire(
-                    'Xóa thành công',
-                    '',
-                    'success'
-                );
-            } catch (err) {
-                console.log(err)
-            }
-        }
-
+    const handlePageClick = (event) => {
+        setPage(event.selected + 1)
     }
+
+    useEffect(() => {
+        let newData = (listSearch || renderList).slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+        console.log('newData', newData)
+        setData(newData);
+    }, [listSearch || renderList, page]);
 
 
     return (
         <>
-            <div className='d-flex justify-content-around my-5'>
-                <h1 >Các khóa học đã tham gia</h1>
-                <form onSubmit={handleSearch}>
-                    <input type="text" placeholder='Minh <3 Hưng' onChange={handleChangeKey} />
-                </form>
-            </div>
-            <div className="row">
-                <div className="col-12 py-2" style={{ borderTop: "1px solid black", backgroundColor: "#f8f9fa", marginBottom: 35 }}>
-                    <div className="row" >
-                        {handleKHThamGia()}
-                    </div>
+            <div className='d-flex justify-content-around align-items-center my-5'>
+                <div className="row align-items-center">
+                    <h1 className='col-sm-12 col-md-7 my-course-title w-100'>Tổng số khóa học bạn đã  tham gia: {userProfile.chiTietKhoaHocGhiDanh.length}</h1>
+                    <form action="#" className="d-flex my-2 my-lg-0  col-sm-12 col-md-5" onSubmit={handleSearch}>
+                        <div className="search d-flex">
+                            <button><i className="fa fa-search" />
+                            </button>
+                            <input className="searchText" type="search" placeholder="Tìm kiếm khóa học" onChange={handleChangeKey} />
+                        </div>
+                    </form>
+
                 </div>
+            </div>
+            <div className="row justify-content-center">
+                {handleCourseJoin()}
+                {(listSearch || renderList) && (listSearch || renderList).length / PAGE_SIZE > 1 && (
+                    <Paginate handlePageClick={handlePageClick} pageCount={Math.ceil((listSearch || renderList).length / PAGE_SIZE)} forcePage={page - 1} />
+
+                )}
             </div>
         </>
 
