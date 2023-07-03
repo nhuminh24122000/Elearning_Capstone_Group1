@@ -97,6 +97,7 @@ function MyInfo() {
                         <div className="form-group">
                             <label className='label_form' htmlFor="hoTen">Họ Tên :</label>
                             <input type="text" className='form-control input_form' placeholder='Họ Tên' id='hoTen' name='hoTen'
+                        
                                 {...formik.getFieldProps('hoTen')}
                                 value={formik.values.hoTen === '' && !formik.touched.hoTen ? hoTen : formik.values.hoTen}
                             />

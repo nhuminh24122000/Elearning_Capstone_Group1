@@ -39,7 +39,7 @@ function CourseCategori() {
     }
 
     return (
-        <div onClick={handleCourseCategori}>
+        <div className='d-none d-lg-block' onClick={handleCourseCategori}>
             <Space wrap >
                 <Select
                     defaultValue="Danh Mục Khóa Học"

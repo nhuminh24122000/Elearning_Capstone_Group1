@@ -1,53 +1,169 @@
 header {
-    a {
-        &:hover {
-            text-decoration: none;
-        }
+  a {
+    &:hover {
+      text-decoration: none;
     }
-    .navbar {
-        padding: 1rem 0;
-        border-bottom: 1px solid #ccc;
+  }
+  .navbar {
+    padding: 1rem 0;
+    border-bottom: 1px solid #ccc;
+  }
+  .container {
+    .LogoHome {
+      width: 15rem;
+    }
+    .search {
+      border-radius: 25px;
+      border: 1px solid #ccc;
+      padding: 1rem 2rem;
+      button {
+        border: none;
+        background-color: transparent;
+        i {
+          color: #ccc;
+        }
+      }
+      input {
+        border: none;
+        outline: none;
+        margin-left: 1rem;
+        font-size: 1.5rem;
+        width: 33rem;
+        background: transparent;
+      }
+    }
+    .navbar-listCourse {
+      i {
+        margin-left: 5px;
+      }
+    }
+    .header-link {
+      background-color: #f2994a;
+      margin-left: 1rem;
+      padding: 7px 20px;
+      outline: none;
+      border-radius: 2rem;
+      color: #000;
+      cursor: pointer;
+      transition: 0.2s linear;
+    }
+    .header-user {
+      cursor: pointer;
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 1199.98px) {
+  header {
+    .container {
+      .search-container {
+        width: 30rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1199.98px) {
+  header {
+    .container {
+      gap: 0 1rem;
+      .header-link {
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+      }
+      .search-container {
+        width: 30rem;
+      }
+      .search {
+        padding: 0.5rem 1rem;
+        width: 70%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  header {
+    .container {
+      .LogoHome {
+        width: 12rem;
+      }
+      .header-link {
+        font-size: 1.2rem;
+        padding: 0.5rem 1.5rem;
+      }
+      .search {
+        padding: 0.5rem 1rem;
+        width: 80%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  header {
+    span {
+      font-size: 1rem;
     }
     .container {
-        .LogoHome {
-            width: 15rem;
-        }
-        .search {
-            border-radius: 25px;
-            border: 1px solid #ccc;
-            padding: 1rem 2rem;
-            button {
-                border: none;
-                background-color: transparent;
-                i {
-                    color: #ccc;
-                }
-            }
-            input {
-                border: none;
-                outline: none;
-                margin-left: 1rem;
-                font-size: 1.5rem;
-                width: 33rem;
-                background: transparent;
-            }
-        }
-        .navbar-listCourse {
-            i {
-                margin-left: 5px;
-            }
-        }
-        .header-link {
-            background-color: #f2994a;
-            margin-left: 1rem;
-            padding: 7px 20px;
-            border: 1px solid #ccc;
-            outline: none;
-            border-radius: 2rem;
-            color: #000;
-            cursor: pointer;
-            transition: 0.2s linear;
-        }
+      .LogoHome {
+        width: 12rem;
+      }
+      .header-link {
+        font-size: 1.2rem;
+        padding: 1rem 3rem;
+      }
+      .search {
+        padding: 0.5rem 1rem;
+        width: 80%;
+      }
     }
+  }
+}
 
+@media only screen and (max-width: 768px) {
+  header {
+    span {
+      font-size: 1rem;
+    }
+    .container {
+      .header-link {
+        font-size: 1rem;
+        padding: 1rem 3rem;
+      }
+      .search-container {
+        width: 23rem;
+      }
+      .search {
+        padding: 0.5rem 1rem;
+        width: 70%;
+        input {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  header {
+    span {
+      font-size: 1rem;
+    }
+    .container {
+      .LogoHome {
+        width: 12rem;
+      }
+      .header-link {
+        font-size: 1.2rem;
+        padding: 1rem 3rem;
+      }
+
+      .search {
+        padding: 0.5rem 1rem;
+        width: 80%;
+      }
+    }
+  }
 }
