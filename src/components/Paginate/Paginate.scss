@@ -1,6 +1,7 @@
 .pagination {
     justify-content: center;
     margin-bottom: 5rem;
+    // margin: 5rem 0;
 
     .page-item.active .page-link {
         background-color: #f2994a;
@@ -13,11 +14,28 @@
     }
 
     .page-item {
+        margin: 0 5px;
+        width: 35px;
+        height: 35px;
+        text-align: center;
 
         .page-link {
             color: #000;
             font-size: 2rem;
             font-weight: 500;
+            border-color: transparent;
+
+            &:focus {
+                box-shadow: none
+            }
         }
+    }
+}
+
+//-----------------------------RESPONSIVE-----------------------------------
+
+@media screen and (max-width: 415px) {
+    .pagination .page-item {
+        margin: 0;
     }
 }

@@ -21,7 +21,7 @@ function MyCourse({ handleProfile }) {
     const [listSearch, setListSearch] = useState(null);
     const showCancelButton = true;
 
-    const PAGE_SIZE = 4;
+    const PAGE_SIZE = 5;
     const [page, setPage] = useState(1);
     const [data, setData] = useState([]);
 
@@ -71,7 +71,7 @@ function MyCourse({ handleProfile }) {
                 return (
                     <Fragment key={item.maKhoaHoc}>
                         <div className="col-12 py-2" >
-                            <div className="row justify-content-center" >
+                            <div className="row justify-content-center" style={{margin: '2rem 0'}}>
                                 <CourseItem item={{ ...item, showCancelButton }} handleProfile={handleProfile} listSearch={listSearch} setListSearch={setListSearch} />
 
                             </div>
@@ -100,8 +100,8 @@ function MyCourse({ handleProfile }) {
         <>
             <div className='d-flex justify-content-around align-items-center my-5'>
                 <div className="row align-items-center">
-                    <h1 className='col-sm-12 col-md-7 my-course-title w-100'>Tổng số khóa học bạn đã  tham gia: {userProfile.chiTietKhoaHocGhiDanh.length}</h1>
-                    <form action="#" className="d-flex my-2 my-lg-0  col-sm-12 col-md-5" onSubmit={handleSearch}>
+                    <h1 className='col-md-12 col-lg-7 my-course-title w-100'>Tổng số khóa học bạn đã  tham gia: {userProfile.chiTietKhoaHocGhiDanh.length}</h1>
+                    <form action="#" className="d-flex justify-content-center my-2 my-lg-0  col-md-12 col-lg-5" onSubmit={handleSearch}>
                         <div className="search d-flex">
                             <button><i className="fa fa-search" />
                             </button>
@@ -113,10 +113,13 @@ function MyCourse({ handleProfile }) {
             </div>
             <div className="row justify-content-center">
                 {handleCourseJoin()}
+                <div style={{marginTop: '5rem'}}>
                 {(listSearch || renderList) && (listSearch || renderList).length / PAGE_SIZE > 1 && (
                     <Paginate handlePageClick={handlePageClick} pageCount={Math.ceil((listSearch || renderList).length / PAGE_SIZE)} forcePage={page - 1} />
 
                 )}
+
+                </div>
             </div>
         </>
 
