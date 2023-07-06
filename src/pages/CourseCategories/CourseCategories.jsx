@@ -52,6 +52,7 @@ function CourseCategories() {
                     TokenCybersoft: `${CYBERSOFT_TOKEN}`
                 }
             })
+            console.log(resp);
             dispatch(setListCourseCategory(resp.data));
         } catch (err) {
             console.log(err)

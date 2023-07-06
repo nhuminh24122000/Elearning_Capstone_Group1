@@ -27,8 +27,8 @@ const schemaSignUp = Yup.object({
   .max(10, 'Không quá 10 ký tự'),
   hoTen: Yup.string()
   .required('Họ tên phải điền vào ô').trim()
-  .min(5, 'Phải ít nhất 2 ký tự')
-  .max(20, 'Không quá 10 ký tự'),
+  .min(3, 'Phải ít nhất 3 ký tự')
+  .max(20, 'Không quá 20 ký tự'),
   soDT: Yup.string()
   .matches(phoneRegExp, 'Số ĐT không hợp lệ')
   .required('Số ĐT phải điền vào ô').trim()

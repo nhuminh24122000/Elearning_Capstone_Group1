@@ -49,7 +49,6 @@ function SignIn(props) {
         }, 1500);
 
         saveLocal(ACCESS_TOKEN, resp.data.accessToken);
-        saveLocal("data", resp.data);
       } catch (err) {
         console.log(err);
         props.showAlert(
