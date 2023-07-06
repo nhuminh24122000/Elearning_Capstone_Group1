@@ -16,6 +16,8 @@ function CourseDetail() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { detailCourse } = useSelector(state => state.CourseReducer);
+    const { userProfile } = useSelector(state => state.UserReducer);
+    console.log('userProfile',userProfile.taiKhoan)
 
 
     const handleCourseDetail = async () => {
@@ -44,7 +46,7 @@ function CourseDetail() {
                 url: `${BASE_URL}/QuanLyKhoaHoc/DangKyKhoaHoc`,
                 data: {
                     maKhoaHoc: params.courseId,
-                    taiKhoan: 'huycan4mat'
+                    taiKhoan: userProfile.taiKhoan
                 },
                 headers: {
                     Authorization: `Bearer ${getLocal(ACCESS_TOKEN)}`,
