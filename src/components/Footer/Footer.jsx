@@ -47,7 +47,7 @@ export default function Footer() {
                 </ul>
               </div>
             </div>
-            <div className="footer-newsletter col col-lg-4 col-md-4 col-sm-12 col-12">
+            <div className="footer-newsletter col col-lg-4 col-md-4 col-sm-12 col-12 mt-sm-5 mt-md-0">
               <h2>Thư Tin</h2>
               <p>
                 Theo dõi danh sách gửi thư của chúng tôi và nhận thông tin cập
