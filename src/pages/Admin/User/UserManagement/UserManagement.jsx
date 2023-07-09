@@ -4,19 +4,21 @@ import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import { ACCESS_TOKEN, CYBERSOFT_TOKEN, GROUP_ID } from '../../../../constant';
 import { useDispatch, useSelector } from 'react-redux';
-import { setListUserAdmin } from '../../../../redux/reducers/Admin/userAdminReducer';
+import { setListCourseCofirm, setListCourseNeedAuth, setListUserAdmin } from '../../../../redux/reducers/Admin/userAdminReducer';
 import Paginate from '../../../../components/Paginate/Paginate';
 import { getLocal } from '../../../../utils';
 import Swal from 'sweetalert2'
+import PopupUser from '../../../../components/Admin/PopupUser/PopupUser';
 
 function UserManagement() {
     const dispatch = useDispatch();
     const { listUserAdmin } = useSelector(state => state.UserAdminReducer)
+    const [selectedTaiKhoan, setSelectedTaiKhoan] = useState(null);
 
     const PAGE_SIZE = 20;
     const [pageUser, setPageUser] = useState(1)
     const [data, setData] = useState([]);
-    console.log('data', data)
+    const [showPopup, setShowPopup] = useState(false);
 
 
     // Handle User ra giao diện
@@ -59,7 +61,7 @@ function UserManagement() {
                     <td>{item.email}</td>
                     <td>{item.soDT || item.soDt}</td>
                     <td className='buttons'>
-                        <button className='btn-ghidanh'>
+                        <button className='btn-ghidanh' data-toggle="modal" data-target="#exampleModal" onClick={()=>handlePopupOpen(item.taiKhoan)}>
                             Ghi danh
                         </button>
                         <button className='btn-sua'>
@@ -106,6 +108,54 @@ function UserManagement() {
         }
     }
 
+    const handlePopupOpen = (id) => {
+        setShowPopup(true)
+        courseNeedAuth(id)
+        courseCofirm(id)
+        setSelectedTaiKhoan(id)
+    }
+
+    // Handle khóa học cần xác thực và khóa học đã xác thực ra giao diện
+    const courseNeedAuth = async (id) => {
+        try {
+			const resp = await axios({
+				method: 'post',
+				url: 'https://elearningnew.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachKhoaHocChoXetDuyet',
+				data: {
+					"taiKhoan": id
+				},
+				headers: {
+					Authorization: `Bearer ${getLocal(ACCESS_TOKEN)}`,
+					TokenCybersoft: `${CYBERSOFT_TOKEN}`,
+				}
+
+			})
+            dispatch(setListCourseNeedAuth(resp.data))
+		} catch (err) {
+			console.log(err)
+		}
+    }
+
+    const courseCofirm = async (id) => {
+        try {
+            const resp = await axios({
+				method: 'post',
+				url: 'https://elearningnew.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachKhoaHocDaXetDuyet',
+				data: {
+					"taiKhoan": id,
+				},
+				headers: {
+					Authorization: `Bearer ${getLocal(ACCESS_TOKEN)}`,
+					TokenCybersoft: `${CYBERSOFT_TOKEN}`,
+				}
+
+			})
+            dispatch(setListCourseCofirm(resp.data))
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     return (
         <div className='container'>
             <div className='user-manage-title'>
@@ -144,6 +194,9 @@ function UserManagement() {
                     forcePage={pageUser - 1}
                 />
             </div>
+
+            {showPopup && <PopupUser taiKhoan={selectedTaiKhoan} courseNeedAuth={courseNeedAuth} courseCofirm={courseCofirm} />}
+            {/* <PopupUser /> */}
         </div>
     )
 }
