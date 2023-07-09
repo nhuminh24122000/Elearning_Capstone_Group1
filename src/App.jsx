@@ -49,7 +49,7 @@ function App() {
                 </Route>
             </Routes>
             <Routes>
-                <Route path='admin' element={<HomeAdminTemplate />}>
+                <Route path='/admin' element={<HomeAdminTemplate />}>
                     <Route path='usermanagement' index element={<UserManagement />} />
                     <Route path='useradd' element={<UserAdd />} />
                     <Route path='userupdate' element={<UserUpdate />} />
