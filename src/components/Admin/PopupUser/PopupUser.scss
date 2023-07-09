@@ -1,0 +1,30 @@
+.modal-dialog {
+    max-width: 80rem;
+}
+
+.modal-body {
+
+    h1 {
+        font-weight: 700;
+        margin-top: 2rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+.btn-close {
+    background-color: #6c757d;
+    border: 1px solid #6c757d;
+    width: 83px;
+    padding: 10px 4px;
+    margin: 0 0.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.modal-title {
+    font-size: 2rem;
+}
+
+.close {
+    font-size: 3rem;
+}
