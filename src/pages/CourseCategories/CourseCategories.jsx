@@ -97,8 +97,9 @@ function CourseCategories() {
                 </div>
             </div>
             {listCourseCategory && (listCourseCategory.length / PAGE_SIZE) > 1 && (
-            
-            <Paginate handlePageClick={handlePageClick}  pageCount={Math.ceil(listCourseCategory.length / PAGE_SIZE)} forcePage={page - 1}/>
+            <div className='mb-5'>
+                <Paginate handlePageClick={handlePageClick}  pageCount={Math.ceil(listCourseCategory.length / PAGE_SIZE)} forcePage={page - 1}/>
+            </div>
             )}
         </>
     )
