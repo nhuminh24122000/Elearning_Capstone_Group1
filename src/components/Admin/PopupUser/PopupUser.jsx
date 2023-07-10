@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './PopupUser.scss'
 import { useSelector } from 'react-redux';
 import '../../../pages/Admin/User/UserManagement/UserManagement.scss'
@@ -14,6 +14,7 @@ import Paginate from '../../Paginate/Paginate';
 function PopupUser({ taiKhoan, courseNeedAuth, courseCofirm }) {
     const { listCourseNeedAuth } = useSelector(state => state.UserAdminReducer);
     const { listCourseCofirm } = useSelector(state => state.UserAdminReducer);
+    const { listCourseNotRegister } = useSelector(state => state.UserAdminReducer);
 
     const PAGE_SIZE = 4;
     const [pageNeedCofirm, setPageNeedCofirm] = useState(1)
@@ -21,9 +22,24 @@ function PopupUser({ taiKhoan, courseNeedAuth, courseCofirm }) {
     const [pageCofirm, setPageCofirm] = useState(1)
     const [dataCofirm, setDataCofirm] = useState([]);
 
-    const courseRegister = async (id, user) => {
+    const [selectedMaKhoaHoc, setSelectedMaKhoaHoc] = useState('');
+    const selectRef = useRef(null);
+
+
+    const courseRegister = async (id, user, actionType) => {
+        if (id === '') {
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Vui lòng chọn Khóa học',
+                showConfirmButton: false,
+                timer: 1500
+            });
+            return;
+        }
+    
         try {
-            const resp = await axios({
+            await axios({
                 method: 'post',
                 url: 'https://elearningnew.cybersoft.edu.vn/api/QuanLyKhoaHoc/GhiDanhKhoaHoc',
                 data: {
@@ -34,20 +50,28 @@ function PopupUser({ taiKhoan, courseNeedAuth, courseCofirm }) {
                     Authorization: `Bearer ${getLocal(ACCESS_TOKEN)}`,
                     TokenCybersoft: `${CYBERSOFT_TOKEN}`,
                 }
-
-            })
+            });
+    
+            if (actionType === 'choose') {
+                selectRef.current.selectedIndex = 0;
+                setSelectedMaKhoaHoc('');
+                courseCofirm(user);
+                setPageNeedCofirm(1);
+            }
+    
             courseNeedAuth(user);
-            courseCofirm(user)
-            setPageNeedCofirm(1)
+            courseCofirm(user);
+            setPageNeedCofirm(1);
+    
             Swal.fire({
                 position: 'center',
                 icon: 'success',
                 title: 'Xác thực khóa học thành công',
                 showConfirmButton: false,
                 timer: 1500
-            })
+            });
         } catch (err) {
-            console.log(err)
+            console.log(err);
         }
     }
 
@@ -140,7 +164,17 @@ function PopupUser({ taiKhoan, courseNeedAuth, courseCofirm }) {
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Tài khoản: {taiKhoan}</h5>
+                            <select ref={selectRef} class="form-select-course" onChange={(e)=>setSelectedMaKhoaHoc(e.target.value)}>
+                                <option className='p-5 m-5' value=''>Vui lòng chọn khóa học </option>
+                                {listCourseNotRegister.map((item) => {
+                                    return (
+                                        <option value={item.maKhoaHoc}>{item.tenKhoaHoc}</option>
+                                    )
+                                })}
+                            </select>
+                            <button className='btn-ghidanh' onClick={() => courseRegister(selectedMaKhoaHoc, taiKhoan, 'choose')}>Ghi Danh</button>
+
+
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
@@ -166,7 +200,7 @@ function PopupUser({ taiKhoan, courseNeedAuth, courseCofirm }) {
                                                                 <td>{((pageNeedCofirm - 1) * PAGE_SIZE + index + 1)}</td>
                                                                 <td>{item.tenKhoaHoc}</td>
                                                                 <td style={{ padding: '0.8rem 0' }}>
-                                                                    <button onClick={() => courseRegister(item.maKhoaHoc, taiKhoan)} className='btn-ghidanh'>Xác Thực</button>
+                                                                    <button onClick={() => courseRegister(item.maKhoaHoc, taiKhoan, 'register')} className='btn-ghidanh'>Xác Thực</button>
                                                                     <button onClick={() => cancelCourseRegister(item.maKhoaHoc, taiKhoan)} className='btn-xoa'>Hủy</button>
                                                                 </td>
                                                             </tr>
@@ -175,7 +209,9 @@ function PopupUser({ taiKhoan, courseNeedAuth, courseCofirm }) {
                                                 </tbody>
                                             </table>
                                             {listCourseNeedAuth && listCourseNeedAuth.length / PAGE_SIZE > 1 && (
-                                                <Paginate handlePageClick={handleClickPageNeedCofirm} pageCount={Math.ceil(listCourseNeedAuth.length / PAGE_SIZE)} forcePage={pageNeedCofirm - 1} />
+                                                <div>
+                                                    <Paginate handlePageClick={handleClickPageNeedCofirm} pageCount={Math.ceil(listCourseNeedAuth.length / PAGE_SIZE)} forcePage={pageNeedCofirm - 1} />
+                                                </div>
                                             )}
                                         </>
                                     ) : null}
@@ -207,17 +243,15 @@ function PopupUser({ taiKhoan, courseNeedAuth, courseCofirm }) {
                                                 </tbody>
                                             </table>
                                             {listCourseCofirm && listCourseCofirm.length / PAGE_SIZE > 1 && (
-                                                <Paginate handlePageClick={handleClickPageCofirm} pageCount={Math.ceil(listCourseCofirm.length / PAGE_SIZE)} forcePage={pageCofirm - 1} />
+                                                <div className='my-5'>
+                                                    <Paginate className='mb-0' handlePageClick={handleClickPageCofirm} pageCount={Math.ceil(listCourseCofirm.length / PAGE_SIZE)} forcePage={pageCofirm - 1} />
+                                                </div>
 
                                             )}
                                         </>
                                     ) : null}
                                 </>
                             ) : <Empty />}
-
-
-
-
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn-close" data-dismiss="modal">Close</button>

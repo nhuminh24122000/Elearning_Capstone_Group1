@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import { ACCESS_TOKEN, CYBERSOFT_TOKEN, GROUP_ID } from '../../../../constant';
 import { useDispatch, useSelector } from 'react-redux';
-import { setListCourseCofirm, setListCourseNeedAuth, setListUserAdmin } from '../../../../redux/reducers/Admin/userAdminReducer';
+import { setListCourseCofirm, setListCourseNeedAuth, setListCourseNotRegister, setListUserAdmin } from '../../../../redux/reducers/Admin/userAdminReducer';
 import Paginate from '../../../../components/Paginate/Paginate';
 import { getLocal } from '../../../../utils';
 import Swal from 'sweetalert2'
@@ -110,12 +110,29 @@ function UserManagement() {
 
     const handlePopupOpen = (id) => {
         setShowPopup(true)
+        courseNotRegister(id);
         courseNeedAuth(id)
         courseCofirm(id)
         setSelectedTaiKhoan(id)
     }
 
     // Handle khóa học cần xác thực và khóa học đã xác thực ra giao diện
+    const courseNotRegister = async (id) => {
+        try{
+            const resp = await axios ({
+                method: 'post',
+                url: `https://elearningnew.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachKhoaHocChuaGhiDanh?TaiKhoan=${id}`,
+                headers: {
+					Authorization: `Bearer ${getLocal(ACCESS_TOKEN)}`,
+					TokenCybersoft: `${CYBERSOFT_TOKEN}`,
+				}
+            })
+            dispatch(setListCourseNotRegister(resp.data))
+        }catch(err) {
+            console.log(err)
+        }
+    }
+
     const courseNeedAuth = async (id) => {
         try {
 			const resp = await axios({
