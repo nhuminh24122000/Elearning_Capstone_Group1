@@ -22,7 +22,6 @@ function UserManagement() {
 
 
     // Handle User ra giao diện
-
     const userAdminAPI = async () => {
         try {
             const resp = await axios({
@@ -75,7 +74,6 @@ function UserManagement() {
     }
 
     // Xóa Người dùng
-
     const deleteUser = async (id) => {
         try {
             const resp = await axios({
@@ -102,7 +100,7 @@ function UserManagement() {
                 icon: 'error',
                 title: 'Người dùng này đã tạo khóa học không thể xóa',
                 showConfirmButton: true,
-                // timer: 1500
+                timer: 1500
             })
             console.log(err)
         }
@@ -213,7 +211,6 @@ function UserManagement() {
             </div>
 
             {showPopup && <PopupUser taiKhoan={selectedTaiKhoan} courseNeedAuth={courseNeedAuth} courseCofirm={courseCofirm} />}
-            {/* <PopupUser /> */}
         </div>
     )
 }

@@ -52,7 +52,9 @@ function App() {
                 <Route path='/admin' element={<HomeAdminTemplate />}>
                     <Route path='usermanagement' index element={<UserManagement />} />
                     <Route path='useradd' element={<UserAdd />} />
-                    <Route path='userupdate' element={<UserUpdate />} />
+                    <Route path='userupdate'  >
+                        <Route path=':id' element={<UserUpdate />}/>
+                    </Route>
 
                     <Route path='coursemanagement' element={<CourseManagement />} />
                     <Route path='courseadd' element={<CourseAdd />} />
