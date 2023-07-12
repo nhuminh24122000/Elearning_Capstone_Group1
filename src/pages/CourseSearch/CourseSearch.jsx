@@ -136,36 +136,33 @@ export default function CourseSearch() {
           Tìm thấy <span className="text-info">{totalCount}</span> khoá học{" "}
           <span className="text-info">"{keyword}"</span>
         </h3>
-        {paginate()}
         <CoursesList coursesList={searchCourseList} />
-        {/* {paginate()} */}
         <div style={{ marginTop: '5rem' }}>
           { totalCount / pageSize > 1 && (
-            <ReactPaginate
-              onPageChange={handlePageClick}
-              pageCount={totalPages}
-              forcePage={currentPage - 1}
-              // forcePage={Math.max(currentPage - 1, 0)}
-              breakLabel="..."
-              nextLabel=" >"
-              pageRangeDisplayed={10}
-              previousLabel="< "
-              renderOnZeroPageCount={null}
-              // initialPage={0}
-
-              marginPagesDisplayed={3}
-              pageClassName="page-item"
-              pageLinkClassName="page-link"
-              previousClassName="page-item"
-              previousLinkClassName="page-link"
-              nextClassName="page-item"
-              nextLinkClassName="page-link"
-              breakClassName="page-item"
-              breakLinkClassName="page-link"
-              containerClassName="pagination"
-              activeClassName="active"
-            />
-
+            <div style={{marginBottom: '5rem'}}>
+              <ReactPaginate
+                onPageChange={handlePageClick}
+                pageCount={totalPages}
+                forcePage={currentPage - 1}
+                breakLabel="..."
+                nextLabel=" >"
+                pageRangeDisplayed={10}
+                previousLabel="< "
+                renderOnZeroPageCount={null}
+  
+                marginPagesDisplayed={3}
+                pageClassName="page-item"
+                pageLinkClassName="page-link"
+                previousClassName="page-item"
+                previousLinkClassName="page-link"
+                nextClassName="page-item"
+                nextLinkClassName="page-link"
+                breakClassName="page-item"
+                breakLinkClassName="page-link"
+                containerClassName="pagination"
+                activeClassName="active"
+              />
+            </div>
            )} 
         </div>
       </section>
