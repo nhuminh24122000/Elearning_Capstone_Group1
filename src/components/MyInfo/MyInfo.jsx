@@ -129,7 +129,7 @@ function MyInfo() {
                             />
                             {formik.errors.matKhau && formik.touched.matKhau && <p className='text-error'>{formik.errors.matKhau}</p>}
                         </div>
-                        <div className="form-group d-flex justify-content-center align-items-center">
+                        <div className="form-group m-0 d-flex justify-content-center align-items-center">
                             <button type='submit' className='card-botton'>Cập Nhật</button>
                         </div>
 
