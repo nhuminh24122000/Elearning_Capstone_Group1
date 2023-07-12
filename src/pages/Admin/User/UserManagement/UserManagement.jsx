@@ -6,13 +6,13 @@ import { ACCESS_TOKEN, CYBERSOFT_TOKEN, GROUP_ID } from '../../../../constant';
 import { useDispatch, useSelector } from 'react-redux';
 import { setListCourseCofirm, setListCourseNeedAuth, setListCourseNotRegister, setListUserAdmin } from '../../../../redux/reducers/Admin/userAdminReducer';
 import Paginate from '../../../../components/Paginate/Paginate';
-import { getLocal } from '../../../../utils';
+import { getLocal, saveLocal } from '../../../../utils';
 import Swal from 'sweetalert2'
 import PopupUser from '../../../../components/Admin/PopupUser/PopupUser';
 
 function UserManagement() {
     const dispatch = useDispatch();
-    const { listUserAdmin } = useSelector(state => state.UserAdminReducer)
+    const { listUserAdmin } = useSelector(state => state.UserAdminReducer);
     const [selectedTaiKhoan, setSelectedTaiKhoan] = useState(null);
 
     const PAGE_SIZE = 20;
@@ -32,6 +32,7 @@ function UserManagement() {
                 }
             })
             dispatch(setListUserAdmin(resp.data))
+            saveLocal('listUserAdmin', resp.data)
         } catch (err) {
             console.log(err)
         }
@@ -178,7 +179,7 @@ function UserManagement() {
                     <NavLink to='/admin/useradd'>Thêm Người Dùng </NavLink>
                 </h1>
                 <form className="d-flex my-lg-0">
-                    <div className="search d-flex w-100">
+                    <div className="search d-flex w-100 p-0 pl-4">
                         <button>
                             <i className="fa fa-search" />
                         </button>

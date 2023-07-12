@@ -102,10 +102,10 @@ function MyCourse({ handleProfile }) {
                 <div className="row align-items-center">
                     <h1 className='col-md-12 col-lg-7 my-course-title w-100'>Tổng số khóa học bạn đã  tham gia: {userProfile.chiTietKhoaHocGhiDanh.length}</h1>
                     <form action="#" className="d-flex justify-content-center my-2 my-lg-0  col-md-12 col-lg-5" onSubmit={handleSearch}>
-                        <div className="search d-flex">
+                        <div className="search-mycourse d-flex">
                             <button><i className="fa fa-search" />
                             </button>
-                            <input className="searchText" type="search" placeholder="Tìm kiếm khóa học" onChange={handleChangeKey} />
+                            <input className="searchText-mycourse" type="search" placeholder="Tìm kiếm khóa học" onChange={handleChangeKey} />
                         </div>
                     </form>
 

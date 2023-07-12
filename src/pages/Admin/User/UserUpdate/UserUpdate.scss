@@ -1,0 +1,147 @@
+
+.title {
+    margin-top: 5rem;
+
+    h1 {
+        font-size: 3.5rem;
+        color: #0c20bb;
+        font-weight: 700;
+    }
+}
+
+.label-admin {
+
+    text-transform: uppercase;
+    position: absolute;
+    transition: transform 100ms ease;
+    transform: translateY(-2rem);
+}
+
+input {
+    border-radius: 2rem;
+}
+
+
+form {
+    margin-top: 5rem;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 4.5rem;
+}
+
+.col-item {
+    margin-bottom: 1.5rem;
+}
+
+input {
+    display: block;
+    width: 40rem;
+    font-size: 1.6rem;
+    padding: 1rem;
+    border: none;
+    border-bottom: 1px solid #000;
+}
+
+input:focus {
+    outline: none;
+    border-color: #0c20bb;
+    outline: none;
+}
+
+.label-admin {
+    top: 3.5rem;
+    left: 2.5rem;
+    color: #000;
+    font-size: 1.6rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+input:focus~.label-admin,
+input:valid~.label-admin {
+    top: -0rem;
+    font-size: 1.4rem;
+    color: #0c20bb;
+}
+
+.form-type {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    line-height: 5rem;
+}
+
+.type-user {
+    font-size: 1.6rem;
+    color: #000;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.footer {
+    font-size: 1.8rem;
+}
+
+.button-back, .btn-add {
+    color: #000;
+    font-weight: 500;
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    transition: all 0.3s;
+}
+
+.button-back {
+    background-color: #f2994a;
+    border: 1px solid #f2994a;
+    &:hover {
+        background-color: #e1771b;
+    }
+}
+
+.btn-add {
+    color: #fff;
+    background-color: #3344c9;
+    border: 1px solid #3344c9;
+    margin-right: 13rem;
+    &:hover {
+        background-color: #0418af;
+    }
+}
+
+
+
+.button-back a:hover {
+    color: #000;
+}
+
+.content form .footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content form .footer .button a {
+    display: flex;
+    align-items: center;
+}
+
+.form-select {
+    outline: none;
+}
+
+.text-error {
+    margin-left: 2rem;
+    margin-top: 0.5rem;
+    color: red;
+    font-weight: 500;
+}
+
+.disabled-input {
+    pointer-events: none;
+}
+
+
+
+

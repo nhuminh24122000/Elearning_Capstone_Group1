@@ -34,12 +34,9 @@ function UserAdd() {
             .required('Số ĐT không được để trống').trim()
             .max(10, 'Không quá 12 ký tự'),
         email: Yup.string()
-            .email()
+            .email('Email không hợp lệ')
             .required('Email không được để trống').trim(),
         maLoaiNguoiDung: Yup.string().required('Vui lòng chọn người dùng'),
-
-
-
     })
 
     const formik = useFormik({
@@ -107,58 +104,58 @@ function UserAdd() {
                 <form onSubmit={formik.handleSubmit} noValidate >
                     <div className="row">
                         <div className="col-md-6 col-item">
-                            <div class="form-group">
+                            <div className="form-group">
                                 <input required type="text" name="taiKhoan" id='taiKhoan' 
                                     value={formik.values.taiKhoan}
                                     {...formik.getFieldProps('taiKhoan')}
                                 />
                                 
                                 {formik.errors.taiKhoan && formik.touched.taiKhoan && <p className='text-error'>{formik.errors.taiKhoan}</p>}
-                                <span class="highlight"></span>
-                                <label for="taiKhoan">Tài khoản:</label>
+                                <span className="highlight"></span>
+                                <label className='label-admin' for="taiKhoan">Tài khoản:</label>
                             </div>
                         </div>
                         <div className="col-md-6 col-item">
-                            <div class="form-group">
+                            <div className="form-group">
                                 <input required type="text" name="email"
                                     {...formik.getFieldProps('email')}
                                 />
                                 {formik.errors.email && formik.touched.email && <p className='text-error'>{formik.errors.email}</p>}
-                                <span class="highlight"></span>
-                                <label for="email">Email :</label>
+                                <span className="highlight"></span>
+                                <label className='label-admin' for="email">Email :</label>
                             </div>
 
                         </div>
                         <div className="col-md-6 col-item">
-                            <div class="form-group">
+                            <div className="form-group">
                                 <input required type="text" name="matKhau"
                                     {...formik.getFieldProps('matKhau')}
                                 />
                                 {formik.errors.matKhau && formik.touched.matKhau && <p className='text-error'>{formik.errors.matKhau}</p>}
-                                <span class="highlight"></span>
-                                <label for="matKhau">Mật khẩu:</label>
+                                <span className="highlight"></span>
+                                <label className='label-admin' for="matKhau">Mật khẩu:</label>
                             </div>
 
                         </div>
                         <div className="col-md-6 col-item">
-                            <div class="form-group">
+                            <div className="form-group">
                                 <input required type="text" name="soDT"
                                     {...formik.getFieldProps('soDT')}
                                 />
                                 {formik.errors.soDT && formik.touched.soDT && <p className='text-error'>{formik.errors.soDT}</p>}
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
-                                <label for="soDT">Số điện thoại:</label>
+                                <span className="highlight"></span>
+                                <span className="bar"></span>
+                                <label className='label-admin' for="soDT">Số điện thoại:</label>
                             </div>
                         </div>
                         <div className="col-md-6 col-item">
-                            <div class="form-group">
+                            <div className="form-group">
                                 <input required type="text" name="hoTen"
                                     {...formik.getFieldProps('hoTen')}
                                 />
                                 {formik.errors.hoTen && formik.touched.hoTen && <p className='text-error'>{formik.errors.hoTen}</p>}
-                                <span class="highlight"></span>
-                                <label for="hoTen">Họ Tên:</label>
+                                <span className="highlight"></span>
+                                <label className='label-admin' for="hoTen">Họ Tên:</label>
                             </div>
                         </div>
 
