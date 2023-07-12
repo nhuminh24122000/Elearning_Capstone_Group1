@@ -2,22 +2,25 @@ import React, { useEffect, useState } from 'react';
 import './CourseManagement.scss';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
-import { CYBERSOFT_TOKEN, GROUP_ID, defaultImage } from '../../../../constant';
+import { ACCESS_TOKEN, CYBERSOFT_TOKEN, GROUP_ID, defaultImage } from '../../../../constant';
 import { useDispatch, useSelector } from 'react-redux';
 import { setListCourseAdmin } from '../../../../redux/reducers/Admin/courseAdminReducer';
 import './CourseManagement.scss'
 import Paginate from '../../../../components/Paginate/Paginate';
+import { getLocal } from '../../../../utils';
+import Swal from 'sweetalert2'
+
 
 function CourseManagement() {
     const dispatch = useDispatch();
     const { listCourseAdmin } = useSelector(state => state.CourseAdminReducer);
-    console.log('listCourseAdmin', listCourseAdmin);
 
     const PAGE_SIZE = 20;
     const [pageCourse, setPageCourse] = useState(1)
     const [data, setData] = useState([]);
 
 
+    // Handle Course ra giao diện
     const courseAdminAPI = async () => {
         try {
             const resp = await axios({
@@ -27,7 +30,6 @@ function CourseManagement() {
                     TokenCybersoft: `${CYBERSOFT_TOKEN}`
                 }
             })
-            console.log('resp', resp)
             dispatch(setListCourseAdmin(resp.data))
 
         } catch (err) {
@@ -39,21 +41,18 @@ function CourseManagement() {
         courseAdminAPI()
     }, [pageCourse]);
 
-    useEffect(()=>{
-        const newData = listCourseAdmin.slice((pageCourse - 1) * PAGE_SIZE, pageCourse * PAGE_SIZE);
-        setData(newData)
-    },[listCourseAdmin, pageCourse])
+
 
     const handleCourse = () => {
         return data.map((item, index) => {
             return (
                 <tr key={index}>
-                    <td className='course-item'>{((pageCourse - 1) * PAGE_SIZE) + index + 1 }</td>
-                    <td className='course-item' style={{width: 150}}>{item.maKhoaHoc}</td>
-                    <td className='course-item' style={{width: 280}}>{item.tenKhoaHoc}</td>
+                    <td className='course-item'>{((pageCourse - 1) * PAGE_SIZE) + index + 1}</td>
+                    <td className='course-item' style={{ width: 150 }}>{item.maKhoaHoc}</td>
+                    <td className='course-item' style={{ width: 280 }}>{item.tenKhoaHoc}</td>
                     <td className='p-3'>
-                        <img src={item.hinhAnh} style={{ width: 80,height: 60 }} 
-                        onError={(e) => e.target.src = defaultImage}
+                        <img src={item.hinhAnh} style={{ width: 80, height: 60 }}
+                            onError={(e) => e.target.src = defaultImage}
                         />
                     </td>
                     <td className='course-item'>{item.luotXem}</td>
@@ -65,15 +64,52 @@ function CourseManagement() {
                         <button className='btn-sua'>
                             <NavLink>Sửa</NavLink>
                         </button>
-                        <button className='btn-xoa' >Xóa</button>
+                        <button className='btn-xoa' onClick={() => deleteCourse(item.maKhoaHoc)}>Xóa</button>
                     </td>
                 </tr>
             )
         })
     }
 
+    // XÓa khóa học
+    const deleteCourse = async (id) => {
+        try {
+            const resp = await axios({
+                method: 'delete',
+                url: `https://elearningnew.cybersoft.edu.vn/api/QuanLyKhoaHoc/XoaKhoaHoc?MaKhoaHoc=${encodeURIComponent(id)}`,
+                headers: {
+                    Authorization: `Bearer ${getLocal(ACCESS_TOKEN)}`,
+                    TokenCybersoft: `${CYBERSOFT_TOKEN}`,
+                }
+            })
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Xóa khóa học thành công',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            courseAdminAPI();
+        } catch (err) {
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: err.response.data,
+                showConfirmButton: false,
+                timer: 1500
+            })
+            console.log(err)
+        }
+    }
+
+    // Phân Trang
+    useEffect(() => {
+        const newData = listCourseAdmin.slice((pageCourse - 1) * PAGE_SIZE, pageCourse * PAGE_SIZE);
+        setData(newData)
+    }, [listCourseAdmin, pageCourse])
+
     const handlePageClick = (event) => {
-        setPageCourse(event.selected + 1) 
+        setPageCourse(event.selected + 1)
     }
 
 
@@ -111,7 +147,7 @@ function CourseManagement() {
             </table>
             <div>
                 <Paginate handlePageClick={handlePageClick} pageCount={Math.ceil(listCourseAdmin.length / PAGE_SIZE)}
-                    forcePage={pageCourse - 1}/>
+                    forcePage={pageCourse - 1} />
             </div>
 
 
