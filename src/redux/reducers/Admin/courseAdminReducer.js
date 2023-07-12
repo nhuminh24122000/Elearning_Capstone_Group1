@@ -1,15 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-
+    listCourseAdmin: []
 }
 
 const courseAdminReducer = createSlice({
     name: 'courseAdminReducer',
     initialState,
-    reducers: {}
+    reducers: {
+        setListCourseAdmin: (state, action) => {
+            state.listCourseAdmin = action.payload
+        }
+    }
 });
 
-export const { } = courseAdminReducer.actions
+export const { setListCourseAdmin } = courseAdminReducer.actions
 
 export default courseAdminReducer.reducer
