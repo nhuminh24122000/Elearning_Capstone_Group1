@@ -4,20 +4,25 @@ import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import { ACCESS_TOKEN, CYBERSOFT_TOKEN, GROUP_ID, defaultImage } from '../../../../constant';
 import { useDispatch, useSelector } from 'react-redux';
-import { setListCourseAdmin } from '../../../../redux/reducers/Admin/courseAdminReducer';
+import { setListCourseAdmin, setListNotRegister, setListUserCofirm, setListUserNeedRegister } from '../../../../redux/reducers/Admin/courseAdminReducer';
 import './CourseManagement.scss'
 import Paginate from '../../../../components/Paginate/Paginate';
 import { getLocal } from '../../../../utils';
 import Swal from 'sweetalert2'
+import PopupCourse from '../../../../components/Admin/PopupCourse/PopupCourse';
 
 
 function CourseManagement() {
     const dispatch = useDispatch();
     const { listCourseAdmin } = useSelector(state => state.CourseAdminReducer);
+    const [selectedMaKhoaHoc, setSelectedMaKhoaHoc] = useState(null);
+
 
     const PAGE_SIZE = 20;
     const [pageCourse, setPageCourse] = useState(1)
     const [data, setData] = useState([]);
+
+    const [showPopup, setShowPopup] = useState(false);
 
 
     // Handle Course ra giao diện
@@ -41,8 +46,6 @@ function CourseManagement() {
         courseAdminAPI()
     }, [pageCourse]);
 
-
-
     const handleCourse = () => {
         return data.map((item, index) => {
             return (
@@ -58,7 +61,7 @@ function CourseManagement() {
                     <td className='course-item'>{item.luotXem}</td>
                     <td className='course-item'>{item.nguoiTao.taiKhoan}</td>
                     <td>
-                        <button className='btn-ghidanh' data-toggle="modal" data-target="#exampleModal" >
+                        <button className='btn-ghidanh' data-toggle="modal" data-target="#exampleModal" onClick={() => handlePopupOpen(item.maKhoaHoc)}>
                             Ghi danh
                         </button>
                         <button className='btn-sua'>
@@ -112,6 +115,73 @@ function CourseManagement() {
         setPageCourse(event.selected + 1)
     }
 
+    const handlePopupOpen = (id) => {
+        setSelectedMaKhoaHoc(id)
+        setShowPopup(true);
+        stuNotRegister(id);
+        stuNeedCofirm(id);
+        stuCofirm(id);
+    }
+
+    // Handle học viên cần xác thực và khóa học đã xác thực ra giao diện
+    const stuNotRegister = async (id) => {
+        try {
+            const resp = await axios({
+                method: 'post',
+                url: 'https://elearningnew.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDungChuaGhiDanh',
+                data: {
+                    "maKhoaHoc": id
+                },
+                headers: {
+                    Authorization: `Bearer ${getLocal(ACCESS_TOKEN)}`,
+                    TokenCybersoft: `${CYBERSOFT_TOKEN}`,
+                }
+            })
+            dispatch(setListNotRegister(resp.data))
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    const stuNeedCofirm = async (id) => {
+        try {
+            const resp = await axios({
+                method: 'post',
+                url: 'https://elearningnew.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachHocVienChoXetDuyet',
+                data: {
+                    "maKhoaHoc": id
+                },
+                headers: {
+                    Authorization: `Bearer ${getLocal(ACCESS_TOKEN)}`,
+                    TokenCybersoft: `${CYBERSOFT_TOKEN}`,
+                }
+            })
+            dispatch(setListUserNeedRegister(resp.data))
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    const stuCofirm = async (id) => {
+        try {
+            const resp = await axios({
+                method: 'post',
+                url: 'https://elearningnew.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachHocVienKhoaHoc',
+                data: {
+                    "maKhoaHoc": id
+                },
+                headers: {
+                    Authorization: `Bearer ${getLocal(ACCESS_TOKEN)}`,
+                    TokenCybersoft: `${CYBERSOFT_TOKEN}`,
+                }
+            })
+            dispatch(setListUserCofirm(resp.data))
+        } catch (err) {
+            console.log(err)
+        }
+
+    }
+
 
     return (
         <div className='container'>
@@ -151,7 +221,7 @@ function CourseManagement() {
             </div>
 
 
-
+            {showPopup && <PopupCourse maKhoaHoc={selectedMaKhoaHoc} stuNeedCofirm={stuNeedCofirm} stuCofirm={stuCofirm} />}
         </div>
     )
 }

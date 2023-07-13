@@ -1,0 +1,56 @@
+.modal-dialog {
+    max-width: 80rem;
+}
+
+.modal-body {
+
+    h1 {
+        font-weight: 700;
+        margin-top: 2rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+.btn-close {
+    background-color: #6c757d;
+    border: 1px solid #6c757d;
+    width: 83px;
+    padding: 10px 4px;
+    margin: 0 0.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.modal-title {
+    font-size: 2rem;
+}
+
+.close {
+    font-size: 3rem;
+}
+
+.form-select-course {
+    width: 50rem;
+    margin: 1rem 0;
+    padding: 1rem;
+    outline: none;
+    color: #000;
+    font-weight: 500;
+}
+
+.btn-ghidanh {
+    width: 83px;
+    padding: 10px 4px;
+    border-radius: 8px;
+    font-weight: 500;
+    background-color: #16A085;
+    border: 1px solid #16A085;
+    transition: all 0.3s;
+    margin-left: 60px;
+    margin-top: 9px;
+
+    &:hover {
+        background-color: #09846d;
+    }
+}
+
