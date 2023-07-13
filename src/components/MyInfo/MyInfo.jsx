@@ -29,8 +29,8 @@ function MyInfo() {
             .max(10, 'Không quá 10 ký tự'),
         hoTen: Yup.string()
             .required('Họ tên không được để trống').trim()
-            .min(5, 'Phải ít nhất 2 ký tự')
-            .max(20, 'Không quá 10 ký tự'),
+            .min(5, 'Phải ít nhất 5 ký tự')
+            .max(20, 'Không quá 20 ký tự'),
         soDT: Yup.string()
             .matches(regex.phone, 'Số ĐT không hợp lệ')
             .required('Số ĐT không được để trống').trim()

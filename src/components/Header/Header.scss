@@ -166,7 +166,7 @@ header {
       }
       .ant-select.css-dev-only-do-not-override-1wazalj.ant-select-single.ant-select-show-arrow {
         .ant-select-selector {
-          width: 120px;
+          width: 170px;
         }
         .ant-select-arrow {
           display: none;
@@ -227,15 +227,20 @@ header {
         right: 2rem;
         top: 1rem;
       }
-      .ant-select.css-dev-only-do-not-override-1wazalj.ant-select-single.ant-select-show-arrow {
-        .ant-select-selector {
+      .ant-space.css-dev-only-do-not-override-1wazalj.ant-space-horizontal.ant-space-align-center {
+        width: 100%;
+        .ant-space-item {
           width: 100%;
-          border-radius: 0;
+          .ant-select.css-dev-only-do-not-override-1wazalj.ant-select-single.ant-select-show-arrow {
+            width: 100%;
+            .ant-select-selector {
+              width: 65vw;
+              border-radius: 0;
+            }
+          }
         }
       }
-      .ant-space-item {
-        width: 100%;
-      }
+      
       .search {
         background-color: #fff;
         border-radius: 0;
@@ -252,6 +257,16 @@ header {
         border-radius: 0;
         margin-left: 0;
         width: 100%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 376px) {
+  header {
+    .container {
+      .openNav {
+        margin-left: 10rem;
       }
     }
   }

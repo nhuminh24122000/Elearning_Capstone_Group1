@@ -129,18 +129,11 @@
   }
 }
 
-@media only screen and (max-width: 992px) {
-  
-}
-
-@media only screen and (max-width: 768px) {
-  
-}
-
 @media only screen and (max-width: 576px) {
   .signup-wrapper {
     height: 95rem;
     .signup-container {
+      font-size: 0.8rem;
       .signup-left {
         h1 {
           font-size: 2rem;
@@ -152,11 +145,28 @@
           }
         }
         .group-button {
-          .signup-account,
-          .signup-google {
-            span {
-              font-size: 1rem;
-            }
+          flex-direction: column;
+          .signup-account, .signup-google {
+            width: 100%;
+            margin-top: 2rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 376px) {
+  .signup-wrapper {
+    .signup-container {
+      font-size: 0.8rem;
+      width: 90%;
+      .signup-left {
+        .group-button {
+          flex-direction: column;
+          .signup-account, .signup-google {
+            width: 100%;
+            margin-top: 2rem;
           }
         }
       }

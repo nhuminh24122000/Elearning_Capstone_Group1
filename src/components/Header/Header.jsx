@@ -94,8 +94,8 @@ function Header() {
                   </div>
                 </li>
                 <li className="nav-item col-12 col-sm-4 col-lg-4 col-md-4">
-                  <div className="d-flex ml-xl-5 ml-sm-4 ml-0">
-                    <div className="search-container d-sm-inline">
+                  <div className="d-flex ml-xl-5 ml-sm-4 ml-0 w-100">
+                    <div className="search-container d-sm-inline w-100">
                       <Formik
                         initialValues={{ searchText: keyword }}
                         onSubmit={({ searchText }) => {
@@ -103,8 +103,8 @@ function Header() {
                         }}
                       >
                         {(props) => (
-                          <Form className="d-flex my-lg-0">
-                            <div className="search d-flex w-75">
+                          <Form className="d-flex my-lg-0 w-100">
+                            <div className="search d-flex w-100">
                               <button>
                                 <i className="fa fa-search" />
                               </button>
@@ -126,8 +126,8 @@ function Header() {
                 </li>
                 <li className="nav-item col-12 col-sm-4 col-lg-4 col-md-3">
                   {userProfile.taiKhoan ? (
-                    <div className="d-flex align-items-center ml-5">
-                      <div>
+                    <div className="d-flex align-items-center ml-0 ml-sm-5 w-100">
+                      <div className="w-100">
                         <Dropdown
                           menu={{
                             items,
@@ -135,7 +135,7 @@ function Header() {
                           placement="bottomRight"
                           arrow
                         >
-                          <Button className="header-user ml-5">
+                          <Button className="header-user ml-0 ml-sm-5">
                             Hello, {userProfile.hoTen}
                           </Button>
                         </Dropdown>
