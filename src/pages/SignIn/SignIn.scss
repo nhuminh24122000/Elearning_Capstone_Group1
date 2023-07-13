@@ -129,6 +129,7 @@
 @media only screen and (max-width: 576px) {
   .signin-wrapper {
     .signin-container {
+      height: 53rem;
       margin-left: 0;
       width: 70%;
       img {
@@ -140,6 +141,38 @@
       span,
       a {
         font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 376px) {
+  .signin-wrapper {
+    .signin-container {
+      margin-left: 0;
+      width: 70%;
+      img {
+        width: 10rem;
+      }
+      h1 {
+        font-size: 2rem;
+        margin: 3rem 0 1rem;
+      }
+      span,
+      a {
+        font-size: 1.2rem;
+      }
+      .error-message {
+        font-size: 1.2rem;
+      }
+      .btn-sign-in {
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+      }
+      .form-group {
+        *::placeholder {
+          font-size: 1.2rem;
+        }
       }
     }
   }

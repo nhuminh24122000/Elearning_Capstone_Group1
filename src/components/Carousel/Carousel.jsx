@@ -19,7 +19,6 @@ export default function Carousel() {
         </h1>
         <p>
           Trở thành lập trình
-          <br />
           chuyên nghiệp tại CyberLearn!
         </p>
         <NavLink to="/coursecategories/BackEnd" className='btn btn-1'>Xem khóa học</NavLink>

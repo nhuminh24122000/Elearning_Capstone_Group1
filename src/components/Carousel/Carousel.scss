@@ -78,8 +78,18 @@
 }
 
 @media screen and (max-width: 576px) {
-    .cover .cover__content {
-        max-width: 400px;
-        left: 10%;
+    .cover {
+        height: 500px;
+        .cover__content {
+            max-width: 400px;
+            left: 10%;
+            top: 45%;
+            h1 {
+                font-size: 4.5rem;
+            }
+            p {
+                font-size: 2rem;
+            }
+        }
     }
 }
