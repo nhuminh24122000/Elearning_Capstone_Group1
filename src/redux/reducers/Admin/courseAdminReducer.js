@@ -1,7 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    listCourseAdmin: []
+    listCourseAdmin: [],
+    listUserNeedRegister: [],
+    listUserCofirm: [],
+    listUserNotRegister: [],
+
 }
 
 const courseAdminReducer = createSlice({
@@ -10,10 +14,19 @@ const courseAdminReducer = createSlice({
     reducers: {
         setListCourseAdmin: (state, action) => {
             state.listCourseAdmin = action.payload
-        }
+        },
+        setListUserNeedRegister: (state, action) => {
+            state.listUserNeedRegister = action.payload
+        },
+        setListUserCofirm: (state, action) => {
+            state.listUserCofirm = action.payload
+        },
+        setListNotRegister: (state, action) => {
+            state.listUserNotRegister = action.payload
+        },
     }
 });
 
-export const { setListCourseAdmin } = courseAdminReducer.actions
+export const { setListCourseAdmin, setListUserNeedRegister, setListUserCofirm, setListNotRegister } = courseAdminReducer.actions
 
 export default courseAdminReducer.reducer
