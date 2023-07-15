@@ -9,25 +9,12 @@ import { getLocal } from '../../../../utils';
 import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 
-// import { CKEditor } from '@ckeditor/ckeditor5-react';
-// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-
-// import { Editor } from '@tinymce/tinymce-react';
 
 
 
 
 
 function CourseAdd() {
-    // const editorRef = useRef(null);
-    // const log = () => {
-    //     if (editorRef.current) {
-    //         console.log(editorRef.current.getContent());
-    //     }
-    // };
-
-
-
 
     const [listCourseCategory, setListCourseCategory] = useState([]);
 
@@ -132,23 +119,6 @@ function CourseAdd() {
 
     })
 
-    // const [uploadedImage, setUploadedImage] = useState(null);
-    // const upLoadImage = async () => {
-    //     try {
-    //         const resp = await axios({
-    //             method: 'post',
-    //             url: 'https://elearningnew.cybersoft.edu.vn/api/QuanLyKhoaHoc/UploadHinhAnhKhoaHoc',
-    //             headers: {
-    //                 'Content-Type': 'multipart/form-data',
-    //                 TokenCybersoft: `${CYBERSOFT_TOKEN}`,
-    //             }
-    //         })
-    //         console.log('resp', resp)
-    //         setUploadedImage(resp);
-    //     } catch (err) {
-
-    //     }
-    // }
 
 
 
@@ -246,9 +216,6 @@ function CourseAdd() {
                                 <label className='label-admin' for="hinhAnh">Hình ảnh :</label>
                             </div>
                         </div>
-                        {/* <div className="col-12 d-flex  justify-content-end" >
-                            <button className='btn-upload' onClick={upLoadImage}>Tải lên</button>
-                        </div> */}
                     </div>
                     <div className="col-md-12 col-item mt-3">
                         <div className="form-group">
@@ -262,69 +229,6 @@ function CourseAdd() {
 
                         </div>
                     </div>
-
-
-                    {/* <div className="col-md-12 col-item mt-3 form-ckeditor">
-                        <div className='type-user mb-0 mr-3'>Mô tả: </div>
-                        <div className="form-group">
-
-                            <CKEditor
-                                editor={ClassicEditor}
-                                data={formik.values.moTa}
-                                onChange={(event, editor) => {
-                                    const data = editor.getData();
-                                    // const modifiedData = data.replace(/<\/?p>/g, '');
-                                    formik.setFieldValue('moTa', data);
-                                    console.log('data', data)
-
-
-                                    // Nếu bạn muốn trình soạn thảo lấy trạng thái tốt nhất sau khi thay đổi,
-                                    // bạn cũng có thể gọi phương thức editor.checkSelectionChange() ở đây.
-
-                                    // Cập nhật lại dữ liệu trong trình soạn thảo để hiển thị dữ liệu đã thay đổi
-                                    // editor.setData(modifiedData);
-                                }}
-                            />
-                            {formik.errors.moTa && formik.touched.moTa && (
-                                <p className="text-error">{formik.errors.moTa}</p>
-                            )}
-
-
-                            <Editor
-                                onInit={(evt, editor) => editorRef.current = editor}
-                                initialValue={formik.values.moTa}
-                                onChange={(event, editor) => {
-                                    const content = editor.getContent();
-                                    formik.setFieldValue('moTa', content);
-                                }}
-                                init={{
-                                    height: 500,
-                                    menubar: false,
-                                    plugins: [
-                                        'advlist autolink lists link image charmap print preview anchor',
-                                        'searchreplace visualblocks code fullscreen',
-                                        'insertdatetime media table paste code help wordcount'
-                                    ],
-                                    toolbar: 'undo redo | formatselect | ' +
-                                        'bold italic backcolor | alignleft aligncenter ' +
-                                        'alignright alignjustify | bullist numlist outdent indent | ' +
-                                        'removeformat | help',
-                                    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px; margin: 0; padding: 0; }',
-                                    forced_root_block: false, // Bỏ giá trị mặc định là thẻ <p>
-                                    force_br_newlines: true, // Sử dụng <br> cho các xuống dòng
-                                    force_p_newlines: false,
-                                }}
-                            />
-                            {formik.errors.moTa && formik.touched.moTa && (
-                                <p className="text-error">{formik.errors.moTa}</p>
-                            )}
-                            <button onClick={log}>Log editor content</button>
-
-
-                        </div>
-                    </div> */}
-
-
 
                     <div className='footer'>
                         <button className="button-back">

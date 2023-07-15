@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setListCourseAdmin, setListNotRegister, setListUserCofirm, setListUserNeedRegister } from '../../../../redux/reducers/Admin/courseAdminReducer';
 import './CourseManagement.scss'
 import Paginate from '../../../../components/Paginate/Paginate';
-import { getLocal } from '../../../../utils';
+import { getLocal, saveLocal } from '../../../../utils';
 import Swal from 'sweetalert2'
 import PopupCourse from '../../../../components/Admin/PopupCourse/PopupCourse';
 
@@ -29,7 +29,6 @@ function CourseManagement() {
     const [pageSearch, setPageSearch] = useState(1)
     const [dataSearch, setDataSearch] = useState([]);
 
-    console.log('listSearch', listSearch)
 
 
 
@@ -44,7 +43,7 @@ function CourseManagement() {
                 }
             })
             dispatch(setListCourseAdmin(resp.data))
-
+            saveLocal('listCourseAdmin', resp.data)
         } catch (err) {
             console.log(err)
         }
