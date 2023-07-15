@@ -1,7 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { getLocal } from '../../../utils';
+
+const listCourseAdmin = getLocal('listCourseAdmin') ? JSON.parse(localStorage.getItem('listCourseAdmin')) : []
 
 const initialState = {
-    listCourseAdmin: [],
+    listCourseAdmin: listCourseAdmin,
     listUserNeedRegister: [],
     listUserCofirm: [],
     listUserNotRegister: [],

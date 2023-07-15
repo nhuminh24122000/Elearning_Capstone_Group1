@@ -6,13 +6,14 @@ import axios from 'axios';
 import { CYBERSOFT_TOKEN, GROUP_ID } from '../../../../constant';
 import { useFormik } from 'formik';
 import Swal from 'sweetalert2';
+import * as Yup from 'yup';
+
 
 
 function CourseUpdate() {
     const params = useParams();
     const { listCourseAdmin } = useSelector(state => state.CourseAdminReducer);
     const listItem = listCourseAdmin.find(item => item.maKhoaHoc === params.id)
-    console.log('listItem', listItem)
     const { maKhoaHoc, tenKhoaHoc, danhGia, luotXem, danhMucKhoaHoc, ngayTao, nguoiTao, hinhAnh, moTa, maNhom } = listItem
     const [listCourseCategory, setListCourseCategory] = useState([]);
 
@@ -35,6 +36,25 @@ function CourseUpdate() {
         courseCategory()
     }, [])
 
+    const regex = {
+        numberRegex: /^[0-9]+$/,
+        imageRegex: /\.(jpe?g|png|gif|bmp)$/i,
+        datePattern: /^(0?[1-9]|[12][0-9]|3[01])\/(0?[1-9]|1[0-2])\/\d{4}$/,
+    }
+
+    const schema = Yup.object({
+        // maKhoaHoc: Yup.string().required('Mã khóa học không được để trống'),
+        tenKhoaHoc: Yup.string().required('Têm khóa học không được để trống'),
+        danhGia: Yup.string().required('Đánh giá không được để trống').matches(regex.numberRegex, 'Đánh giá phải là 1 con số'),
+        luotXem: Yup.string().required('Lượt xem không được để trống').matches(regex.numberRegex, 'Lượt xem phải là 1 con số'),
+        nguoiTao: Yup.string().required('Người tạo không được để trống'),
+        ngayTao: Yup.string().required('Ngày tạo không được để trống').matches(regex.datePattern, 'Ngày tạo phải đúng định dạng'),
+        hinhAnh: Yup.string().required('Hình ảnh không được để trống').matches(regex.imageRegex, 'Hình ảnh phải có định dạng JPG, JPEG, PNG, GIF hoặc BMP'),
+        danhMucKhoaHoc: Yup.string().required('Vui lòng chọn Danh mục khóa học'),
+        moTa: Yup.string().required('Mô tả không được để trống'),
+
+    })
+
     const formik = useFormik({
         initialValues: {
             maKhoaHoc: maKhoaHoc,
@@ -49,11 +69,13 @@ function CourseUpdate() {
             maNhom: maNhom,
         },
 
+        validationSchema: schema,
+
         onSubmit: async (values) => {
             console.log('values', values)
 
 
-            if(!formik.dirty) {
+            if (!formik.dirty) {
                 Swal.fire({
                     position: 'center',
                     icon: 'error',
@@ -65,7 +87,7 @@ function CourseUpdate() {
             }
 
             try {
-                const resp = await axios ({
+                const resp = await axios({
                     method: 'put',
                     url: 'https://elearningnew.cybersoft.edu.vn/api/QuanLyKhoaHoc/CapNhatKhoaHoc',
                     data: {
@@ -80,12 +102,12 @@ function CourseUpdate() {
                         "ngayTao": values.ngayTao,
                         "maDanhMucKhoaHoc": values.danhMucKhoaHoc,
                         "taiKhoanNguoiTao": values.nguoiTao,
-                      },
+                    },
                     headers: {
                         TokenCybersoft: `${CYBERSOFT_TOKEN}`,
                     }
                 })
-                console.log('resp',resp)
+                console.log('resp', resp)
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
@@ -122,6 +144,7 @@ function CourseUpdate() {
                                     {...formik.getFieldProps('maKhoaHoc')}
                                 // value={formik.getFieldProps('maKhoaHoc')}
                                 />
+                                {formik.errors.maKhoaHoc && formik.touched.maKhoaHoc && <p className='text-error'>{formik.errors.maKhoaHoc}</p>}
                                 <span className="highlight"></span>
                                 <label className='label-admin' for="maKhoaHoc">Mã khóa học:</label>
                             </div>
@@ -132,6 +155,7 @@ function CourseUpdate() {
                                     {...formik.getFieldProps('danhGia')}
                                     value={formik.values.danhGia === undefined && !formik.touched.danhGia ? 10 : formik.values.danhGia}
                                 />
+                                {formik.errors.danhGia && formik.touched.danhGia && <p className='text-error'>{formik.errors.danhGia}</p>}
                                 <span className="highlight"></span>
                                 <label className='label-admin' for="danhGia">Đánh giá :</label>
                             </div>
@@ -142,6 +166,7 @@ function CourseUpdate() {
                                     // value={tenKhoaHoc}
                                     {...formik.getFieldProps('tenKhoaHoc')}
                                 />
+                                {formik.errors.tenKhoaHoc && formik.touched.tenKhoaHoc && <p className='text-error'>{formik.errors.tenKhoaHoc}</p>}
                                 <span className="highlight"></span>
                                 <label className='label-admin' for="tenKhoaHoc">Tên khóa học :</label>
                             </div>
@@ -152,6 +177,7 @@ function CourseUpdate() {
                                     value={luotXem}
                                     {...formik.getFieldProps('luotXem')}
                                 />
+                                {formik.errors.luotXem && formik.touched.luotXem && <p className='text-error'>{formik.errors.luotXem}</p>}
                                 <span className="highlight"></span>
                                 <label className='label-admin' for="luotXem">Lượt xem :</label>
                             </div>
@@ -163,6 +189,7 @@ function CourseUpdate() {
                                     {...formik.getFieldProps('danhMucKhoaHoc')}
                                     onChange={(e) => formik.setFieldValue('danhMucKhoaHoc', e.target.value)}
                                 >
+
                                     <option value=''>Vui lòng chọn khóa học</option>
                                     {listCourseCategory.map((item) => {
                                         return (
@@ -172,14 +199,16 @@ function CourseUpdate() {
 
                                 </select>
                             </div>
+                            {formik.errors.danhMucKhoaHoc && formik.touched.danhMucKhoaHoc && <p className='text-error'>{formik.errors.danhMucKhoaHoc}</p>}
                         </div>
                         <div className="col-md-6 col-item mt-3">
                             <div className='type-user mb-0 mr-3'>Ngày tạo: </div>
                             <div className="form-group">
                                 <input name="ngayTao"
-                                    value={ngayTao}
+                                    value={formik.getFieldProps(ngayTao)}
                                     {...formik.getFieldProps('ngayTao')}
                                 />
+                                {formik.errors.ngayTao && formik.touched.ngayTao && <p className='text-error'>{formik.errors.ngayTao}</p>}
                                 <span className="highlight"></span>
                             </div>
                         </div>
@@ -189,6 +218,7 @@ function CourseUpdate() {
                                     // value={nguoiTao.taiKhoan}
                                     {...formik.getFieldProps('nguoiTao')}
                                 />
+                                {formik.errors.nguoiTao && formik.touched.nguoiTao && <p className='text-error'>{formik.errors.nguoiTao}</p>}
                                 <span className="highlight"></span>
                                 <label className='label-admin' for="nguoiTao">Người tạo :</label>
                             </div>
@@ -200,6 +230,7 @@ function CourseUpdate() {
                                     value={hinhAnh}
                                     {...formik.getFieldProps('hinhAnh')}
                                 />
+                                {formik.errors.hinhAnh && formik.touched.hinhAnh && <p className='text-error'>{formik.errors.hinhAnh}</p>}
                                 <span className="highlight"></span>
                                 <label className='label-admin' for="hinhAnh">Hình ảnh :</label>
                             </div>
@@ -211,13 +242,11 @@ function CourseUpdate() {
                                 value={moTa}
                                 {...formik.getFieldProps('moTa')}
                             />
+                            {formik.errors.moTa && formik.touched.moTa && <p className='text-error'>{formik.errors.moTa}</p>}
                             <span className="highlight"></span>
                             <label className='label-admin' for="moTa">Mô tả :</label>
                         </div>
                     </div>
-
-
-
 
 
                     <div className='footer'>
