@@ -65,7 +65,7 @@ function CourseManagement() {
                             Ghi danh
                         </button>
                         <button className='btn-sua'>
-                            <NavLink>Sửa</NavLink>
+                            <NavLink to={`/admin/courseupdate/${encodeURIComponent(item.maKhoaHoc)}`}>Sửa</NavLink>
                         </button>
                         <button className='btn-xoa' onClick={() => deleteCourse(item.maKhoaHoc)}>Xóa</button>
                     </td>
