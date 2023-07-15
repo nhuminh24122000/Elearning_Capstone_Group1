@@ -24,6 +24,14 @@ function CourseManagement() {
 
     const [showPopup, setShowPopup] = useState(false);
 
+    const [key, setKey] = useState('');
+    const [listSearch, setListSearch] = useState([]);
+    const [pageSearch, setPageSearch] = useState(1)
+    const [dataSearch, setDataSearch] = useState([]);
+
+    console.log('listSearch', listSearch)
+
+
 
     // Handle Course ra giao diện
     const courseAdminAPI = async () => {
@@ -47,7 +55,9 @@ function CourseManagement() {
     }, [pageCourse]);
 
     const handleCourse = () => {
-        return data.map((item, index) => {
+        const list = dataSearch.length > 0 ? dataSearch : data
+
+        return list.map((item, index) => {
             return (
                 <tr key={index}>
                     <td className='course-item'>{((pageCourse - 1) * PAGE_SIZE) + index + 1}</td>
@@ -93,6 +103,7 @@ function CourseManagement() {
                 timer: 1500
             })
             courseAdminAPI();
+            setListSearch(listSearch.filter(item => item.maKhoaHoc !== id))
         } catch (err) {
             Swal.fire({
                 position: 'center',
@@ -108,11 +119,15 @@ function CourseManagement() {
     // Phân Trang
     useEffect(() => {
         const newData = listCourseAdmin.slice((pageCourse - 1) * PAGE_SIZE, pageCourse * PAGE_SIZE);
-        setData(newData)
-    }, [listCourseAdmin, pageCourse])
+        setData(newData);
+
+        const newDataSearch = listSearch.slice((pageSearch - 1) * PAGE_SIZE, pageCourse * PAGE_SIZE)
+        setDataSearch(newDataSearch)
+    }, [listCourseAdmin, pageCourse, listSearch, pageSearch])
 
     const handlePageClick = (event) => {
         setPageCourse(event.selected + 1)
+        setPageSearch(event.selected + 1)
     }
 
     const handlePopupOpen = (id) => {
@@ -182,6 +197,38 @@ function CourseManagement() {
 
     }
 
+    // Tìm kiếm khóa học
+    const handleChangeKey = (e) => {
+        setKey(e.target.value)
+    }
+
+    const handleSearchCourse = async (e) => {
+        e.preventDefault()
+
+        try {
+            const resp = await axios({
+                method: 'get',
+                url: `https://elearningnew.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?tenKhoaHoc=${key}&MaNhom=${GROUP_ID}`,
+                headers: {
+                    TokenCybersoft: `${CYBERSOFT_TOKEN}`
+                }
+            })
+            setListSearch(resp.data)
+            setPageCourse(1)
+            setPageSearch(1)
+        } catch (err) {
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: err.response.data,
+                showConfirmButton: false,
+                timer: 1500
+            })
+            console.log(err)
+        }
+
+    }
+
 
     return (
         <div className='container'>
@@ -189,12 +236,12 @@ function CourseManagement() {
                 <h1 >
                     <NavLink to='/admin/courseadd'>Thêm Khóa Học </NavLink>
                 </h1>
-                <form className="d-flex my-lg-0">
+                <form className="d-flex my-lg-0" onSubmit={handleSearchCourse}>
                     <div className="search d-flex w-100 p-0 pl-4">
                         <button>
                             <i className="fa fa-search" />
                         </button>
-                        <input className='w-100' name="searchText" type="search" placeholder="Nhập vào tài khoản hoặc họ tên người dùng" />
+                        <input onChange={handleChangeKey} className='w-100' name="searchText" type="search" placeholder="Nhập vào tên khóa học cần tìm" />
                     </div>
                     <button className='button-find'>Tìm</button>
                 </form>
@@ -216,8 +263,11 @@ function CourseManagement() {
                 </tbody>
             </table>
             <div>
-                <Paginate handlePageClick={handlePageClick} pageCount={Math.ceil(listCourseAdmin.length / PAGE_SIZE)}
-                    forcePage={pageCourse - 1} />
+                <Paginate
+                    handlePageClick={handlePageClick}
+                    pageCount={Math.ceil((listSearch.length > 0 ? listSearch : listCourseAdmin).length / PAGE_SIZE)}
+                    forcePage={pageCourse - 1}
+                />
             </div>
 
 

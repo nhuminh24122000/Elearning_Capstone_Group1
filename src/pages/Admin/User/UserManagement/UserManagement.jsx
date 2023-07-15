@@ -216,7 +216,6 @@ function UserManagement() {
 
         } catch (err) {
             setListSearch([])
-
             console.log(err)
         }
 
