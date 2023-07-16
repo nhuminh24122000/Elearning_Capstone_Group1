@@ -233,12 +233,12 @@ function UserManagement() {
                         <button>
                             <i className="fa fa-search" />
                         </button>
-                        <input onChange={handleChangeKey} className='w-100' name="searchText" type="search" placeholder="Nhập vào tài khoản hoặc họ tên người dùng" />
+                        <input style={{padding: '1rem'}} onChange={handleChangeKey} className='w-100' name="searchText" type="search" placeholder="Nhập vào tài khoản hoặc họ tên người dùng" />
                     </div>
                     <button className='button-find'>Tìm</button>
                 </form>
             </div>
-            <table class="table">
+            <table class="table table-wrapper ">
                 <thead>
                     <tr>
                         <th>STT</th>

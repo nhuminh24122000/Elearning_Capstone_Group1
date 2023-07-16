@@ -131,8 +131,8 @@ function CourseAdd() {
                 <form noValidate onSubmit={formik.handleSubmit}>
                     <div className="row">
                         <div className="col-md-6 col-item">
-                            <div className="form-group">
-                                <input required type="text" name="maKhoaHoc"
+                            <div className="form-group-admin">
+                                <input className='input-admin' required type="text" name="maKhoaHoc"
                                     {...formik.getFieldProps('maKhoaHoc')}
                                 />
                                 {formik.errors.maKhoaHoc && formik.touched.maKhoaHoc && <p className='text-error'>{formik.errors.maKhoaHoc}</p>}
@@ -141,8 +141,8 @@ function CourseAdd() {
                             </div>
                         </div>
                         <div className="col-md-6 col-item">
-                            <div className="form-group">
-                                <input required type="text" name="danhGia"
+                            <div className="form-group-admin">
+                                <input className='input-admin' required type="text" name="danhGia"
                                     {...formik.getFieldProps('danhGia')}
                                 />
                                 {formik.errors.danhGia && formik.touched.danhGia && <p className='text-error'>{formik.errors.danhGia}</p>}
@@ -151,8 +151,8 @@ function CourseAdd() {
                             </div>
                         </div>
                         <div className="col-md-6 col-item">
-                            <div className="form-group">
-                                <input required type="text" name="tenKhoaHoc"
+                            <div className="form-group-admin">
+                                <input className='input-admin' required type="text" name="tenKhoaHoc"
                                     {...formik.getFieldProps('tenKhoaHoc')}
                                 />
                                 {formik.errors.tenKhoaHoc && formik.touched.tenKhoaHoc && <p className='text-error'>{formik.errors.tenKhoaHoc}</p>}
@@ -161,8 +161,8 @@ function CourseAdd() {
                             </div>
                         </div>
                         <div className="col-md-6 col-item">
-                            <div className="form-group">
-                                <input required type="text" name="luotXem"
+                            <div className="form-group-admin">
+                                <input className='input-admin' required type="text" name="luotXem"
                                     {...formik.getFieldProps('luotXem')}
                                 />
                                 {formik.errors.luotXem && formik.touched.luotXem && <p className='text-error'>{formik.errors.luotXem}</p>}
@@ -171,7 +171,7 @@ function CourseAdd() {
                             </div>
                         </div>
                         <div className="col-md-6 col-item">
-                            <div className="form-group form-type">
+                            <div className="form-group-admin form-type">
                                 <div className='type-user mb-0 mr-3'>Danh mục khóa học: </div>
                                 <select className="form-select select-category" value={formik.values.danhMucKhoaHoc} onChange={(e) => formik.setFieldValue('danhMucKhoaHoc', e.target.value)}>
                                     <option value=''>Vui lòng chọn khóa học</option>
@@ -186,8 +186,8 @@ function CourseAdd() {
                         </div>
                         <div className="col-md-6 col-item mt-3">
                             <div className='type-user mb-0 mr-3'>Ngày tạo: </div>
-                            <div className="form-group">
-                                <input type="date" name="ngayTao"
+                            <div className="form-group-admin">
+                                <input className='input-admin' type="date" name="ngayTao"
                                     {...formik.getFieldProps('ngayTao')}
                                 />
                                 {formik.errors.ngayTao && formik.touched.ngayTao && <p className='text-error'>{formik.errors.ngayTao}</p>}
@@ -196,8 +196,8 @@ function CourseAdd() {
                             </div>
                         </div>
                         <div className="col-md-6 col-item">
-                            <div className="form-group">
-                                <input required type="text" name="nguoiTao"
+                            <div className="form-group-admin">
+                                <input className='input-admin' required type="text" name="nguoiTao"
                                     {...formik.getFieldProps('nguoiTao')}
                                 />
                                 {formik.errors.nguoiTao && formik.touched.nguoiTao && <p className='text-error'>{formik.errors.nguoiTao}</p>}
@@ -207,8 +207,8 @@ function CourseAdd() {
                         </div>
 
                         <div className="col-md-6 col-item mt-3">
-                            <div className="form-group">
-                                <input required type="text" name="hinhAnh"
+                            <div className="form-group-admin">
+                                <input className='input-admin' required type="text" name="hinhAnh"
                                     {...formik.getFieldProps('hinhAnh')}
                                 />
                                 {formik.errors.hinhAnh && formik.touched.hinhAnh && <p className='text-error'>{formik.errors.hinhAnh}</p>}
@@ -218,8 +218,8 @@ function CourseAdd() {
                         </div>
                     </div>
                     <div className="col-md-12 col-item mt-3">
-                        <div className="form-group">
-                            <input required type="text" name="moTa" className='input-moTa'
+                        <div className="form-group-admin">
+                            <input className='input-admin input-moTa' required type="text" name="moTa"
                                 {...formik.getFieldProps('moTa')}
                             />
                             {formik.errors.moTa && formik.touched.moTa && <p className='text-error'>{formik.errors.moTa}</p>}
