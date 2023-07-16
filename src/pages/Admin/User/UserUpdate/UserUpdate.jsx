@@ -121,8 +121,8 @@ function UserUpdate() {
                 <form noValidate onSubmit={formik.handleSubmit}>
                     <div className="row">
                         <div className="col-md-6 col-item">
-                            <div className="form-group">
-                                <input required type="text" name="taiKhoan" id='taiKhoan' style={{ cursor: 'no-drop' }} className="disabled-input"
+                            <div className="form-group-admin">
+                                <input  required type="text" name="taiKhoan" id='taiKhoan' style={{ cursor: 'no-drop' }} className="input-admin disabled-input"
                                     {...formik.getFieldProps('taiKhoan')}
                                 />
                                 <span className="highlight"></span>
@@ -130,8 +130,8 @@ function UserUpdate() {
                             </div>
                         </div>
                         <div className="col-md-6 col-item">
-                            <div className="form-group">
-                                <input required type="text" name="email"
+                            <div className="form-group-admin">
+                                <input className='input-admin' required type="text" name="email"
                                     // value={formik.values.email === '' && !formik.touched.email ? email : formik.values.email}
                                     {...formik.getFieldProps('email')}
                                 />
@@ -142,8 +142,8 @@ function UserUpdate() {
 
                         </div>
                         <div className="col-md-6 col-item">
-                            <div className="form-group">
-                                <input required type="text" name="matKhau"
+                            <div className="form-group-admin">
+                                <input className='input-admin' required type="text" name="matKhau"
                                     {...formik.getFieldProps('matKhau')}
                                     value={formik.values.matKhau === undefined && !formik.touched.matKhau ? '************' : formik.values.matKhau}
                                 />
@@ -154,8 +154,8 @@ function UserUpdate() {
 
                         </div>
                         <div className="col-md-6 col-item">
-                            <div className="form-group">
-                                <input required type="text" name="soDT"
+                            <div className="form-group-admin">
+                                <input className='input-admin' required type="text" name="soDT"
                                     // value={formik.values.soDT === '' && !formik.touched.soDT ? soDt : formik.values.soDT}
                                     {...formik.getFieldProps('soDT')}
                                 />
@@ -165,8 +165,8 @@ function UserUpdate() {
                             </div>
                         </div>
                         <div className="col-md-6 col-item">
-                            <div className="form-group">
-                                <input required type="text" name="hoTen"
+                            <div className="form-group-admin">
+                                <input className='input-admin' required type="text" name="hoTen"
                                     // value={formik.values.hoTen === '' && !formik.touched.hoTen ? hoTen : formik.values.hoTen}
                                     {...formik.getFieldProps('hoTen')}
                                 />
@@ -177,7 +177,7 @@ function UserUpdate() {
                         </div>
 
                         <div className="col-md-6 col-item">
-                            <div className="form-group form-type">
+                            <div className="form-group-admin form-type">
                                 <div className='d-flex'>
                                     <div className='type-user mb-0 mr-3'>Loại người dùng: </div>
                                     <select className="form-select"

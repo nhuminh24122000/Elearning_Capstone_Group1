@@ -240,7 +240,7 @@ function CourseManagement() {
                         <button>
                             <i className="fa fa-search" />
                         </button>
-                        <input onChange={handleChangeKey} className='w-100' name="searchText" type="search" placeholder="Nhập vào tên khóa học cần tìm" />
+                        <input style={{padding: '1rem'}} onChange={handleChangeKey} className='w-100' name="searchText" type="search" placeholder="Nhập vào tên khóa học cần tìm" />
                     </div>
                     <button className='button-find'>Tìm</button>
                 </form>

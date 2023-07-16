@@ -138,8 +138,8 @@ function CourseUpdate() {
                 <form noValidate onSubmit={formik.handleSubmit}>
                     <div className="row">
                         <div className="col-md-6 col-item">
-                            <div className="form-group">
-                                <input required type="text" name="maKhoaHoc" className="disabled-input"
+                            <div className="form-group-admin">
+                                <input className='input-admin disabled-input' required type="text" name="maKhoaHoc" 
                                     // value={maKhoaHoc}
                                     {...formik.getFieldProps('maKhoaHoc')}
                                 // value={formik.getFieldProps('maKhoaHoc')}
@@ -150,8 +150,8 @@ function CourseUpdate() {
                             </div>
                         </div>
                         <div className="col-md-6 col-item">
-                            <div className="form-group">
-                                <input required type="text" name="danhGia"
+                            <div className="form-group-admin">
+                                <input className='input-admin' required type="text" name="danhGia"
                                     {...formik.getFieldProps('danhGia')}
                                     value={formik.values.danhGia === undefined && !formik.touched.danhGia ? 10 : formik.values.danhGia}
                                 />
@@ -161,8 +161,8 @@ function CourseUpdate() {
                             </div>
                         </div>
                         <div className="col-md-6 col-item">
-                            <div className="form-group">
-                                <input required type="text" name="tenKhoaHoc"
+                            <div className="form-group-admin">
+                                <input className='input-admin' required type="text" name="tenKhoaHoc"
                                     // value={tenKhoaHoc}
                                     {...formik.getFieldProps('tenKhoaHoc')}
                                 />
@@ -172,8 +172,8 @@ function CourseUpdate() {
                             </div>
                         </div>
                         <div className="col-md-6 col-item">
-                            <div className="form-group">
-                                <input required type="text" name="luotXem"
+                            <div className="form-group-admin">
+                                <input className='input-admin' required type="text" name="luotXem"
                                     value={luotXem}
                                     {...formik.getFieldProps('luotXem')}
                                 />
@@ -183,7 +183,7 @@ function CourseUpdate() {
                             </div>
                         </div>
                         <div className="col-md-6 col-item">
-                            <div className="form-group form-type">
+                            <div className="form-group-admin form-type">
                                 <div className='type-user mb-0 mr-3'>Danh mục khóa học: </div>
                                 <select className="form-select select-category"
                                     {...formik.getFieldProps('danhMucKhoaHoc')}
@@ -203,8 +203,8 @@ function CourseUpdate() {
                         </div>
                         <div className="col-md-6 col-item mt-3">
                             <div className='type-user mb-0 mr-3'>Ngày tạo: </div>
-                            <div className="form-group">
-                                <input name="ngayTao"
+                            <div className="form-group-admin">
+                                <input className='input-admin' name="ngayTao"
                                     value={formik.getFieldProps(ngayTao)}
                                     {...formik.getFieldProps('ngayTao')}
                                 />
@@ -213,8 +213,8 @@ function CourseUpdate() {
                             </div>
                         </div>
                         <div className="col-md-6 col-item">
-                            <div className="form-group">
-                                <input required type="text" name="nguoiTao"
+                            <div className="form-group-admin">
+                                <input className='input-admin' required type="text" name="nguoiTao"
                                     // value={nguoiTao.taiKhoan}
                                     {...formik.getFieldProps('nguoiTao')}
                                 />
@@ -225,8 +225,8 @@ function CourseUpdate() {
                         </div>
 
                         <div className="col-md-6 col-item mt-3">
-                            <div className="form-group">
-                                <input required type="text" name="hinhAnh"
+                            <div className="form-group-admin">
+                                <input className='input-admin' required type="text" name="hinhAnh"
                                     value={hinhAnh}
                                     {...formik.getFieldProps('hinhAnh')}
                                 />
@@ -237,8 +237,8 @@ function CourseUpdate() {
                         </div>
                     </div>
                     <div className="col-md-12 col-item mt-3">
-                        <div className="form-group">
-                            <input required type="text" name="moTa" className='input-moTa'
+                        <div className="form-group-admin">
+                            <input className='input-admin input-moTa' required type="text" name="moTa" 
                                 value={moTa}
                                 {...formik.getFieldProps('moTa')}
                             />

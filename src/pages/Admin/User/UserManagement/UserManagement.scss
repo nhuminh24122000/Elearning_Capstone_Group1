@@ -39,15 +39,16 @@
 
     form {
         margin: 3rem 0 !important;
+
         .search button {
             border: none;
             background-color: transparent;
         }
-    
+
         .search button i {
             color: #ccc;
         }
-    
+
         .search input {
             border: none;
             outline: none;
@@ -76,7 +77,9 @@
 }
 
 
-
+.table-wrapper {
+    overflow-x: auto;
+}
 
 .table {
     background: #eee;
@@ -143,6 +146,7 @@
 
                 a {
                     display: block;
+
                     &:hover {
                         color: #000;
                     }

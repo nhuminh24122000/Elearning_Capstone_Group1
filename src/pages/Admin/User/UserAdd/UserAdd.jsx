@@ -104,8 +104,8 @@ function UserAdd() {
                 <form onSubmit={formik.handleSubmit} noValidate >
                     <div className="row">
                         <div className="col-md-6 col-item">
-                            <div className="form-group">
-                                <input required type="text" name="taiKhoan" id='taiKhoan' 
+                            <div className="form-group-admin">
+                                <input className='input-admin' required type="text" name="taiKhoan" id='taiKhoan' 
                                     value={formik.values.taiKhoan}
                                     {...formik.getFieldProps('taiKhoan')}
                                 />
@@ -116,8 +116,8 @@ function UserAdd() {
                             </div>
                         </div>
                         <div className="col-md-6 col-item">
-                            <div className="form-group">
-                                <input required type="text" name="email"
+                            <div className="form-group-admin">
+                                <input className='input-admin' required type="text" name="email"
                                     {...formik.getFieldProps('email')}
                                 />
                                 {formik.errors.email && formik.touched.email && <p className='text-error'>{formik.errors.email}</p>}
@@ -127,8 +127,8 @@ function UserAdd() {
 
                         </div>
                         <div className="col-md-6 col-item">
-                            <div className="form-group">
-                                <input required type="text" name="matKhau"
+                            <div className="form-group-admin">
+                                <input className='input-admin' required type="text" name="matKhau"
                                     {...formik.getFieldProps('matKhau')}
                                 />
                                 {formik.errors.matKhau && formik.touched.matKhau && <p className='text-error'>{formik.errors.matKhau}</p>}
@@ -138,8 +138,8 @@ function UserAdd() {
 
                         </div>
                         <div className="col-md-6 col-item">
-                            <div className="form-group">
-                                <input required type="text" name="soDT"
+                            <div className="form-group-admin">
+                                <input className='input-admin' required type="text" name="soDT"
                                     {...formik.getFieldProps('soDT')}
                                 />
                                 {formik.errors.soDT && formik.touched.soDT && <p className='text-error'>{formik.errors.soDT}</p>}
@@ -149,8 +149,8 @@ function UserAdd() {
                             </div>
                         </div>
                         <div className="col-md-6 col-item">
-                            <div className="form-group">
-                                <input required type="text" name="hoTen"
+                            <div className="form-group-admin">
+                                <input className='input-admin' required type="text" name="hoTen"
                                     {...formik.getFieldProps('hoTen')}
                                 />
                                 {formik.errors.hoTen && formik.touched.hoTen && <p className='text-error'>{formik.errors.hoTen}</p>}
@@ -160,7 +160,7 @@ function UserAdd() {
                         </div>
 
                         <div className="col-md-6 col-item">
-                            <div className="form-group form-type">
+                            <div className="form-group-admin form-type">
                                 <div className='d-flex'>
                                     <div className='type-user mb-0 mr-3'>Loại người dùng: </div>
                                     <select className="form-select" value={formik.values.maLoaiNguoiDung} onChange={(e) => formik.setFieldValue('maLoaiNguoiDung', e.target.value)}>

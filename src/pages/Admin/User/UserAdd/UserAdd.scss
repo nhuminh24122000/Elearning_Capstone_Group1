@@ -25,7 +25,7 @@ form {
     margin-top: 5rem;
 }
 
-.form-group {
+.form-group-admin {
     position: relative;
     margin-bottom: 4.5rem;
 }
@@ -34,7 +34,7 @@ form {
     margin-bottom: 1.5rem;
 }
 
-input {
+.input-admin {
     display: block;
     width: 40rem;
     font-size: 1.6rem;
@@ -43,7 +43,7 @@ input {
     border-bottom: 1px solid #000;
 }
 
-input:focus {
+.input-admin:focus {
     outline: none;
     border-color: #0c20bb;
     outline: none;
@@ -58,8 +58,8 @@ input:focus {
     transition: all 0.2s ease;
 }
 
-input:focus~.label-admin,
-input:valid~.label-admin {
+.input-admin:focus~.label-admin,
+.input-admin:valid~.label-admin {
     top: -0rem;
     font-size: 1.4rem;
     color: #0c20bb;
@@ -135,6 +135,10 @@ input:valid~.label-admin {
     margin-top: 0.5rem;
     color: red;
     font-weight: 500;
+}
+
+.disabled-input {
+    pointer-events: none;
 }
 
 
