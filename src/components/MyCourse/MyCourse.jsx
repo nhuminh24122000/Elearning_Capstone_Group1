@@ -1,21 +1,15 @@
 import { Empty } from 'antd';
-import axios from 'axios';
 import React, { Fragment, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import { Rating } from "react-simple-star-rating";
 import Swal from 'sweetalert2';
-import { ACCESS_TOKEN, CYBERSOFT_TOKEN, defaultImage } from '../../constant';
-import { getLocal } from '../../utils';
-import './MyCourse.scss';
 import CourseItem from '../CourseItem/CourseItem';
 import Paginate from '../Paginate/Paginate';
-import Carts from '../Carts/Carts';
+import './MyCourse.scss';
 
 
 
 
-function MyCourse({ handleProfile }) {
+function MyCourse({handleProfile} ) {
     const { userProfile } = useSelector(state => state.UserReducer);
     const [key, setKey] = useState();
     const [listSearch, setListSearch] = useState(null);
@@ -44,9 +38,7 @@ function MyCourse({ handleProfile }) {
 
             if (result.length > 0) {
                 setListSearch(result);
-                // handleProfile()
             } else {
-                // handleProfile()
 
                 setListSearch([])
             }
@@ -91,7 +83,6 @@ function MyCourse({ handleProfile }) {
 
     useEffect(() => {
         let newData = (listSearch || renderList).slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
-        console.log('newData', newData)
         setData(newData);
     }, [listSearch || renderList, page]);
 

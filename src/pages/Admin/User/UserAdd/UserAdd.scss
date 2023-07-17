@@ -65,11 +65,15 @@ form {
     color: #0c20bb;
 }
 
-.form-type {
+.form-types {
     display: flex;
     flex-direction: column;
     margin: 0;
     line-height: 5rem;
+
+    .form-type {
+        display: flex;
+    }
 }
 
 .type-user {
@@ -80,7 +84,7 @@ form {
     margin-bottom: 1rem;
 }
 
-.footer {
+.footer-buttons {
     font-size: 1.8rem;
 }
 
@@ -116,12 +120,12 @@ form {
     color: #000;
 }
 
-.content form .footer {
+.content form .footer-buttons {
     display: flex;
     justify-content: space-between;
 }
 
-.content form .footer .button a {
+.content form .footer-buttons .button a {
     display: flex;
     align-items: center;
 }
@@ -142,5 +146,52 @@ form {
 }
 
 
+//-----------RESPONSIVE------------------
+@media screen and (max-width: 1024px) {
+    .input-admin {
+        width: 35rem;
+    }
 
+    .footer-buttons .btn-add {
+        margin-right: 1rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .input-admin {
+        width: 25rem;
+    }
+
+    .form-types .form-type {
+        display: block;
+    }
+
+    .form-select {
+        padding: 1rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .input-admin {
+        width: 100%;
+    }
+
+    .form-types .form-type {
+        display: flex;
+    }
+
+    .footer-buttons {
+        margin-top: 3rem;
+    }
+}
+
+@media screen and (max-width: 415px) {
+    .title h1 {
+        font-size: 2.5rem;
+    }
+
+    .form-types .form-type {
+        display: block;
+    }
+}
 

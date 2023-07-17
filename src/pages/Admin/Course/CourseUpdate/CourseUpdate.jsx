@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import './CourseUpdate.scss';
-import { NavLink, useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import axios from 'axios';
-import { CYBERSOFT_TOKEN, GROUP_ID } from '../../../../constant';
 import { useFormik } from 'formik';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { NavLink, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import * as Yup from 'yup';
+import { CYBERSOFT_TOKEN, GROUP_ID } from '../../../../constant';
+import './CourseUpdate.scss';
 
 
 
@@ -43,9 +43,8 @@ function CourseUpdate() {
     }
 
     const schema = Yup.object({
-        // maKhoaHoc: Yup.string().required('Mã khóa học không được để trống'),
         tenKhoaHoc: Yup.string().required('Têm khóa học không được để trống'),
-        danhGia: Yup.string().required('Đánh giá không được để trống').matches(regex.numberRegex, 'Đánh giá phải là 1 con số'),
+        danhGia: Yup.string().matches(regex.numberRegex, 'Đánh giá phải là 1 con số'),
         luotXem: Yup.string().required('Lượt xem không được để trống').matches(regex.numberRegex, 'Lượt xem phải là 1 con số'),
         nguoiTao: Yup.string().required('Người tạo không được để trống'),
         ngayTao: Yup.string().required('Ngày tạo không được để trống').matches(regex.datePattern, 'Ngày tạo phải đúng định dạng'),
@@ -72,9 +71,6 @@ function CourseUpdate() {
         validationSchema: schema,
 
         onSubmit: async (values) => {
-            console.log('values', values)
-
-
             if (!formik.dirty) {
                 Swal.fire({
                     position: 'center',
@@ -92,7 +88,6 @@ function CourseUpdate() {
                     url: 'https://elearningnew.cybersoft.edu.vn/api/QuanLyKhoaHoc/CapNhatKhoaHoc',
                     data: {
                         "maKhoaHoc": values.maKhoaHoc,
-                        // "biDanh": ,
                         "tenKhoaHoc": values.tenKhoaHoc,
                         "moTa": values.moTa,
                         "luotXem": values.luotXem,
@@ -107,7 +102,6 @@ function CourseUpdate() {
                         TokenCybersoft: `${CYBERSOFT_TOKEN}`,
                     }
                 })
-                console.log('resp', resp)
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
@@ -115,6 +109,7 @@ function CourseUpdate() {
                     showConfirmButton: false,
                     timer: 1500
                 })
+
             } catch (err) {
                 console.log(err.response.data)
                 Swal.fire({
@@ -139,10 +134,8 @@ function CourseUpdate() {
                     <div className="row">
                         <div className="col-md-6 col-item">
                             <div className="form-group-admin">
-                                <input className='input-admin disabled-input' required type="text" name="maKhoaHoc" 
-                                    // value={maKhoaHoc}
+                                <input className='input-admin disabled-input' required type="text" name="maKhoaHoc"
                                     {...formik.getFieldProps('maKhoaHoc')}
-                                // value={formik.getFieldProps('maKhoaHoc')}
                                 />
                                 {formik.errors.maKhoaHoc && formik.touched.maKhoaHoc && <p className='text-error'>{formik.errors.maKhoaHoc}</p>}
                                 <span className="highlight"></span>
@@ -153,7 +146,7 @@ function CourseUpdate() {
                             <div className="form-group-admin">
                                 <input className='input-admin' required type="text" name="danhGia"
                                     {...formik.getFieldProps('danhGia')}
-                                    value={formik.values.danhGia === undefined && !formik.touched.danhGia ? 10 : formik.values.danhGia}
+                                    value={formik.values.danhGia === undefined && !formik.touched.danhGia ? '69' : formik.values.danhGia}
                                 />
                                 {formik.errors.danhGia && formik.touched.danhGia && <p className='text-error'>{formik.errors.danhGia}</p>}
                                 <span className="highlight"></span>
@@ -163,7 +156,6 @@ function CourseUpdate() {
                         <div className="col-md-6 col-item">
                             <div className="form-group-admin">
                                 <input className='input-admin' required type="text" name="tenKhoaHoc"
-                                    // value={tenKhoaHoc}
                                     {...formik.getFieldProps('tenKhoaHoc')}
                                 />
                                 {formik.errors.tenKhoaHoc && formik.touched.tenKhoaHoc && <p className='text-error'>{formik.errors.tenKhoaHoc}</p>}
@@ -189,7 +181,6 @@ function CourseUpdate() {
                                     {...formik.getFieldProps('danhMucKhoaHoc')}
                                     onChange={(e) => formik.setFieldValue('danhMucKhoaHoc', e.target.value)}
                                 >
-
                                     <option value=''>Vui lòng chọn khóa học</option>
                                     {listCourseCategory.map((item) => {
                                         return (
@@ -215,7 +206,6 @@ function CourseUpdate() {
                         <div className="col-md-6 col-item">
                             <div className="form-group-admin">
                                 <input className='input-admin' required type="text" name="nguoiTao"
-                                    // value={nguoiTao.taiKhoan}
                                     {...formik.getFieldProps('nguoiTao')}
                                 />
                                 {formik.errors.nguoiTao && formik.touched.nguoiTao && <p className='text-error'>{formik.errors.nguoiTao}</p>}
@@ -237,19 +227,18 @@ function CourseUpdate() {
                         </div>
                     </div>
                     <div className="col-md-12 col-item mt-3">
+                        <div className='type-user mb-0 mr-3'>Mô tả: </div>
                         <div className="form-group-admin">
-                            <input className='input-admin input-moTa' required type="text" name="moTa" 
-                                value={moTa}
+                            <textarea className='input-moTa' name="moTa"
+                                value={formik.getFieldProps(moTa)}
                                 {...formik.getFieldProps('moTa')}
                             />
                             {formik.errors.moTa && formik.touched.moTa && <p className='text-error'>{formik.errors.moTa}</p>}
                             <span className="highlight"></span>
-                            <label className='label-admin' for="moTa">Mô tả :</label>
                         </div>
                     </div>
 
-
-                    <div className='footer'>
+                    <div className='footer-buttons'>
                         <button className="button-back">
                             <NavLink to='/admin/coursemanagement'>
                                 <i className="fa fa-arrow-left mr-3"></i>

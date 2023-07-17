@@ -57,7 +57,7 @@ function UserManagement() {
     }, [listUserAdmin, pageUser, listSearch, pageSearch]);
 
     const handlePageClick = (event) => {
-        setPageUser(event.selected + 1) 
+        setPageUser(event.selected + 1)
         setPageSearch(event.selected + 1)
     }
 
@@ -98,7 +98,6 @@ function UserManagement() {
                 }
 
             })
-            console.log('resp', resp)
             Swal.fire({
                 position: 'center',
                 icon: 'success',
@@ -202,17 +201,15 @@ function UserManagement() {
                     TokenCybersoft: `${CYBERSOFT_TOKEN}`
                 }
             })
-            console.log('resp', resp.data)
             const result = resp.data.filter((item) => {
                 const hoTenMatch = item.hoTen.toLowerCase().includes(key.toLowerCase());
                 const taiKhoanMatch = item.taiKhoan.toLowerCase().includes(key.toLowerCase());
                 return hoTenMatch || taiKhoanMatch
             })
-            
+
             setListSearch(result)
             setPageSearch(1)
             setPageUser(1);
-
 
         } catch (err) {
             setListSearch([])
@@ -220,7 +217,6 @@ function UserManagement() {
         }
 
     }
-
 
     return (
         <div className='container'>
@@ -233,32 +229,36 @@ function UserManagement() {
                         <button>
                             <i className="fa fa-search" />
                         </button>
-                        <input style={{padding: '1rem'}} onChange={handleChangeKey} className='w-100' name="searchText" type="search" placeholder="Nhập vào tài khoản hoặc họ tên người dùng" />
+                        <input style={{ padding: '1rem' }} onChange={handleChangeKey} className='w-100' name="searchText" type="search" placeholder="Nhập vào tài khoản hoặc họ tên người dùng" />
                     </div>
                     <button className='button-find'>Tìm</button>
                 </form>
             </div>
-            <table class="table table-wrapper ">
-                <thead>
-                    <tr>
-                        <th>STT</th>
-                        <th>Tài Khoản</th>
-                        <th>Họ Tên</th>
-                        <th>Email</th>
-                        <th>Số Điện Thoại</th>
-                        <th>Thao tác</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {handleUser()}
-                </tbody>
-            </table>
-            <div className='py-5'>
-                <Paginate
-                    handlePageClick={handlePageClick}
-                    pageCount={Math.ceil((listSearch.length ? listSearch : listUserAdmin).length / PAGE_SIZE)}
-                    forcePage={pageUser - 1}
+            <div className=' table-wrapper'>
+                <table class="table  ">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Tài Khoản</th>
+                            <th>Họ Tên</th>
+                            <th>Email</th>
+                            <th>Số Điện Thoại</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {handleUser()}
+                    </tbody>
+
+                </table>
+
+                <div className='py-5 paginate-admin'>
+                    <Paginate
+                        handlePageClick={handlePageClick}
+                        pageCount={Math.ceil((listSearch.length ? listSearch : listUserAdmin).length / PAGE_SIZE)}
+                        forcePage={pageUser - 1}
                     />
+                </div>
             </div>
 
             {showPopup && <PopupUser taiKhoan={selectedTaiKhoan} courseNeedAuth={courseNeedAuth} courseCofirm={courseCofirm} />}

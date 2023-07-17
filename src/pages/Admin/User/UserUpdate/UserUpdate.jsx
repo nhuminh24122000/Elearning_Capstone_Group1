@@ -177,8 +177,8 @@ function UserUpdate() {
                         </div>
 
                         <div className="col-md-6 col-item">
-                            <div className="form-group-admin form-type">
-                                <div className='d-flex'>
+                            <div className="form-group-admin form-types">
+                                <div className='form-type'>
                                     <div className='type-user mb-0 mr-3'>Loại người dùng: </div>
                                     <select className="form-select"
                                         value={formik.values.maLoaiNguoiDung === '' && !formik.touched.maLoaiNguoiDung ? maLoaiNguoiDung.toUpperCase() : formik.values.maLoaiNguoiDung} onChange={(e) => formik.setFieldValue('maLoaiNguoiDung', e.target.value)}
@@ -196,7 +196,7 @@ function UserUpdate() {
                     </div>
 
 
-                    <div className='footer'>
+                    <div className='footer-buttons'>
                         <button className="button-back">
                             <NavLink to='/admin/usermanagement'>
                                 <i className="fa fa-arrow-left mr-3"></i>

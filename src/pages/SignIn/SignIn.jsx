@@ -5,9 +5,12 @@ import SignInImage from "../../assets/img/signinimage.png";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { axiosWithAuth } from "../../services/config.services";
-import { saveLocal } from "../../utils";
-import { ACCESS_TOKEN } from "../../constant";
+import { getLocal, saveLocal } from "../../utils";
+import { ACCESS_TOKEN, CYBERSOFT_TOKEN } from "../../constant";
 import { Input } from "antd";
+import { setUserProfile } from "../../redux/reducers/userReducer";
+import axios from "axios";
+import { useDispatch } from "react-redux";
 
 // Validate Yup form
 const schemaSignIn = Yup.object({
@@ -44,11 +47,11 @@ function SignIn(props) {
           props.showAlert("Đăng nhập tài khoản thành công!", "success");
         }
 
+        saveLocal(ACCESS_TOKEN, resp.data.accessToken);
         setTimeout(() => {
           navigate("/userinfo");
         }, 1500);
 
-        saveLocal(ACCESS_TOKEN, resp.data.accessToken);
       } catch (err) {
         console.log(err);
         props.showAlert(

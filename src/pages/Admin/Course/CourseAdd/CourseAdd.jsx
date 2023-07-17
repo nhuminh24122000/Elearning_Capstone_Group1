@@ -1,17 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
-import './CourseAdd.scss';
-import { NavLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { ACCESS_TOKEN, CYBERSOFT_TOKEN, GROUP_ID } from '../../../../constant';
 import { useFormik } from 'formik';
-import { getLocal } from '../../../../utils';
+import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import * as Yup from 'yup';
-
-
-
-
+import { ACCESS_TOKEN, CYBERSOFT_TOKEN, GROUP_ID } from '../../../../constant';
+import { getLocal } from '../../../../utils';
+import './CourseAdd.scss';
 
 
 function CourseAdd() {
@@ -72,8 +67,6 @@ function CourseAdd() {
         validationSchema: schema,
 
         onSubmit: async (values) => {
-            console.log('values', values)
-
             try {
                 const resp = await axios({
                     method: 'post',
@@ -96,7 +89,6 @@ function CourseAdd() {
                         TokenCybersoft: `${CYBERSOFT_TOKEN}`,
                     }
                 })
-                console.log('resp', resp)
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
@@ -172,7 +164,7 @@ function CourseAdd() {
                         </div>
                         <div className="col-md-6 col-item">
                             <div className="form-group-admin form-type">
-                                <div className='type-user mb-0 mr-3'>Danh mục khóa học: </div>
+                                <div className='type-user mb-4 mr-3'>Danh mục khóa học: </div>
                                 <select className="form-select select-category" value={formik.values.danhMucKhoaHoc} onChange={(e) => formik.setFieldValue('danhMucKhoaHoc', e.target.value)}>
                                     <option value=''>Vui lòng chọn khóa học</option>
                                     {listCourseCategory.map((item) => {
@@ -181,8 +173,8 @@ function CourseAdd() {
                                         )
                                     })}
                                 </select>
-                            </div>
                             {formik.errors.danhMucKhoaHoc && formik.touched.danhMucKhoaHoc && <p className='text-error'>{formik.errors.danhMucKhoaHoc}</p>}
+                            </div>
                         </div>
                         <div className="col-md-6 col-item mt-3">
                             <div className='type-user mb-0 mr-3'>Ngày tạo: </div>
@@ -217,9 +209,9 @@ function CourseAdd() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-12 col-item mt-3">
+                    {/* <div className="col-md-12 col-item mt-3 px-0">
                         <div className="form-group-admin">
-                            <input className='input-admin input-moTa' required type="text" name="moTa"
+                            <textarea className='input-admin input-moTa'  required type="text" name="moTa"
                                 {...formik.getFieldProps('moTa')}
                             />
                             {formik.errors.moTa && formik.touched.moTa && <p className='text-error'>{formik.errors.moTa}</p>}
@@ -228,9 +220,20 @@ function CourseAdd() {
 
 
                         </div>
+                    </div> */}
+
+                    <div className="col-md-12 col-item mt-3 px-0">
+                        <div className='type-user mb-0 mr-3 mb-3'>Mô tả: </div>
+                        <div className="form-group-admin">
+                            <textarea className='input-moTa' name="moTa"
+                                {...formik.getFieldProps('moTa')}
+                            />
+                            {formik.errors.moTa && formik.touched.moTa && <p className='text-error'>{formik.errors.moTa}</p>}
+                            <span className="highlight"></span>
+                        </div>
                     </div>
 
-                    <div className='footer'>
+                    <div className='footer-buttons'>
                         <button className="button-back">
                             <NavLink to='/admin/coursemanagement'>
                                 <i className="fa fa-arrow-left mr-3"></i>

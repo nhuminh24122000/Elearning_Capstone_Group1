@@ -106,13 +106,15 @@
                 line-height: 1.2;
                 font-weight: 800;
                 padding: 2rem 0;
-                border-bottom: 3px solid #f2f2f2;
+                border-top: 0;
+                // border-bottom: 3px solid #f2f2f2;
 
 
             }
 
             .buttons {
                 padding: 1rem 0;
+                display: flex;
             }
 
             .btn-ghidanh,
@@ -180,5 +182,22 @@
                 cursor: pointer;
             }
         }
+    }
+}
+
+//-----------RESPONSIVE------------------
+@media screen and (max-width: 1024px) {
+    .table tbody tr td {
+        padding: 2rem 1rem;
+    }
+
+    .paginate-admin {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 415px) {
+    .user-manage-title h1 a {
+        font-size: 2.6rem;
     }
 }
