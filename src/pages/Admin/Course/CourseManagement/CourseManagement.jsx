@@ -1,36 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import './CourseManagement.scss';
-import { NavLink } from 'react-router-dom';
 import axios from 'axios';
-import { ACCESS_TOKEN, CYBERSOFT_TOKEN, GROUP_ID, defaultImage } from '../../../../constant';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setListCourseAdmin, setListNotRegister, setListUserCofirm, setListUserNeedRegister } from '../../../../redux/reducers/Admin/courseAdminReducer';
-import './CourseManagement.scss'
-import Paginate from '../../../../components/Paginate/Paginate';
-import { getLocal, saveLocal } from '../../../../utils';
-import Swal from 'sweetalert2'
+import { NavLink } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import PopupCourse from '../../../../components/Admin/PopupCourse/PopupCourse';
+import Paginate from '../../../../components/Paginate/Paginate';
+import { ACCESS_TOKEN, CYBERSOFT_TOKEN, GROUP_ID, defaultImage } from '../../../../constant';
+import { setListNotRegister, setListUserCofirm, setListUserNeedRegister } from '../../../../redux/reducers/Admin/courseAdminReducer';
+import { getLocal, saveLocal } from '../../../../utils';
+import './CourseManagement.scss';
 
 
 function CourseManagement() {
     const dispatch = useDispatch();
     const { listCourseAdmin } = useSelector(state => state.CourseAdminReducer);
     const [selectedMaKhoaHoc, setSelectedMaKhoaHoc] = useState(null);
-
-
     const PAGE_SIZE = 20;
     const [pageCourse, setPageCourse] = useState(1)
     const [data, setData] = useState([]);
-
     const [showPopup, setShowPopup] = useState(false);
-
     const [key, setKey] = useState('');
     const [listSearch, setListSearch] = useState([]);
     const [pageSearch, setPageSearch] = useState(1)
     const [dataSearch, setDataSearch] = useState([]);
-
-
-
 
     // Handle Course ra giao diện
     const courseAdminAPI = async () => {
@@ -42,7 +34,6 @@ function CourseManagement() {
                     TokenCybersoft: `${CYBERSOFT_TOKEN}`
                 }
             })
-            dispatch(setListCourseAdmin(resp.data))
             saveLocal('listCourseAdmin', resp.data)
         } catch (err) {
             console.log(err)
@@ -69,7 +60,7 @@ function CourseManagement() {
                     </td>
                     <td className='course-item'>{item.luotXem}</td>
                     <td className='course-item'>{item.nguoiTao.taiKhoan}</td>
-                    <td>
+                    <td className='buttons mt-3'>
                         <button className='btn-ghidanh' data-toggle="modal" data-target="#exampleModal" onClick={() => handlePopupOpen(item.maKhoaHoc)}>
                             Ghi danh
                         </button>
@@ -240,34 +231,36 @@ function CourseManagement() {
                         <button>
                             <i className="fa fa-search" />
                         </button>
-                        <input style={{padding: '1rem'}} onChange={handleChangeKey} className='w-100' name="searchText" type="search" placeholder="Nhập vào tên khóa học cần tìm" />
+                        <input style={{ padding: '1rem' }} onChange={handleChangeKey} className='w-100' name="searchText" type="search" placeholder="Nhập vào tên khóa học cần tìm" />
                     </div>
                     <button className='button-find'>Tìm</button>
                 </form>
             </div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>STT</th>
-                        <th>Mã khóa học</th>
-                        <th>Tên khóa học</th>
-                        <th>Hình ảnh</th>
-                        <th>Lượt xem</th>
-                        <th>Người Tạo</th>
-                        <th>Thao tác</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {handleCourse()}
-                </tbody>
-            </table>
-            <div>
-                <Paginate
-                    handlePageClick={handlePageClick}
-                    pageCount={Math.ceil((listSearch.length > 0 ? listSearch : listCourseAdmin).length / PAGE_SIZE)}
-                    forcePage={pageCourse - 1}
-                />
+            <div className=' table-wrapper'>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Mã khóa học</th>
+                            <th>Tên khóa học</th>
+                            <th>Hình ảnh</th>
+                            <th>Lượt xem</th>
+                            <th>Người Tạo</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {handleCourse()}
+                    </tbody>
+                </table>
             </div>
+                <div className='py-5'>
+                    <Paginate
+                        handlePageClick={handlePageClick}
+                        pageCount={Math.ceil((listSearch.length > 0 ? listSearch : listCourseAdmin).length / PAGE_SIZE)}
+                        forcePage={pageCourse - 1}
+                    />
+                </div>
 
 
             {showPopup && <PopupCourse maKhoaHoc={selectedMaKhoaHoc} stuNeedCofirm={stuNeedCofirm} stuCofirm={stuCofirm} />}

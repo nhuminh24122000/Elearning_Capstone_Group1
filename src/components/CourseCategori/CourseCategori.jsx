@@ -20,7 +20,7 @@ function CourseCategori() {
     })
 
     const handleChange = (value) => {
-        console.log(`selected ${value}`);
+        // console.log(`selected ${value}`);
     };
     
     const handleCourseCategori = async () => {

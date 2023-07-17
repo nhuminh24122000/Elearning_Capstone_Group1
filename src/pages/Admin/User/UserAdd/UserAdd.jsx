@@ -1,6 +1,5 @@
 import React from 'react';
 import './UserAdd.scss';
-// import AddAndUpdateUser from '../../../../components/Admin/AddAndUpdateUser/AddAndUpdateUser';
 import axios from 'axios';
 import { getLocal } from '../../../../utils';
 import { ACCESS_TOKEN, CYBERSOFT_TOKEN, GROUP_ID } from '../../../../constant';
@@ -52,7 +51,6 @@ function UserAdd() {
         validationSchema: schema,
 
         onSubmit: async (values) => {
-            console.log('values',values)
             try {
                 const resp = await axios({
                     method: 'post',
@@ -160,8 +158,8 @@ function UserAdd() {
                         </div>
 
                         <div className="col-md-6 col-item">
-                            <div className="form-group-admin form-type">
-                                <div className='d-flex'>
+                            <div className="form-group-admin form-types">
+                                <div className='form-type'>
                                     <div className='type-user mb-0 mr-3'>Loại người dùng: </div>
                                     <select className="form-select" value={formik.values.maLoaiNguoiDung} onChange={(e) => formik.setFieldValue('maLoaiNguoiDung', e.target.value)}>
                                         <option value=''>Vui lòng chọn người dùng</option>
@@ -181,7 +179,7 @@ function UserAdd() {
                     </div>
 
 
-                    <div className='footer'>
+                    <div className='footer-buttons'>
                         <button className="button-back">
                             <NavLink to='/admin/usermanagement'>
                                 <i className="fa fa-arrow-left mr-3"></i>

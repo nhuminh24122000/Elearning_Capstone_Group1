@@ -119,7 +119,6 @@ function PopupUser({ taiKhoan, courseNeedAuth, courseCofirm }) {
                     TokenCybersoft: `${CYBERSOFT_TOKEN}`,
                 }
             })
-            console.log('resp', resp)
             LayKHDaXetDuyet(user);
             setPageCofirm(1)
             Swal.fire({
@@ -176,7 +175,7 @@ function PopupUser({ taiKhoan, courseNeedAuth, courseCofirm }) {
 
 
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
+                                {/* <span aria-hidden="true">×</span> */}
                             </button>
                         </div>
                         <div className="modal-body">

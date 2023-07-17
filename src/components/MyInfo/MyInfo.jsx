@@ -9,20 +9,16 @@ import { getLocal } from '../../utils';
 import './MyInfo.scss';
 
 
-function MyInfo() {
 
+function MyInfo() {
     const { userProfile } = useSelector(state => state.UserReducer);
-    const { email, hoTen, soDT, taiKhoan, matKhau, maLoaiNguoiDung } = userProfile;
+    const { email, hoTen, soDT, soDt, taiKhoan, matKhau, maLoaiNguoiDung } = userProfile;
 
     const regex = {
         phone: /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
     }
 
     const schema = Yup.object({
-        taiKhoan: Yup.string()
-            .required('Tài khoản không được để trống').trim()
-            .min(2, 'Phải ít nhất 2 ký tự')
-            .max(10, 'Không quá 10 ký tự'),
         matKhau: Yup.string()
             .required('Mật khẩu không được để trống').trim()
             .min(2, 'Phải ít nhất 2 ký tự')
@@ -43,24 +39,38 @@ function MyInfo() {
     const formik = useFormik({
         initialValues: {
             email: email,
-            hoTen: '',
-            soDT: '',
+            hoTen: hoTen,
+            soDT: soDT,
             taiKhoan: taiKhoan,
-            matKhau: '',
+            matKhau: matKhau,
+            maLoaiNguoiDung: maLoaiNguoiDung,
+            maNhom: GROUP_ID,
         },
-
         validationSchema: schema,
-
         onSubmit: async (values) => {
-
+            if (!formik.dirty) {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Chưa có gì để thay đổi ',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                return
+            }
             try {
                 const resp = await axios({
                     method: 'put',
                     url: 'https://elearningnew.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung',
+                
                     data: {
-                        ...values,
-                        maLoaiNguoiDung: maLoaiNguoiDung,
+                        taiKhoan: values.taiKhoan,
+                        matKhau: values.matKhau,
+                        hoTen: values.hoTen,
+                        soDT: values.soDT,
+                        maLoaiNguoiDung: values.maLoaiNguoiDung,
                         maNhom: GROUP_ID,
+                        email: values.email,
                     },
                     headers: {
                         Authorization: `Bearer ${getLocal(ACCESS_TOKEN)}`,
@@ -74,32 +84,29 @@ function MyInfo() {
                     showConfirmButton: false,
                     timer: 1500
                 })
-                console.log('resp', resp)
             } catch (err) {
                 console.log(err)
             }
-        }
-
+        },
+        enableReinitialize: true,
     })
 
     return (
         <div className="information_area">
-            <form  onSubmit={formik.handleSubmit}>
+            <form onSubmit={formik.handleSubmit}>
                 <div className="right_detail row">
                     <div className="col-12 col-sm-12 col-md-6 col-lg-6 col-right">
                         <div className="form-group">
                             <label className='label_form' htmlFor="email">Email :</label>
                             <input disabled type="text" className='form-control input_form' placeholder='Email' id='email' name='email'
-                                {...formik.getFieldProps('email')}
                                 value={email}
-                            />
+                                />
                         </div>
                         <div className="form-group">
                             <label className='label_form' htmlFor="hoTen">Họ Tên :</label>
                             <input type="text" className='form-control input_form' placeholder='Họ Tên' id='hoTen' name='hoTen'
-                        
+                                value={formik.values.hoTen  && !formik.touched.hoTen ? hoTen : formik.values.hoTen}
                                 {...formik.getFieldProps('hoTen')}
-                                value={formik.values.hoTen === '' && !formik.touched.hoTen ? hoTen : formik.values.hoTen}
                             />
                             {formik.errors.hoTen && formik.touched.hoTen && <p className='text-error'>{formik.errors.hoTen}</p>}
                         </div>
@@ -107,7 +114,7 @@ function MyInfo() {
                             <label className='label_form' htmlFor="soDT">Điện thoại :</label>
                             <input type="text" className='form-control input_form' placeholder='Điện thoại' id='soDT' name='soDT'
                                 {...formik.getFieldProps('soDT')}
-                                value={formik.values.soDT === '' && !formik.touched.soDT ? soDT : formik.values.soDT}
+                                value={formik.values.soDT === '' && !formik.touched.soDT ? soDT || soDt : formik.values.soDT}
                             />
                             {formik.errors.soDT && formik.touched.soDT && <p className='text-error'>{formik.errors.soDT}</p>}
                         </div>
@@ -117,7 +124,7 @@ function MyInfo() {
                         <div className="form-group">
                             <label className='label_form' htmlFor="taiKhoan">Tài Khoản :</label>
                             <input disabled type="text" className='form-control input_form' placeholder='Tài Khoản' id='taiKhoan' name='taiKhoan'
-                                {...formik.getFieldProps('taiKhoan')}
+                                // {...formik.getFieldProps('taiKhoan')}
                                 value={taiKhoan}
                             />
                         </div>

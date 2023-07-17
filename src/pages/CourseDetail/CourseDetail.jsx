@@ -17,7 +17,6 @@ function CourseDetail() {
     const navigate = useNavigate();
     const { detailCourse } = useSelector(state => state.CourseReducer);
     const { userProfile } = useSelector(state => state.UserReducer);
-    console.log('userProfile',userProfile.taiKhoan)
 
 
     const handleCourseDetail = async () => {
@@ -86,9 +85,7 @@ function CourseDetail() {
                 <div className="col-12 col-7 col-sm-7">
                     <h1>{detailCourse?.danhMucKhoaHoc?.tenDanhMucKhoaHoc}</h1>
                     <p className='d-flex align-items-center'>Đánh giá khóa học:
-                        {/* <span className='rating'> */}
                             <Rating initialValue={4} className='mx-3' />
-                        {/* </span> */}
                     </p>
                     <button onClick={isSignin}>Đăng ký</button>
                 </div>

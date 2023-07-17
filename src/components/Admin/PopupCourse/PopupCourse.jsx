@@ -17,7 +17,6 @@ function PopupCourse({ maKhoaHoc, stuNeedCofirm, stuCofirm }) {
     const [pageNeedCofirm, setPageNeedCofirm] = useState(1)
     const [dataNeedCofirm, setDataNeedCofirm] = useState([]);
     const [pageCofirm, setPageCofirm] = useState(1)
-    console.log('pageCofirm', pageCofirm)
     const [dataCofirm, setDataCofirm] = useState([]);
 
     const [selectedTaiKhoan, setSelectedTaiKhoan] = useState('');
@@ -25,7 +24,6 @@ function PopupCourse({ maKhoaHoc, stuNeedCofirm, stuCofirm }) {
 
 
     const userRegister = async (id, user, actionType) => {
-        console.log('id, user, actionType', id, user, actionType)
         if (user === '') {
             Swal.fire({
                 position: 'center',
@@ -100,7 +98,6 @@ function PopupCourse({ maKhoaHoc, stuNeedCofirm, stuCofirm }) {
                 showConfirmButton: false,
                 timer: 1500
             })
-            console.log('resp', resp)
 
         } catch (err) {
             console.log(err)
@@ -118,7 +115,6 @@ function PopupCourse({ maKhoaHoc, stuNeedCofirm, stuCofirm }) {
                     TokenCybersoft: `${CYBERSOFT_TOKEN}`,
                 }
             })
-            console.log('resp', resp)
             stuNeedCofirm(id);
             setPageCofirm(1)
             Swal.fire({

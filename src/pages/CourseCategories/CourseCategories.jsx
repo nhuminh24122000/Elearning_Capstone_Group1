@@ -16,29 +16,6 @@ function CourseCategories() {
     const { listCourseCategory } = useSelector(state => state.CourseReducer);
 
     const PAGE_SIZE = 8;
-    // const PAGE_SIZE = (window.innerWidth < 1025 && window.innerWidth > 768) ? 9 : 8;
-    // const [PAGE_SIZE, setPageSize] = useState(8);
-    // const [PAGE_SIZE, setPageSize] = useState((window.innerWidth < 1025 && window.innerWidth > 768) ? 9 : 8);
-
-//   useEffect(() => {
-//     const handleResize = () => {
-//         if(window.innerWidth < 1025 && window.innerWidth > 768) {
-//             setPageSize(9)
-//         } else {
-//             setPageSize(8)
-//         }
-//     };
-//     handleResize();
-
-
-//     window.addEventListener('resize', handleResize);
-
-//     return () => window.removeEventListener('resize', handleResize);
-
-//   }, []);
-
-
-
     const [page, setPage] = useState(1)
     const [data, setData] = useState([]);
 
@@ -52,7 +29,6 @@ function CourseCategories() {
                     TokenCybersoft: `${CYBERSOFT_TOKEN}`
                 }
             })
-            console.log(resp);
             dispatch(setListCourseCategory(resp.data));
         } catch (err) {
             console.log(err)
@@ -66,7 +42,6 @@ function CourseCategories() {
 
     useEffect(() => {
         let newData = listCourseCategory.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
-        console.log('newData', newData)
         setData(newData);
     }, [listCourseCategory, page]);
 

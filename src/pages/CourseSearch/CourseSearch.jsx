@@ -2,11 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import CoursesList from "../../components/CoursesList/CoursesList";
 import { getCoursesBySearchPaginationApi } from "../../services/course";
-import { _paginate } from "../../services/pagination";
 import ReactPaginate from 'react-paginate';
-import { CYBERSOFT_TOKEN, GROUP_ID } from "../../constant";
-import axios from "axios";
-import Paginate from "../../components/Paginate/Paginate";
 
 
 export default function CourseSearch() {
@@ -14,11 +10,9 @@ export default function CourseSearch() {
 
   //pagination
   const [currentPage, setCurrentPage] = useState(1);
-  console.log('currentPage', currentPage)
   const pageSize = 5;
   const [totalPages, setTotalPages] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
-  console.log('totalCount',totalCount)
   const [count, setCount] = useState(1);
 
   let keyword = searchParams.has("tenkhoahoc")
@@ -26,84 +20,16 @@ export default function CourseSearch() {
     : "";
 
   const [searchCourseList, setSearchCourseList] = useState([]);
-  console.log('searchCourseList', searchCourseList)
 
   const getCoursesBySearchPagination = (page) => {
-    // return getCoursesBySearchPaginationApi(keyword, page, pageSize);
     return getCoursesBySearchPaginationApi(keyword, page, pageSize);
   };
-
-  //pagination
-  const getCoursePageChange = (page) => {
-    getCoursesBySearchPagination(page)
-      .then((res) => setSearchCourseList(res.data.items))
-      .catch((err) => console.log(err));
-  };
-
-  // useEffect(() => {
-  //   getCoursesBySearchPagination(1)
-  //     .then((res) => {
-  //       setSearchCourseList(res.data.items);
-  //       setTotalCount(res.data.totalCount);
-  //       setTotalPages(Math.ceil(res.data.totalCount / pageSize));
-  //       setCurrentPage(1);
-  //       setCount(1);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       setSearchCourseList([]);
-  //       setCurrentPage(1);
-  //       setTotalCount(0);
-  //       setCount(1);
-  //     });
-  // }, [keyword]);
-
-  //pagination
-  const paginate = () =>
-    _paginate(
-      [count, setCount],
-      totalCount,
-      pageSize,
-      totalPages,
-      [currentPage, setCurrentPage],
-      getCoursePageChange
-    );
-
-  //   const handleTimKiemKH = async () => {
-  //     if (keyword !== '') {
-  //         try {
-  //             const resp = await axios({
-  //                 method: 'get',
-  //                 // url: `https://elearningnew.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc?tenKhoaHoc=${params.key}&MaNhom=${MA_NHOM}`,
-  //                 url: `https://elearningnew.cybersoft.edu.vn/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc_PhanTrang?tenKhoaHoc=${keyword}&page=${currentPage}&pageSize=${pageSize}&MaNhom=${GROUP_ID}`,
-  //                 headers: {
-  //                     TokenCybersoft: `${CYBERSOFT_TOKEN}`,
-  //                 }
-  //             })
-  //             console.log('resp',resp.data)
-
-  //             // setListSearch(resp.data)
-  //             setSearchCourseList(resp.data.items)
-  //             setTotalCount(resp.data.totalCount)
-  //             setTotalPages(resp.data.totalPages)
-
-  //         } catch (err) {
-  //           setSearchCourseList([]);
-  //             console.log(err)
-  //         }
-
-  //     } else {
-  //       setSearchCourseList([]);
-  //     }
-
-  // }
 
   const fetchData = async () => {
     try {
       const res = await getCoursesBySearchPagination(currentPage);
       setSearchCourseList(res.data.items);
       setTotalCount(res.data.totalCount);
-      // setTotalPages(Math.ceil(res.data.totalCount / pageSize));
       setTotalPages(res.data.totalPages);
       setCount(1);
     } catch (err) {
@@ -118,7 +44,6 @@ export default function CourseSearch() {
   useEffect(() => {
     fetchData();
   }, [keyword, currentPage]);
-
 
   useEffect(() => {
     setCurrentPage(1);
