@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Carousel from "../../components/Carousel/Carousel";
 import CoursesRender from "../../components/CoursesRender/CoursesRender";
 import { getCourses } from "../../redux/reducers/courseReducer";
 import { courseSelector } from "../../redux/selectors/selectors";
 import { getCoursesApi } from "../../services/course";
+import Cover from "../../components/Cover/Cover";
+import "./Home.scss";
+import HomeInfo from "../../components/HomeInfo/HomeInfo";
+import HomeFeedBack from "../../components/HomeFeedBack/HomeFeedBack";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -32,11 +35,14 @@ export default function Home() {
 
   return (
     <>
-      <Carousel />
-      <section className="content mt-4">
-        <h3 className="container text-left my-5">Các khoá học mới nhất</h3>
+      <Cover />
+      <section className="content py-5">
+        <h2 className="text-center my-5">CÁC KHÓA HỌC MỚI NHẤT</h2>
         {renderCourses(8)}
       </section>
+      {/* #f4f8ff */}
+      <HomeInfo />
+      <HomeFeedBack />
     </>
   );
 }

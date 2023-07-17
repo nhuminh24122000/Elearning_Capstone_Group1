@@ -5,7 +5,7 @@ export default function CoursesRender(props) {
   const courseList = props.courseList;
 
   return (
-    <div className="container pt-2" style={{ backgroundColor: "#f8f9fa" }}>
+    <div className="container pt-2">
       <div className="row">
         {courseList.map((course) => {
           return (

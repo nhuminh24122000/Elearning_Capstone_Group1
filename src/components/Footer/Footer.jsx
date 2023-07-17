@@ -58,7 +58,7 @@ export default function Footer() {
                   type="email"
                   name="email"
                   id=""
-                  placeholder="Email Address"
+                  placeholder="Địa chỉ Email"
                 />
                 <i class="fa-solid fa-paper-plane"></i>
               </div>
