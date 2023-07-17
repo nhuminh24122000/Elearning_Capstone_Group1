@@ -1,9 +1,21 @@
 .left-sidebar {
-    background-color: #f2994a;
-    border-right: 2px solid #ccc;
-    width: 20vw;
-    a {
-        padding-bottom: 1rem;
-        font-size: 2rem;
+  background-color: #f2994a;
+  border-right: 2px solid #ccc;
+  width: 20vw;
+  i {
+    font-size: 2rem;
+  }
+  a {
+    font-size: 1.6rem;
+  }
+  li {
+    width: 100%;
+    padding: 1rem 3rem;
+    &:hover {
+        background-color: #ccc;
     }
+    a {
+        transition: all 0.3s;
+    }
+  }
 }

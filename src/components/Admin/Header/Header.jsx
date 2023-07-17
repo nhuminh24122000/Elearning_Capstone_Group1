@@ -6,14 +6,14 @@ import LogoImage from "../../../assets/img/cyberlogo-black.png";
 function Header() {
   return (
     <>
-      <div className="header-container container-fluid d-flex justify-content-between align-items-center">
-        <div className="header-logo d-flex justify-content-between align-items-center py-4">
+      <div className="header-container container-fluid">
+        <div className="header-logo d-flex align-items-center justify-content-between  py-4">
           <img src={LogoImage} alt="" />
-          <h1 className="ml-4">Dashboard</h1>
-        </div>
-        <div className="header-name">
+          <h1 className="ml-4">CyberSoft Dashboard</h1>
+          <div className="header-name">
             <span className="mr-3">Hi, my name is hung</span>
             <i class="fa-solid fa-user"></i>
+          </div>
         </div>
       </div>
     </>

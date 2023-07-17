@@ -77,8 +77,7 @@ function CourseCategories() {
 
 
     return (
-
-        < >
+        <>
             <h1 className='course-category'>
                 {listCategori.map((item) => {
                     if (item.maDanhMuc === params.categoriesId) {

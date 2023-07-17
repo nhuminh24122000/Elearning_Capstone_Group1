@@ -2,12 +2,13 @@ import { lazy, useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomeTemplate from './templates/HomeTemplate/HomeTemplate'
 import HomeAdminTemplate from './templates/HomeAdminTemplate/HomeAdminTemplate';
-import UserManagement from './pages/Admin/User/UserManagement/UserManagement';
-import UserAdd from './pages/Admin/User/UserAdd/UserAdd';
-import UserUpdate from './pages/Admin/User/UserUpdate/UserUpdate';
-import CourseManagement from './pages/Admin/Course/CourseManagement/CourseManagement';
-import CourseAdd from './pages/Admin/Course/CourseAdd/CourseAdd';
-import CourseUpdate from './pages/Admin/Course/CourseUpdate/CourseUpdate';
+// import UserManagement from './pages/Admin/User/UserManagement/UserManagement';
+// import UserAdd from './pages/Admin/User/UserAdd/UserAdd';
+// import UserUpdate from './pages/Admin/User/UserUpdate/UserUpdate';
+// import CourseManagement from './pages/Admin/Course/CourseManagement/CourseManagement';
+// import CourseAdd from './pages/Admin/Course/CourseAdd/CourseAdd';
+// import CourseUpdate from './pages/Admin/Course/CourseUpdate/CourseUpdate';
+// import HomeAdmin from './pages/Admin/HomeAdmin/HomeAdmin';
 
 const Home = lazy(() => import('./pages/Home/Home'));
 const CourseCategories = lazy(() => import('./pages/CourseCategories/CourseCategories'));
@@ -16,7 +17,14 @@ const CourseDetail = lazy(() => import('./pages/CourseDetail/CourseDetail'));
 const SignUp = lazy(() => import('./pages/SignUp/SignUp'));
 const SignIn = lazy(() => import('./pages/SignIn/SignIn'));
 const UserInfo = lazy(() => import('./pages/UserInfo/UserInfo'));
-const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
+// const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
+const HomeAdmin = lazy(() => import('./pages/Admin/HomeAdmin/HomeAdmin'));
+const UserManagement = lazy(() => import('./pages/Admin/User/UserManagement/UserManagement'));
+const UserAdd = lazy(() => import('./pages/Admin/User/UserAdd/UserAdd'));
+const UserUpdate = lazy(() => import('./pages/Admin/User/UserUpdate/UserUpdate'));
+const CourseManagement = lazy(() => import('./pages/Admin/Course/CourseManagement/CourseManagement'));
+const CourseAdd = lazy(() => import('./pages/Admin/Course/CourseAdd/CourseAdd'));
+const CourseUpdate = lazy(() => import('./pages/Admin/Course/CourseUpdate/CourseUpdate'));
 
 
 function App() {
@@ -50,7 +58,8 @@ function App() {
             </Routes>
             <Routes>
                 <Route path='/admin' element={<HomeAdminTemplate />}>
-                    <Route path='usermanagement' index element={<UserManagement />} />
+                    <Route index element={<HomeAdmin />} />
+                    <Route path='usermanagement' element={<UserManagement />} />
                     <Route path='useradd' element={<UserAdd />} />
                     <Route path='userupdate'  >
                         <Route path=':id' element={<UserUpdate />}/>
