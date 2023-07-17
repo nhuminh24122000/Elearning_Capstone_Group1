@@ -38,10 +38,6 @@ function Header() {
     },
     {
       key: "2",
-      label: <NavLink to={"/userinfo"}>Khóa học của tôi</NavLink>,
-    },
-    {
-      key: "3",
       label: (
         <NavLink onClick={handleLogout} to={"/signin"}>
           Đăng xuất
@@ -58,18 +54,6 @@ function Header() {
             <NavLink className="navbar-brand" to="/">
               <img className="LogoHome" src={LogoHome} alt="" />
             </NavLink>
-
-            {/* <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <i class="fa-solid fa-bars icon-bar"></i>
-          </button> */}
 
             <label htmlFor="openNav" className="openNav">
               <i class="fa-solid fa-bars"></i>
@@ -136,7 +120,7 @@ function Header() {
                           arrow
                         >
                           <Button className="header-user ml-0 ml-sm-5">
-                            Hello, {userProfile.hoTen}
+                            Xin chào, {userProfile.taiKhoan}
                           </Button>
                         </Dropdown>
                       </div>

@@ -16,15 +16,6 @@
     transform: translateY(-2rem);
 }
 
-input {
-    border-radius: 2rem;
-}
-
-
-form {
-    margin-top: 5rem;
-}
-
 .form-group-admin {
     position: relative;
     margin-bottom: 4.5rem;
@@ -37,6 +28,7 @@ form {
 .input-admin {
     display: block;
     width: 40rem;
+    border-radius: 2rem;
     font-size: 1.6rem;
     padding: 1rem;
     border: none;
