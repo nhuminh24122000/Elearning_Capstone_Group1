@@ -11,6 +11,8 @@ import { Input } from "antd";
 import { setUserProfile } from "../../redux/reducers/userReducer";
 import axios from "axios";
 import { useDispatch } from "react-redux";
+import Swal from 'sweetalert2';
+
 
 // Validate Yup form
 const schemaSignIn = Yup.object({
@@ -43,9 +45,17 @@ function SignIn(props) {
         });
         console.log(resp);
 
-        if (resp.status === 200) {
-          props.showAlert("Đăng nhập tài khoản thành công!", "success");
-        }
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Đăng nhập tài khoản thành công! ',
+          showConfirmButton: false,
+          timer: 1500
+      })
+
+        // if (resp.status === 200) {
+        //   props.showAlert("Đăng nhập tài khoản thành công!", "success");
+        // }
 
         saveLocal(ACCESS_TOKEN, resp.data.accessToken);
         setTimeout(() => {
@@ -54,10 +64,17 @@ function SignIn(props) {
 
       } catch (err) {
         console.log(err);
-        props.showAlert(
-          "Đăng nhập tài khoản thất bại, xin vui lòng thử lại",
-          "danger"
-        );
+        // props.showAlert(
+        //   "Đăng nhập tài khoản thất bại, xin vui lòng thử lại",
+        //   "danger"
+        // );
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Đăng nhập tài khoản thất bại, xin vui lòng thử lại ',
+          showConfirmButton: false,
+          timer: 1500
+      })
       }
     },
   });

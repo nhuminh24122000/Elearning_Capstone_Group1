@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 import { useSelector } from 'react-redux'
 import { getLocal } from '../../../../utils';
+import '../UserAdd/UserAdd.scss'
 
 
 function UserUpdate() {
