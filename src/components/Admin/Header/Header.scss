@@ -5,4 +5,43 @@
             width: 15rem;
         }
     }
+
+    .header-name {
+        span {
+            font-weight: 600;
+        }
+    }
+}
+
+//-----------RESPONSIVE------------------
+@media screen and (max-width: 768px) {
+    .header-logo h1 {
+        margin-left: 0 !important;
+        font-size: 2.2rem;
+        text-align: center;
+        padding: 0 2rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .header-logo h1 {
+        margin-left: 0 !important;
+        font-size: 2rem;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 415px) {
+    .header-container .header-logo img {
+        width: 10rem;
+    }
+
+    .header-logo h1 {
+        padding: 0;
+        font-size: 2.2rem;
+    }
+
+    .header-name {
+        display: none;
+    }
 }

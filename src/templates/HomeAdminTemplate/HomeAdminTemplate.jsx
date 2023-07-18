@@ -10,27 +10,30 @@ function HomeAdminTemplate() {
     <>
       <Header />
       <div className="d-flex">
-        <ul className="left-sidebar col-4 col-md-2 d-flex flex-column p-0">
+        <ul className="left-sidebar col-2  d-flex flex-column p-0">
           <li className="d-flex align-items-center mt-4">
             <NavLink to="/admin">
               <i class="fa-solid fa-house mr-3"></i>
-              Trang Chủ Admin
+              <span className="home-template">Trang Chủ Admin</span>
+              {/* Trang Chủ Admin */}
             </NavLink>
           </li>
           <li className="d-flex align-items-center">
             <NavLink to="usermanagement">
               <i class="fa-solid fa-users-gear mr-2"></i>
-              Quản Lý Người Dùng
+              <span className="home-template">Quản Lý Người Dùng</span>
+              {/* Quản Lý Người Dùng */}
             </NavLink>
           </li>
           <li className="d-flex align-items-center">
             <NavLink to="coursemanagement">
               <i class="mr-4 fa-solid fa-clipboard"></i>
-              Quản Lý Khóa Học
+              <span className="home-template">Quản Lý Khóa Học</span>
+              {/* Quản Lý Khóa Học */}
             </NavLink>
           </li>
         </ul>
-        <div className="col-8 col-md-10 p-0">
+        <div className="col-10 p-0">
           <Suspense fallback={<Skeleton />}>
             <Outlet />
           </Suspense>

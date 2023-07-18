@@ -210,18 +210,6 @@ function CourseAdd() {
                             </div>
                         </div>
                     </div>
-                    {/* <div className="col-md-12 col-item mt-3 px-0">
-                        <div className="form-group-admin">
-                            <textarea className='input-admin input-moTa'  required type="text" name="moTa"
-                                {...formik.getFieldProps('moTa')}
-                            />
-                            {formik.errors.moTa && formik.touched.moTa && <p className='text-error'>{formik.errors.moTa}</p>}
-                            <span className="highlight"></span>
-                            <label className='label-admin' for="moTa">Mô tả :</label>
-
-
-                        </div>
-                    </div> */}
 
                     <div className="col-md-12 col-item mt-3 px-0">
                         <div className='type-user mb-0 mr-3 mb-3'>Mô tả: </div>
