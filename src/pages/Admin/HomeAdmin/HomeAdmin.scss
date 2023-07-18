@@ -1,36 +1,114 @@
 .wrapper {
-  background-color: #fdf0f0;
-  padding: 3rem;
-  .list-unstyled {
-    .media {
-      background-color: #fff;
-      box-shadow: 0 0 30px rgba($color: #000000, $alpha: 0.1);
-      border-radius: 1rem;
-      padding: 2rem;
-      width: 100%;
-      i {
-        font-size: 3.5rem;
-        color: #f2994a;
-      }
-      h5 {
-        font-size: 1.8rem;
-      }
-      p {
-        font-size: 2rem;
-      }
+    background-color: #fdf0f0;
+    padding: 5rem 2rem;
+
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 3rem;
     }
-  }
-  .bar,
-  .pie {
-    box-shadow: 0 0 30px rgba($color: #000000, $alpha: 0.1);
-    border-radius: 1rem;
-    background-color: #fff;
-    padding: 2rem;
-  }
-  .pie {
-    height: 35rem;
-    canvas {
-        margin: 0 auto;
+
+    .list-unstyled {
+        .media {
+            background-color: #fff;
+            box-shadow: 0 0 30px rgba($color: #000000, $alpha: 0.1);
+            border-radius: 1rem;
+            width: 100%;
+            height: 17rem;
+            margin-bottom: 2rem;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            
+            i {
+                margin-bottom: 2rem;
+                font-size: 4.5rem;
+                color: #f2994a;
+            }
+
+            h2 {
+                text-align: center;
+            }
+
+            
+
+
+        }
     }
-  }
+
+    .bar,
+    .pie {
+        box-shadow: 0 0 30px rgba($color: #000000, $alpha: 0.1);
+        border-radius: 1rem;
+        background-color: #fff;
+        padding: 2rem;
+        // height: 100%;    
+        width: 598px;
+        height: 340px;
+
+        canvas {
+            height: 100% !important;
+        }
+    }
+
+    .bar {
+        height: 100%;
+    }
+
+    .pie {
+        canvas {
+            margin: 0 auto;
+        }
+    }
 }
+
+//-----------RESPONSIVE------------------
+@media screen and (max-width: 1024px) {
+    .media h5 {
+        font-size: 1.8rem;
+    }
+
+    .wrapper .bar, .wrapper .pie {
+        width: 398px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper .bar, .wrapper .pie {
+        width: 280px;
+    }
+
+    .wrapper .pie canvas {
+        width: 260px;
+    }
+    
+}
+
+@media screen and (max-width: 600px) {
+    .col-bar {
+        margin-bottom: 3rem;
+    }
+
+    .col-bar, .col-pie {
+        height: 30rem;
+    }
+
+    .wrapper .bar, .wrapper .pie {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 415px) {
+    .wrapper .bar canvas, .wrapper .pie canvas {
+        width: 150px;
+    }
+
+}
+
+
+
+
+
+

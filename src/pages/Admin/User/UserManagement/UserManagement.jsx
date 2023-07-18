@@ -9,6 +9,7 @@ import Paginate from '../../../../components/Paginate/Paginate';
 import { getLocal, saveLocal } from '../../../../utils';
 import Swal from 'sweetalert2'
 import PopupUser from '../../../../components/Admin/PopupUser/PopupUser';
+import SignIn from '../../../SignIn/SignIn';
 
 function UserManagement() {
     const dispatch = useDispatch();
@@ -219,50 +220,55 @@ function UserManagement() {
     }
 
     return (
-        <div className='container'>
-            <div className='user-manage-title'>
-                <h1 >
-                    <NavLink to='/admin/useradd'>Thêm Người Dùng </NavLink>
-                </h1>
-                <form className="d-flex my-lg-0" onSubmit={handleSearchUser}>
-                    <div className="search d-flex w-100 p-0 pl-4">
-                        <button>
-                            <i className="fa fa-search" />
-                        </button>
-                        <input style={{ padding: '1rem' }} onChange={handleChangeKey} className='w-100' name="searchText" type="search" placeholder="Nhập vào tài khoản hoặc họ tên người dùng" />
+        <>
+            {getLocal(ACCESS_TOKEN) ? (
+                <div className='container'>
+                    <div className='user-manage-title'>
+                        <h1 >
+                            <NavLink to='/admin/useradd'>Thêm Người Dùng </NavLink>
+                        </h1>
+                        <form className="d-flex my-lg-0" onSubmit={handleSearchUser}>
+                            <div className="search d-flex w-100 p-0 pl-4">
+                                <button>
+                                    <i className="fa fa-search" />
+                                </button>
+                                <input style={{ padding: '1rem' }} onChange={handleChangeKey} className='w-100' name="searchText" type="search" placeholder="Nhập vào tài khoản hoặc họ tên người dùng" />
+                            </div>
+                            <button className='button-find'>Tìm</button>
+                        </form>
                     </div>
-                    <button className='button-find'>Tìm</button>
-                </form>
-            </div>
-            <div className=' table-wrapper'>
-                <table class="table  ">
-                    <thead>
-                        <tr>
-                            <th>STT</th>
-                            <th>Tài Khoản</th>
-                            <th>Họ Tên</th>
-                            <th>Email</th>
-                            <th>Số Điện Thoại</th>
-                            <th>Thao tác</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {handleUser()}
-                    </tbody>
+                    <div className=' table-wrapper'>
+                        <table class="table  ">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Tài Khoản</th>
+                                    <th>Họ Tên</th>
+                                    <th>Email</th>
+                                    <th>Số Điện Thoại</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {handleUser()}
+                            </tbody>
 
-                </table>
+                        </table>
 
-                <div className='py-5 paginate-admin'>
-                    <Paginate
-                        handlePageClick={handlePageClick}
-                        pageCount={Math.ceil((listSearch.length ? listSearch : listUserAdmin).length / PAGE_SIZE)}
-                        forcePage={pageUser - 1}
-                    />
+                        <div className='py-5 paginate-admin'>
+                            <Paginate
+                                handlePageClick={handlePageClick}
+                                pageCount={Math.ceil((listSearch.length ? listSearch : listUserAdmin).length / PAGE_SIZE)}
+                                forcePage={pageUser - 1}
+                            />
+                        </div>
+                    </div>
+
+                    {showPopup && <PopupUser taiKhoan={selectedTaiKhoan} courseNeedAuth={courseNeedAuth} courseCofirm={courseCofirm} />}
                 </div>
-            </div>
+            ) : <SignIn />}
+        </>
 
-            {showPopup && <PopupUser taiKhoan={selectedTaiKhoan} courseNeedAuth={courseNeedAuth} courseCofirm={courseCofirm} />}
-        </div>
     )
 }
 

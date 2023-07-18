@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 import { CYBERSOFT_TOKEN, GROUP_ID } from '../../../../constant';
 import '../../User/UserAdd/UserAdd.scss';
+import '../CourseAdd/CourseAdd.scss'
 
 
 

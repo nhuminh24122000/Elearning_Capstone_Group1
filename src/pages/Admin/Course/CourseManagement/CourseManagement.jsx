@@ -10,6 +10,7 @@ import { setListNotRegister, setListUserCofirm, setListUserNeedRegister } from '
 import { getLocal, saveLocal } from '../../../../utils';
 import './CourseManagement.scss';
 import '../../User/UserManagement/UserManagement.scss'
+import SignIn from '../../../SignIn/SignIn';
 
 
 function CourseManagement() {
@@ -222,50 +223,55 @@ function CourseManagement() {
 
 
     return (
-        <div className='container'>
-            <div className='user-manage-title'>
-                <h1 >
-                    <NavLink to='/admin/courseadd'>Thêm Khóa Học </NavLink>
-                </h1>
-                <form className="d-flex my-lg-0" onSubmit={handleSearchCourse}>
-                    <div className="search d-flex w-100 p-0 pl-4">
-                        <button>
-                            <i className="fa fa-search" />
-                        </button>
-                        <input style={{ padding: '1rem' }} onChange={handleChangeKey} className='w-100' name="searchText" type="search" placeholder="Nhập vào tên khóa học cần tìm" />
+        <>
+            {getLocal(ACCESS_TOKEN) ? (
+                <div className='container'>
+                    <div className='user-manage-title'>
+                        <h1 >
+                            <NavLink to='/admin/courseadd'>Thêm Khóa Học </NavLink>
+                        </h1>
+                        <form className="d-flex my-lg-0" onSubmit={handleSearchCourse}>
+                            <div className="search d-flex w-100 p-0 pl-4">
+                                <button>
+                                    <i className="fa fa-search" />
+                                </button>
+                                <input style={{ padding: '1rem' }} onChange={handleChangeKey} className='w-100' name="searchText" type="search" placeholder="Nhập vào tên khóa học cần tìm" />
+                            </div>
+                            <button className='button-find'>Tìm</button>
+                        </form>
                     </div>
-                    <button className='button-find'>Tìm</button>
-                </form>
-            </div>
-            <div className=' table-wrapper'>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>STT</th>
-                            <th>Mã khóa học</th>
-                            <th>Tên khóa học</th>
-                            <th>Hình ảnh</th>
-                            <th>Lượt xem</th>
-                            <th>Người Tạo</th>
-                            <th>Thao tác</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {handleCourse()}
-                    </tbody>
-                </table>
-            </div>
-                <div className='py-5'>
-                    <Paginate
-                        handlePageClick={handlePageClick}
-                        pageCount={Math.ceil((listSearch.length > 0 ? listSearch : listCourseAdmin).length / PAGE_SIZE)}
-                        forcePage={pageCourse - 1}
-                    />
+                    <div className=' table-wrapper'>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Mã khóa học</th>
+                                    <th>Tên khóa học</th>
+                                    <th>Hình ảnh</th>
+                                    <th>Lượt xem</th>
+                                    <th>Người Tạo</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {handleCourse()}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className='py-5'>
+                        <Paginate
+                            handlePageClick={handlePageClick}
+                            pageCount={Math.ceil((listSearch.length > 0 ? listSearch : listCourseAdmin).length / PAGE_SIZE)}
+                            forcePage={pageCourse - 1}
+                        />
+                    </div>
+
+
+                    {showPopup && <PopupCourse maKhoaHoc={selectedMaKhoaHoc} stuNeedCofirm={stuNeedCofirm} stuCofirm={stuCofirm} />}
                 </div>
+            ) : <SignIn />}
+        </>
 
-
-            {showPopup && <PopupCourse maKhoaHoc={selectedMaKhoaHoc} stuNeedCofirm={stuNeedCofirm} stuCofirm={stuCofirm} />}
-        </div>
     )
 }
 
