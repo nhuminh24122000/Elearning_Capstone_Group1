@@ -84,7 +84,7 @@ function SignUp(props) {
   return (
     <form className="signup-wrapper" onSubmit={formik.handleSubmit}>
       <div className="signup-container row">
-        <div className="signup-left col-7 col-12">
+        <div className="signup-left col-12 col-md-7">
           <h1 className="text-center">Tạo tài khoản</h1>
           <div className="signup-form">
             <div className="form-left">
@@ -161,7 +161,7 @@ function SignUp(props) {
             </NavLink>
           </div>
         </div>
-        <div className="signup-right col-5 col-md-0 d-none d-lg-block">
+        <div className="signup-right col-0 col-md-5 d-none d-md-block">
           <img src={SignUpImage} alt="" />
           Đã có tài khoản? <NavLink to={'/signin'}>Đăng nhập</NavLink>
         </div>

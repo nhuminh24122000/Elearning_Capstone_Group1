@@ -8,7 +8,7 @@ function Header() {
     <>
       <div className="header-container container-fluid">
         <div className="header-logo d-flex align-items-center justify-content-between  py-4">
-          <img src={LogoImage} alt="" />
+          <NavLink to={'/'}><img src={LogoImage} alt="" /></NavLink>
           <h1 className="ml-4">CyberSoft Dashboard</h1>
           <div className="header-name">
             <span className="mr-3">Hi, my name is hung</span>

@@ -2,13 +2,6 @@ import { lazy, useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomeTemplate from './templates/HomeTemplate/HomeTemplate'
 import HomeAdminTemplate from './templates/HomeAdminTemplate/HomeAdminTemplate';
-// import UserManagement from './pages/Admin/User/UserManagement/UserManagement';
-// import UserAdd from './pages/Admin/User/UserAdd/UserAdd';
-// import UserUpdate from './pages/Admin/User/UserUpdate/UserUpdate';
-// import CourseManagement from './pages/Admin/Course/CourseManagement/CourseManagement';
-// import CourseAdd from './pages/Admin/Course/CourseAdd/CourseAdd';
-// import CourseUpdate from './pages/Admin/Course/CourseUpdate/CourseUpdate';
-// import HomeAdmin from './pages/Admin/HomeAdmin/HomeAdmin';
 
 const Home = lazy(() => import('./pages/Home/Home'));
 const CourseCategories = lazy(() => import('./pages/CourseCategories/CourseCategories'));
@@ -28,6 +21,8 @@ const CourseUpdate = lazy(() => import('./pages/Admin/Course/CourseUpdate/Course
 
 
 function App() {
+
+    // Create State Alert
     const [alert, setAlert] = useState(null)
     const showAlert = (message, type) => {
         setAlert({

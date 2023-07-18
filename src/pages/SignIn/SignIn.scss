@@ -22,7 +22,6 @@
     box-shadow: 0 0 40px rgba($color: #000000, $alpha: 0.2);
     padding: 3rem 4rem 4rem 4rem;
     background-color: #f2994a;
-    margin-left: 5rem;
     h1 {
       margin: 5rem 0 2rem;
       text-align: center;
@@ -31,7 +30,7 @@
     .remember {
       margin-left: 5px;
     }
-    .form-group {
+    .form-group { 
       background-color: #fff;
       padding: 1rem 2rem;
       border-radius: 2rem;
@@ -65,11 +64,6 @@
       color: rgb(128, 12, 12);
       font-size: 1.4rem;
     }
-    .signin-fb {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
     input[type="text"],
     input[type="password"] {
       border: none;
@@ -89,7 +83,6 @@
 }
 
 // Responsive
-
 @media only screen and (max-width: 1024px) {
   .signin-wrapper {
     .signin-container {
@@ -129,9 +122,9 @@
 @media only screen and (max-width: 576px) {
   .signin-wrapper {
     .signin-container {
-      height: 53rem;
+      height: 50rem;
       margin-left: 0;
-      width: 70%;
+      width: 80%;
       img {
         width: 13rem;
       }
@@ -149,8 +142,9 @@
 @media only screen and (max-width: 376px) {
   .signin-wrapper {
     .signin-container {
+      height: 40rem;
+      padding: 2rem 2rem 4rem;
       margin-left: 0;
-      width: 70%;
       img {
         width: 10rem;
       }
