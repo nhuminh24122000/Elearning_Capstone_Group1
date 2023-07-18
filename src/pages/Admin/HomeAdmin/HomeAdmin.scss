@@ -1,24 +1,36 @@
 .wrapper {
-    background-color: #fdf0f0;
-    padding: 3rem;
-    .list-unstyled {
-        gap: 0 2rem;
-        .media {
-            background-color: #fff;
-            box-shadow: 0 0 30px rgba($color: #000000, $alpha: 0.1);
-            border-radius: 1rem;
-            padding: 2rem;
-            width: 100%;
-            i {
-                font-size: 3.5rem;
-                color: #f2994a;
-            }
-            h5 {
-                font-size: 1.8rem;
-            }
-            p {
-                font-size: 2rem;
-            }
-        }
+  background-color: #fdf0f0;
+  padding: 3rem;
+  .list-unstyled {
+    .media {
+      background-color: #fff;
+      box-shadow: 0 0 30px rgba($color: #000000, $alpha: 0.1);
+      border-radius: 1rem;
+      padding: 2rem;
+      width: 100%;
+      i {
+        font-size: 3.5rem;
+        color: #f2994a;
+      }
+      h5 {
+        font-size: 1.8rem;
+      }
+      p {
+        font-size: 2rem;
+      }
     }
+  }
+  .bar,
+  .pie {
+    box-shadow: 0 0 30px rgba($color: #000000, $alpha: 0.1);
+    border-radius: 1rem;
+    background-color: #fff;
+    padding: 2rem;
+  }
+  .pie {
+    height: 35rem;
+    canvas {
+        margin: 0 auto;
+    }
+  }
 }
