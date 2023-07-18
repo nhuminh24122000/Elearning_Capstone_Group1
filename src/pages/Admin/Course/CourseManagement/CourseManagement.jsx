@@ -9,6 +9,7 @@ import { ACCESS_TOKEN, CYBERSOFT_TOKEN, GROUP_ID, defaultImage } from '../../../
 import { setListNotRegister, setListUserCofirm, setListUserNeedRegister } from '../../../../redux/reducers/Admin/courseAdminReducer';
 import { getLocal, saveLocal } from '../../../../utils';
 import './CourseManagement.scss';
+import '../../User/UserManagement/UserManagement.scss'
 
 
 function CourseManagement() {

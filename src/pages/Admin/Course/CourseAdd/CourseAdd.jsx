@@ -7,6 +7,7 @@ import * as Yup from 'yup';
 import { ACCESS_TOKEN, CYBERSOFT_TOKEN, GROUP_ID } from '../../../../constant';
 import { getLocal } from '../../../../utils';
 import './CourseAdd.scss';
+import '../../User/UserAdd/UserAdd.scss'
 
 
 function CourseAdd() {

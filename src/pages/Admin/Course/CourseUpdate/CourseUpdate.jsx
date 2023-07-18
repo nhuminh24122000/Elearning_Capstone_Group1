@@ -6,7 +6,7 @@ import { NavLink, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 import { CYBERSOFT_TOKEN, GROUP_ID } from '../../../../constant';
-import './CourseUpdate.scss';
+import '../../User/UserAdd/UserAdd.scss';
 
 
 
