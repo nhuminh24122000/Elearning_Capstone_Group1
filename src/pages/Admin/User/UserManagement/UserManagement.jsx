@@ -78,7 +78,7 @@ function UserManagement() {
                             Ghi danh
                         </button>
                         <button className='btn-sua'>
-                            <NavLink to={`/admin/userupdate/${item.taiKhoan}`}>Sửa</NavLink>
+                            <NavLink to={`/admin/userupdate/${encodeURIComponent(item.taiKhoan)}`}>Sửa</NavLink>
                         </button>
                         <button className='btn-xoa' onClick={() => deleteUser(item.taiKhoan)}>Xóa</button>
                     </td>

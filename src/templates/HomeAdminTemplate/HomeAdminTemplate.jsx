@@ -4,8 +4,11 @@ import { NavLink, Outlet } from "react-router-dom";
 import Header from "../../components/Admin/Header/Header";
 import Footer from "../../components/Admin/Footer/Footer";
 import "./HomeAdminTemplate.scss";
+import { useScrollTop } from "../../hooks/UseScrollTop/UseScrollTop";
 
 function HomeAdminTemplate() {
+  useScrollTop();
+
   return (
     <>
       <Header />

@@ -4,9 +4,12 @@ import Footer from "../../components/Footer/Footer";
 import { Suspense } from 'react'
 import { Outlet } from "react-router-dom";
 import AlertPopUp from "../../components/AlertPopup/AlertPopUp";
+import { useScrollTop } from "../../hooks/UseScrollTop/UseScrollTop";
 
 
 export default function HomeTemplate(props) {
+  useScrollTop()
+
   const {alert} = props;
   return (
     <React.Fragment>
