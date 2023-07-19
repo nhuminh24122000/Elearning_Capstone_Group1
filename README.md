@@ -1,3 +1,2 @@
-<!-- color theme -->
-<!-- #f2994a, #f2c94c -->
-<!-- 0d1018 -->
+1. Link deloy: https://elearning-capstone-group1.vercel.app/
+
