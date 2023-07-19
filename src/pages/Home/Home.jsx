@@ -40,7 +40,6 @@ export default function Home() {
         <h2 className="text-center my-5">CÁC KHÓA HỌC MỚI NHẤT</h2>
         {renderCourses(8)}
       </section>
-      {/* #f4f8ff */}
       <HomeInfo />
       <HomeFeedBack />
     </>

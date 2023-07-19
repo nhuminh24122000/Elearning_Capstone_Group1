@@ -21,6 +21,12 @@
 }
 
 //-----------RESPONSIVE------------------
+@media screen and (max-width: 768px) {
+  .home-template {
+    font-size: 1.2rem;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .home-template {
     display: none;
@@ -29,6 +35,6 @@
 
 @media screen and (max-width: 415px) {
   .left-sidebar li {
-    padding: 1rem 2rem;
+    padding: 1rem;
   }
 }

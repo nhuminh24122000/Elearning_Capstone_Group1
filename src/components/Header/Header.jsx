@@ -119,7 +119,7 @@ function Header() {
                           placement="bottomRight"
                           arrow
                         >
-                          <Button className="header-user ml-0 ml-sm-5">
+                          <Button className="header-user ml-0 ml-xl-5 ml-sm-3">
                             Xin chào, {userProfile.taiKhoan}
                           </Button>
                         </Dropdown>

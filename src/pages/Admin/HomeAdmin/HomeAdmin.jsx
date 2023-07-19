@@ -43,12 +43,12 @@ function HomeAdmin() {
                         <div>
                             <h1 className="mt-5">Doanh thu</h1>
                             <div className="row ">
-                                <div className="col-md-6 col-bar">
+                                <div className="col-12 col-sm-6 col-bar">
                                     <div className="bar" >
                                         <BarChart />
                                     </div>
                                 </div>
-                                <div className="col-md-6 col-pie">
+                                <div className="col-12 col-sm-6 col-pie">
                                     <div className="pie ">
                                         <PieChart />
                                     </div>

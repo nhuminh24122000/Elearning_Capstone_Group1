@@ -3,7 +3,7 @@ import { Carousel } from "antd";
 import avatar1 from "../../assets/img/ava1.jpg";
 import avatar2 from "../../assets/img/ava2.jpg";
 import avatar3 from "../../assets/img/ava3.jpg";
-import './HomeFeedBack.scss'
+import "./HomeFeedBack.scss";
 
 const contentStyle = {
   height: "32rem",
@@ -11,6 +11,27 @@ const contentStyle = {
   lineHeight: "50px",
   textAlign: "left",
 };
+
+const FeedBackData = [
+  {
+    name: "Minh Tran",
+    email: "minhtran@example.com",
+    comment:
+      "Anh chị ở Cybersoft đã đồng hành với em trong suốt hành trình từ khi học ở trung tâm cho tới việc apply thành công. Cảm ơn anh chị rất nhiều",
+  },
+  {
+    name: "Dinh Huy",
+    email: "dinhhuy@example.com",
+    comment:
+      "Sau khoá học tại trung tâm Cybersoft thì e đã đạt được kết quả ngoài mong đợi ạ Em cảm ơn thầy cô đã hướng dẫn và chỉ bảo e từ những ngày đầu tiên.",
+  },
+  {
+    name: "Gia Hung",
+    email: "giahung@example.com",
+    comment:
+      "Em cảm ơn thầy cô thật sự rất nhiều đã hỗ trợ em trong suốt quá trình học ạ. Em chúc thầy cô và trung tâm sẽ ngày càng phát triển và có có thật nhiều học viên biết đến nơi uy tín như này ạ",
+  },
+];
 
 function HomeFeedBack() {
   return (
@@ -27,70 +48,27 @@ function HomeFeedBack() {
         </div>
         <div className="feedback-carousel col-12 col-md-7">
           <Carousel autoplay>
-            <div className="feedback-item">
-              <div style={contentStyle} className="feedback-child">
-                <div>
-                  <div className="d-flex">
-                    <i className="fa-solid fa-quote-left" />
-                    <p className="feedback-comment">
-                      Anh chị ở Cybersoft đã đồng hành với em trong suốt hành
-                      trình từ khi học ở trung tâm cho tới việc apply thành
-                      công. Cảm ơn anh chị rất nhiều ❤️
-                    </p>
-                  </div>
-                  <div className="feedback-info d-flex align-items-center">
-                    <img src={avatar1} className="mr-4" />
-                    <div className="">
-                      <h5>Minh Tran</h5>
-                      <p>minhtran@example.com</p>
+            {FeedBackData.map((item) => {
+              return (
+                <div className="feedback-item">
+                  <div style={contentStyle} className="feedback-child">
+                    <div>
+                      <div className="d-flex">
+                        <i className="fa-solid fa-quote-left" />
+                        <p className="feedback-comment">{item.comment}</p>
+                      </div>
+                      <div className="feedback-info d-flex align-items-center">
+                        <img src={avatar1} className="mr-4" />
+                        <div className="">
+                          <h5>{item.name}</h5>
+                          <p>{item.email}</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div className="feedback-item">
-              <div style={contentStyle} className="feedback-child">
-                <div>
-                  <div className="d-flex">
-                    <i className="fa-solid fa-quote-left" />
-                    <p className="feedback-comment">
-                      Sau khoá học tại trung tâm Cybersoft thì e đã đạt được kết
-                      quả ngoài mong đợi ạ Em cảm ơn thầy cô đã hướng dẫn và chỉ
-                      bảo e từ những ngày đầu tiên.
-                    </p>
-                  </div>
-                  <div className="feedback-info d-flex align-items-center">
-                    <img src={avatar2} className="mr-4" />
-                    <div className="">
-                      <h5>Dinh Huy</h5>
-                      <p>dinhhuy@example.com</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="feedback-item">
-              <div style={contentStyle} className="feedback-child">
-                <div>
-                  <div className="d-flex">
-                    <i className="fa-solid fa-quote-left" />
-                    <p className="feedback-comment">
-                      Em cảm ơn thầy cô thật sự rất nhiều đã hỗ trợ em trong
-                      suốt quá trình học ạ. Em chúc thầy cô và trung tâm sẽ ngày
-                      càng phát triển và có có thật nhiều học viên biết đến nơi
-                      uy tín như này ạ
-                    </p>
-                  </div>
-                  <div className="feedback-info d-flex align-items-center">
-                    <img src={avatar3} className="mr-4" />
-                    <div className="">
-                      <h5>Gia Hung</h5>
-                      <p>giahung@example.com</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+              );
+            })}
           </Carousel>
         </div>
       </div>

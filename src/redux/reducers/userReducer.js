@@ -26,3 +26,4 @@ const userReducer = createSlice({
 export const { setUserProfile, resetUserProfile } = userReducer.actions
 
 export default userReducer.reducer
+

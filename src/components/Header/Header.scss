@@ -145,12 +145,16 @@ header {
       font-size: 1rem;
     }
     .container {
+      .LogoHome {
+        width: 10rem;
+      }
       .header-link {
         font-size: 1rem;
         padding: 1rem 2rem;
       }
       .search-container {
         width: 23rem;
+        margin-left: 2rem;
       }
       .search {
         padding: 0.5rem 1rem;
@@ -166,7 +170,7 @@ header {
       }
       .ant-select.css-dev-only-do-not-override-1wazalj.ant-select-single.ant-select-show-arrow {
         .ant-select-selector {
-          width: 170px;
+          width: 16rem;
         }
         .ant-select-arrow {
           display: none;
@@ -188,6 +192,9 @@ header {
       padding: 0 2rem;
       .LogoHome {
         width: 10rem;
+      }
+      .search-container {
+        margin-left: 0;
       }
       .navbar-nav {
         margin-top: 6rem;

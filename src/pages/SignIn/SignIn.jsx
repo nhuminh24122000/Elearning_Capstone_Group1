@@ -52,11 +52,6 @@ function SignIn(props) {
           showConfirmButton: false,
           timer: 1500
       })
-
-        // if (resp.status === 200) {
-        //   props.showAlert("Đăng nhập tài khoản thành công!", "success");
-        // }
-
         saveLocal(ACCESS_TOKEN, resp.data.accessToken);
         setTimeout(() => {
           navigate("/userinfo");
@@ -64,10 +59,6 @@ function SignIn(props) {
 
       } catch (err) {
         console.log(err);
-        // props.showAlert(
-        //   "Đăng nhập tài khoản thất bại, xin vui lòng thử lại",
-        //   "danger"
-        // );
         Swal.fire({
           position: 'center',
           icon: 'error',
