@@ -6,9 +6,6 @@ import CourseItem from '../CourseItem/CourseItem';
 import Paginate from '../Paginate/Paginate';
 import './MyCourse.scss';
 
-
-
-
 function MyCourse({handleProfile} ) {
     const { userProfile } = useSelector(state => state.UserReducer);
     const [key, setKey] = useState();
